@@ -1,0 +1,108 @@
+@CHARSET "iso-8859-1";
+
+
+#box{
+	position:absolute;
+	top:0;
+	left:0px;
+	width:100%;
+	height:100%;
+	display:none;
+	background:url(elements/proxy.png)
+}
+.lightBox{
+	position:absolute;
+	top:0;
+	left:0px;
+	width:100%;
+	height:100%;
+}
+#box .containerPlus{
+	position:relative; margin:10% auto;
+}
+
+.aniversario,
+.fc-agenda .aniversario .fc-event-time,
+.aniversario a {
+	background-color: #33CC33; /* background color */
+	border-color: #00FF00;     /* border color */
+	color: #DDFFDD;           /* text color */
+}
+
+.fechado,
+.fc-agenda .fechado .fc-event-time,
+.fechado a {
+	background-color: #FF3333; /* background color */
+	border-color: #FF0000;     /* border color */
+	color: #FFDDDD;           /* text color */
+}
+
+.aberto,
+.fc-agenda .aberto .fc-event-time,
+.aberto a {
+	background-color: #3333FF; /* background color */
+	border-color: #0000FF;     /* border color */
+	color: #DDDDFF;           /* text color */
+}
+
+.painelBox {
+	width: 50%;
+	float: left;
+}
+
+.menu_agenda {
+	width: 15%;
+	float: left;
+	vertical-align: top;
+}
+
+.conteudo_agenda {
+	padding: 20px;
+	width: 80%;
+	height: 1500px;
+	float: left;
+	border-right:1px solid #999;
+	border-bottom:1px solid #999;
+	border-top:1px solid #999;
+}
+
+.abas{
+	list-style:none;
+	margin: 0;
+}
+
+.abas LI {
+	width:	100%;
+	margin:0;
+	padding:0;
+}
+
+.abas A {
+	display:block;
+	color:#444;
+	text-decoration:none;
+	font-weight:bold;
+	background:#ddd;
+	margin:0;
+	padding:10px 40px;
+	border-right:1px solid #aaa;
+	border-bottom:1px solid #ddd;
+	border-left:1px solid #ddd;
+	border-top:1px solid #ddd;
+}
+
+.abas A:hover,
+.abas A:active,
+.abas A.here:link,
+.abas A.here:visited {
+	background-color: #fff;
+	border-right:1px solid #fff;
+	border-bottom:1px solid #999;
+	border-left:1px solid #999;
+	border-top:1px solid #999;
+}
+
+.abas A.here:link,
+.abas A.here:visited {
+	position:relative;
+}

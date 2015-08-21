@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/vnix/!svn/ver/109/hpilates/trunk/sistema/hpilates/models
+END
+vnix_config.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/vnix/!svn/ver/70/hpilates/trunk/sistema/hpilates/models/vnix_config.php
+END
+pagamento.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/vnix/!svn/ver/70/hpilates/trunk/sistema/hpilates/models/pagamento.php
+END
+estudio.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/vnix/!svn/ver/70/hpilates/trunk/sistema/hpilates/models/estudio.php
+END
+aluno.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/vnix/!svn/ver/70/hpilates/trunk/sistema/hpilates/models/aluno.php
+END
+supermodel.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/vnix/!svn/ver/109/hpilates/trunk/sistema/hpilates/models/supermodel.php
+END
+evento.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/vnix/!svn/ver/70/hpilates/trunk/sistema/hpilates/models/evento.php
+END
+professor.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/vnix/!svn/ver/70/hpilates/trunk/sistema/hpilates/models/professor.php
+END
+despesa.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/vnix/!svn/ver/70/hpilates/trunk/sistema/hpilates/models/despesa.php
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/vnix/!svn/ver/70/hpilates/trunk/sistema/hpilates/models/index.html
+END
+usuario.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/vnix/!svn/ver/109/hpilates/trunk/sistema/hpilates/models/usuario.php
+END

@@ -1,0 +1,274 @@
+-- MySQL dump 10.13  Distrib 5.1.41, for debian-linux-gnu (i486)
+--
+-- Host: localhost    Database: hpilates2
+-- ------------------------------------------------------
+-- Server version	5.1.41-3ubuntu12.3
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `aluno`
+--
+
+DROP TABLE IF EXISTS `aluno`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `aluno` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `profissao` varchar(128) DEFAULT NULL,
+  `endereco` varchar(128) DEFAULT NULL,
+  `telefone` varchar(32) DEFAULT NULL,
+  `objetivos` text,
+  `cdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id_estudio` int(11) NOT NULL DEFAULT '0',
+  `id_usuario` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `aluno_estudio` (`id_estudio`),
+  KEY `aluno_usuario` (`id_usuario`),
+  CONSTRAINT `aluno_estudio` FOREIGN KEY (`id_estudio`) REFERENCES `estudio` (`id`),
+  CONSTRAINT `aluno_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aluno`
+--
+
+LOCK TABLES `aluno` WRITE;
+/*!40000 ALTER TABLE `aluno` DISABLE KEYS */;
+INSERT INTO `aluno` VALUES (1,'Jogador','biobioiu','12345678','0','2009-12-28 05:45:47',1,4),(2,'Advogado','Rua das Bromélias, 98','98765432','','2010-01-07 04:28:43',2,6),(3,'Educador físico','Lucas de Oliveira, 1081','99037275','fortalecimento global','2010-01-13 14:16:38',1,7),(5,'Profissional','endereço','12354325','Obj','2010-05-18 20:18:30',1,14);
+/*!40000 ALTER TABLE `aluno` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ci_sessions`
+--
+
+DROP TABLE IF EXISTS `ci_sessions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ci_sessions` (
+  `session_id` varchar(40) NOT NULL DEFAULT '0',
+  `ip_address` varchar(16) NOT NULL DEFAULT '0',
+  `user_agent` varchar(50) NOT NULL,
+  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_data` text NOT NULL,
+  PRIMARY KEY (`session_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ci_sessions`
+--
+
+LOCK TABLES `ci_sessions` WRITE;
+/*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
+INSERT INTO `ci_sessions` VALUES ('67e388f0b1dc1e498fe0c588e27d1c48','127.0.0.1','Mozilla/5.0 (X11; U; Linux i686; pt-BR; rv:1.9.2.3',1277771049,'a:9:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"vinik\";s:5:\"email\";s:24:\"vinicius.kirst@gmail.com\";s:4:\"nome\";s:8:\"Vinicius\";s:15:\"data_nascimento\";s:10:\"1981-07-31\";s:5:\"cdate\";s:19:\"2009-12-28 03:48:46\";s:5:\"nivel\";s:1:\"1\";s:6:\"avatar\";s:0:\"\";s:9:\"logged_in\";s:1:\"1\";}'),('96a7bb6f6abbc770fe84ac90bb7a5071','127.0.0.1','Mozilla/5.0 (X11; U; Linux i686; pt-BR; rv:1.9.2.3',1277810196,'a:1:{s:14:\"flash:old:erro\";s:28:\"Você precisa realizar login.\";}'),('6540423941537e00b10eabf8c4718fac','127.0.0.1','Mozilla/5.0 (X11; U; Linux i686; pt-BR; rv:1.9.2.3',1277918239,'');
+/*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `configs`
+--
+
+DROP TABLE IF EXISTS `configs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `configs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(128) NOT NULL,
+  `tipo` int(2) DEFAULT NULL,
+  `valor` text,
+  `cdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `ordem` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `configs`
+--
+
+LOCK TABLES `configs` WRITE;
+/*!40000 ALTER TABLE `configs` DISABLE KEYS */;
+INSERT INTO `configs` VALUES (10,'inicio_expediente',1,'07:00','0000-00-00 00:00:00',1),(11,'intervalo_campo_horas',2,'30','2010-06-26 07:42:37',2);
+/*!40000 ALTER TABLE `configs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `estudio`
+--
+
+DROP TABLE IF EXISTS `estudio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `estudio` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(128) NOT NULL,
+  `endereco` varchar(255) DEFAULT NULL,
+  `telefone` varchar(32) DEFAULT NULL,
+  `cdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `estudio`
+--
+
+LOCK TABLES `estudio` WRITE;
+/*!40000 ALTER TABLE `estudio` DISABLE KEYS */;
+INSERT INTO `estudio` VALUES (1,'Estúdio Bela Vista','uuiowe fhwoiuf wiaughiaoru giurwaaro b ','9088m-q8d80980','2010-05-19 22:42:32'),(2,'Estúdio Gramado','owrg hoiwr ghoiwr hgoi','908409r809','2010-05-20 00:12:56'),(3,'Estúdio com nome ridiculamente grande','fvwefwe','3r2','2010-05-20 05:29:40');
+/*!40000 ALTER TABLE `estudio` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `evento`
+--
+
+DROP TABLE IF EXISTS `evento`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `evento` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_aluno1` int(11) NOT NULL,
+  `id_aluno2` int(11) DEFAULT NULL,
+  `inicio` date NOT NULL,
+  `fim` date DEFAULT NULL,
+  `iddiainteiro` enum('s','n') NOT NULL DEFAULT 'n',
+  `iddupla` enum('s','n') NOT NULL,
+  `idrepeticao` enum('s','n') NOT NULL DEFAULT 'n',
+  `repeticaofim` date DEFAULT NULL,
+  `id_estudio` int(11) NOT NULL,
+  `hora_inicio` time DEFAULT NULL,
+  `hora_fim` time DEFAULT NULL,
+  `id_tiporepeticao` int(11) DEFAULT NULL,
+  `id_professor` int(11) DEFAULT NULL,
+  `cdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `fk_evento_aluno1` (`id_aluno1`),
+  KEY `fk_evento_aluno2` (`id_aluno2`),
+  KEY `fk_evento_estudio` (`id_estudio`),
+  KEY `fk_evento_professor` (`id_professor`),
+  CONSTRAINT `fk_evento_aluno1` FOREIGN KEY (`id_aluno1`) REFERENCES `aluno` (`id`),
+  CONSTRAINT `fk_evento_aluno2` FOREIGN KEY (`id_aluno2`) REFERENCES `aluno` (`id`),
+  CONSTRAINT `fk_evento_estudio` FOREIGN KEY (`id_estudio`) REFERENCES `estudio` (`id`),
+  CONSTRAINT `fk_evento_professor` FOREIGN KEY (`id_professor`) REFERENCES `professor` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4205 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `evento`
+--
+
+LOCK TABLES `evento` WRITE;
+/*!40000 ALTER TABLE `evento` DISABLE KEYS */;
+INSERT INTO `evento` VALUES (4192,1,NULL,'2010-06-25','2010-06-25','','n','s','2010-07-30',1,'08:00:00','09:00:00',2,1,'0000-00-00 00:00:00'),(4193,1,NULL,'2010-07-02','2010-07-02','','n','s','2010-07-30',1,'08:00:00','09:00:00',2,1,'0000-00-00 00:00:00'),(4194,1,NULL,'2010-07-09','2010-07-09','','n','s','2010-07-30',1,'08:00:00','09:00:00',2,1,'0000-00-00 00:00:00'),(4195,1,NULL,'2010-07-16','2010-07-16','','n','s','2010-07-30',1,'08:00:00','09:00:00',2,1,'0000-00-00 00:00:00'),(4196,1,NULL,'2010-07-23','2010-07-23','','n','s','2010-07-30',1,'08:00:00','09:00:00',2,1,'0000-00-00 00:00:00'),(4197,1,NULL,'2010-07-30','2010-07-30','','n','s','2010-07-30',1,'08:00:00','09:00:00',2,1,'0000-00-00 00:00:00'),(4198,1,NULL,'2010-08-06','2010-08-06','','n','s','2010-07-30',1,'08:00:00','09:00:00',2,1,'0000-00-00 00:00:00'),(4199,1,NULL,'0000-00-00','0000-00-00','','n','','0000-00-00',1,'08:00:00','09:00:00',2,1,'0000-00-00 00:00:00'),(4200,1,NULL,'2010-06-26','2010-06-26','','n','s','2010-07-17',1,'08:00:00','09:00:00',2,1,'0000-00-00 00:00:00'),(4201,1,NULL,'2010-07-03','2010-07-03','','n','s','2010-07-17',1,'08:00:00','09:00:00',2,1,'0000-00-00 00:00:00'),(4202,1,NULL,'2010-07-10','2010-07-10','','n','s','2010-07-17',1,'08:00:00','09:00:00',2,1,'0000-00-00 00:00:00'),(4203,1,NULL,'2010-07-17','2010-07-17','','n','s','2010-07-17',1,'08:00:00','09:00:00',2,1,'0000-00-00 00:00:00'),(4204,1,NULL,'2010-07-24','2010-07-24','','n','s','2010-07-17',1,'08:00:00','09:00:00',2,1,'0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `evento` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `preferencia`
+--
+
+DROP TABLE IF EXISTS `preferencia`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `preferencia` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
+  `tema` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `preferencia_usuario` (`id_usuario`),
+  CONSTRAINT `preferencia_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `preferencia`
+--
+
+LOCK TABLES `preferencia` WRITE;
+/*!40000 ALTER TABLE `preferencia` DISABLE KEYS */;
+/*!40000 ALTER TABLE `preferencia` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `professor`
+--
+
+DROP TABLE IF EXISTS `professor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `professor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `endereco` varchar(128) DEFAULT NULL,
+  `telefone` varchar(32) DEFAULT NULL,
+  `cdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id_usuario` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `professor_usuario` (`id_usuario`),
+  CONSTRAINT `professor_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `professor`
+--
+
+LOCK TABLES `professor` WRITE;
+/*!40000 ALTER TABLE `professor` DISABLE KEYS */;
+INSERT INTO `professor` VALUES (1,'rua itaborai, 220','99037275','2010-01-13 14:25:22',5),(2,'','5481424620','2010-01-13 14:23:42',8),(3,'Rua Soledade, ','93306654','2010-01-13 14:24:37',9);
+/*!40000 ALTER TABLE `professor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(32) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `senha` varchar(128) NOT NULL,
+  `nome` varchar(64) DEFAULT NULL,
+  `data_nascimento` date DEFAULT NULL,
+  `cdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `nivel` int(11) NOT NULL DEFAULT '3',
+  `avatar` blob,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'vinik','vinicius.kirst@gmail.com','1234','Vinicius','1981-07-31','2009-12-28 05:48:46',1,NULL),(2,'marc','healthpilates@terra.com.br','1234','Marc','1982-09-20','2009-12-16 22:58:58',1,NULL),(4,'aluno1','aluno1@email.com','1234','Aluno2','1964-12-18','2010-05-21 05:42:28',3,NULL),(5,'0','professor1@hpilates.com','0','Marc henri','1982-09-20','2010-05-21 05:42:28',3,NULL),(6,'','','12345','José da Silva','1982-01-09','2010-05-21 05:42:28',3,NULL),(7,'','mhaetinger@hotmail.com','','Marc henri','1982-09-20','2010-01-13 14:16:38',3,NULL),(8,'0','','0','Lia Begnini Vidal','1980-12-19','2010-05-21 05:42:28',3,NULL),(9,'0','tataspinelli@gmail.com','0','Thais Spinelli','1981-11-19','2010-01-13 14:24:37',2,NULL),(10,'0','','0','Fernanda Alves','0000-00-00','2010-01-13 14:25:40',2,NULL),(12,'lia','liaeaugusto@terra.com.br','isabela','Lia Begnini Vidal','0000-00-00','2010-01-20 11:27:56',2,NULL),(13,'0','kurt@nirvana.com','0','Kurt Cobain','1980-01-31','2010-05-14 01:27:20',3,NULL),(14,'0','aluno1@teste.com.br','0','Aluno teste com\'aspa','1977-11-20','2010-05-18 20:18:30',3,NULL);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2010-07-01  2:46:14

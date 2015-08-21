@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/vnix/!svn/ver/109/hpilates/trunk/sistema/hpilates/views/agenda
+END
+estudio.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/vnix/!svn/ver/70/hpilates/trunk/sistema/hpilates/views/agenda/estudio.php
+END
+lista_eventos.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/vnix/!svn/ver/109/hpilates/trunk/sistema/hpilates/views/agenda/lista_eventos.php
+END
+evento_viewer.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/vnix/!svn/ver/70/hpilates/trunk/sistema/hpilates/views/agenda/evento_viewer.php
+END
+viewer.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/vnix/!svn/ver/70/hpilates/trunk/sistema/hpilates/views/agenda/viewer.php
+END
+form.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/vnix/!svn/ver/70/hpilates/trunk/sistema/hpilates/views/agenda/form.php
+END
+painel.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/vnix/!svn/ver/70/hpilates/trunk/sistema/hpilates/views/agenda/painel.php
+END
