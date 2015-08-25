@@ -1,5 +1,4 @@
-DockerFROM vinik/web:latest
-
+FROM vinik/web:latest
 MAINTAINER Vinícius Kirst <vinicius@versul.com.br>
 
 RUN apt-get update
@@ -18,8 +17,8 @@ RUN usermod -u 1000 www-data
 
 EXPOSE 22 80
 
-ADD . /var/www/site
-
 ADD docker/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
+
+ADD . /var/www/site
 
 CMD /usr/sbin/apache2ctl -D FOREGROUND
