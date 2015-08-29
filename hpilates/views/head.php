@@ -14,7 +14,8 @@
     <!--[if lte IE 7]><link rel="stylesheet" media="screen,projection" type="text/css" href="<?php echo base_url(); ?>css/main-ie.css" /><![endif]-->
     <link rel="stylesheet" media="screen,projection" type="text/css" href="<?php echo base_url(); ?>css/skin/main.css" />
     <link rel="stylesheet" media="screen,projection" type="text/css" href="<?php echo base_url(); ?>css/custom.css" />
-    
+    <link rel="stylesheet" media="screen,projection" type="text/css" href="<?php echo base_url(); ?>css/style.css" />
+
     <link rel="stylesheet" href="<?php echo base_url(); ?>css/redmond/jquery-ui-1.8.2.custom.css" type="text/css">
     <link type="text/css" href="<?php echo base_url(); ?>css/fullcalendar2.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>css/framework.css" type="text/css">
@@ -33,7 +34,7 @@
     <!-- plugins -->
     <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.dropdown.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.metadata.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.hoverintent.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.hoverIntent.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/mbMenu.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/mbContainer.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/fullcalendar.js"></script>
@@ -64,19 +65,19 @@
 
         //loader
         $(document).ajaxStart(function() {
-            
+
             $.blockUI({
                 message: '<h3><img src="' + baseUrl + '/img/loader.gif" /> Carregando</h3>',
                 showOverlay: true,
                 centerY: true,
-                css: { 
-                    border: '2px solid #000', 
+                css: {
+                    border: '2px solid #000',
                     padding: '5px',
-                    backgroundColor: '#000', 
-                    '-webkit-border-radius': '4px', 
-                    '-moz-border-radius': '4px', 
-                    opacity: .5, 
-                    color: '#FFF' 
+                    backgroundColor: '#000',
+                    '-webkit-border-radius': '4px',
+                    '-moz-border-radius': '4px',
+                    opacity: .5,
+                    color: '#FFF'
                 }
             });
         });
@@ -85,7 +86,7 @@
         });
 
         //$(".containerPlus").buildContainers({elementsPath: "' . base_url() . '"});
-        
+
         build_buttons();
 
         $("#dialog").dialog({
@@ -102,19 +103,19 @@
             $(this).hide('slow');
         });
 
-        
+
 
         <?php
                 if(count($scripts) > 0){
                     foreach($scripts as $script){
                         echo $script;
-                        
+
                     }
                 }
         ?>
 
-        
+
     });
-    
+
     </script>
     </head>
