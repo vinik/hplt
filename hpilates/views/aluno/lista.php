@@ -1,17 +1,16 @@
-<div id="divToolbarAluno" >
-	<?php
-	echo anchor('alunos/novo', 'Novo aluno', 'class="BUTTON_NEW_FULL"');
-	?>
+<div id="divToolbarAluno" align="right">
+	<a class="btn btn-primary" href="novo"> + Novo Aluno</a>
 </div>
-<BR></BR>
-<table class="list">
+
+<table class="table table-striped">
 	<thead>
 		<tr>
-			<th width="20">#</th>
-			<th width="300">Nome</th>
-			<th width="200">Email</th>
-			<th width="200">Telefone</th>
-			<th width="30"></th>
+			<th>#</th>
+			<th>Nome</th>
+			<th>Email</th>
+			<th>Telefone</th>
+			<th>Ações</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>

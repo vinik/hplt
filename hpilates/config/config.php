@@ -12,8 +12,9 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://www.hpilates.com/sistema";
-//$config['base_url']	= "http://capablanca/hpilates";
+// $config['base_url']	= "http://www.hpilates.com/sistema";
+// $config['base_url']  = "http://capablanca/hpilates";
+$config['base_url']	= "http://localhost/hpilates";
 
 /*
 |--------------------------------------------------------------------------
@@ -80,7 +81,7 @@ $config['language']	= "portugues";
 | that require a character set to be provided.
 |
 */
-$config['charset'] = "utf-8";
+$config['charset'] = "UTF-8";
 
 /*
 |--------------------------------------------------------------------------

@@ -1,61 +1,558 @@
--- MySQL dump 10.13  Distrib 5.1.41, for debian-linux-gnu (i486)
---
--- Host: localhost    Database: hpilates2
--- ------------------------------------------------------
--- Server version	5.1.41-3ubuntu12
+/*
+Navicat MySQL Data Transfer
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+Source Server         : Localhost
+Source Server Version : 50624
+Source Host           : localhost:3306
+Source Database       : hpilates2
 
---
--- Table structure for table `aluno`
---
+Target Server Type    : MYSQL
+Target Server Version : 50624
+File Encoding         : 65001
 
+Date: 2015-08-29 03:59:03
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `aluno`
+-- ----------------------------
 DROP TABLE IF EXISTS `aluno`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aluno` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `profissao` varchar(128) DEFAULT NULL,
-  `endereco` varchar(128) DEFAULT NULL,
-  `telefone` varchar(32) DEFAULT NULL,
-  `objetivos` text,
+  `profissao` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `endereco` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `telefone` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `objetivos` text COLLATE utf8_unicode_ci,
   `cdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `id_estudio` int(11) NOT NULL DEFAULT '0',
-  `id_usuario` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL DEFAULT '0',
+  `valor_aula` double NOT NULL DEFAULT '0',
+  `deleted` enum('s','n') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'n',
   PRIMARY KEY (`id`),
   KEY `aluno_estudio` (`id_estudio`),
   KEY `aluno_usuario` (`id_usuario`),
   CONSTRAINT `aluno_estudio` FOREIGN KEY (`id_estudio`) REFERENCES `estudio` (`id`),
   CONSTRAINT `aluno_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=519 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `aluno`
---
-
-LOCK TABLES `aluno` WRITE;
-/*!40000 ALTER TABLE `aluno` DISABLE KEYS */;
-INSERT INTO `aluno` VALUES (1,'Jogador','biobioiu','12345678','0','2009-12-28 05:45:47',1,4),(2,'Advogado','Rua das Bromélias, 98','98765432','','2010-01-07 04:28:43',2,6),(3,'Educador físico','Lucas de Oliveira, 1081','99037275','fortalecimento global','2010-01-13 14:16:38',1,7),(5,'Profissional','endereço','12354325','Obj','2010-05-18 20:18:30',1,14);
-/*!40000 ALTER TABLE `aluno` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2010-05-19 19:01:01
+-- ----------------------------
+-- Records of aluno
+-- ----------------------------
+INSERT INTO `aluno` VALUES ('2', 'Advogado', 'Rua das BromÃ©lias, 98', '98765432', '', '2010-07-30 06:55:40', '1', '6', '1', 'n');
+INSERT INTO `aluno` VALUES ('3', 'Educador fÃ­sico', 'Lucas de Oliveira, 1081', '99037275', 'fortalecimento global', '2010-09-11 15:19:30', '1', '7', '50', 'n');
+INSERT INTO `aluno` VALUES ('5', '', '', '', '', '2010-04-25 20:59:33', '3', '15', '0', 'n');
+INSERT INTO `aluno` VALUES ('6', 'Advogado', 'Artur Rocha,', '81388057 -30199913', '', '2010-05-17 22:37:24', '1', '17', '0', 'n');
+INSERT INTO `aluno` VALUES ('7', 'advogada', 'lucas de oliveira, 1155/501', '81871856', '', '2010-08-13 16:03:33', '1', '18', '40', 'n');
+INSERT INTO `aluno` VALUES ('8', 'diretor cia de seguros', 'Dona leonor,', '81240053', '', '2010-05-17 22:34:01', '1', '19', '0', 'n');
+INSERT INTO `aluno` VALUES ('9', 'publicitária', 'paragua, 60 / casa 02', '91623988 - 33332022', '', '2010-05-17 22:36:04', '1', '20', '0', 'n');
+INSERT INTO `aluno` VALUES ('10', 'psiquiatra', 'barão do amazonas,', '99863492 - 33325559', '', '2010-05-17 22:39:02', '1', '21', '0', 'n');
+INSERT INTO `aluno` VALUES ('11', 'aposentada', 'luis manoel gonzaga, 45/401', '99125830 - 33815772', '', '2010-08-17 14:54:21', '1', '22', '45', 'n');
+INSERT INTO `aluno` VALUES ('12', 'nutricionista', 'cel bordini, 1471/202', '99972025', '', '2010-05-17 22:42:24', '1', '23', '0', 'n');
+INSERT INTO `aluno` VALUES ('13', 'advogada', 'lucas de oliveira,', '81118888', '', '2010-05-17 22:43:55', '1', '24', '0', 'n');
+INSERT INTO `aluno` VALUES ('14', 'ortodontista', 'carlos trein filho, 577/902', '99111013 - 33314188', '', '2010-05-17 22:45:49', '1', '25', '0', 'n');
+INSERT INTO `aluno` VALUES ('15', '', 'bage,', '99390886', '', '2010-05-17 22:47:44', '1', '26', '0', 'n');
+INSERT INTO `aluno` VALUES ('16', 'adm de empresas', '', '97018881', '', '2010-05-17 22:48:51', '1', '27', '0', 'n');
+INSERT INTO `aluno` VALUES ('17', 'do lar', 'aurelio bitencourt, 265/102', '33329318', '', '2010-05-17 22:50:49', '1', '28', '0', 'n');
+INSERT INTO `aluno` VALUES ('18', '', 'aurelio bitencourt, 265/102', '33329318', '', '2010-05-17 22:51:50', '1', '29', '0', 'n');
+INSERT INTO `aluno` VALUES ('19', 'func publico', 'cabral, 1443/302', '99188007', '', '2010-05-17 22:53:56', '1', '30', '0', 'n');
+INSERT INTO `aluno` VALUES ('20', '', 'casemiro de abreu, 1337/902', '81245874', '', '2010-05-17 22:55:24', '1', '31', '0', 'n');
+INSERT INTO `aluno` VALUES ('21', 'empresario', 'lucas de oliveira, 600/201', '81846001 - 30211991', '', '2010-05-17 22:57:01', '1', '32', '0', 'n');
+INSERT INTO `aluno` VALUES ('22', 'empresario', '', '97016779', '', '2010-05-17 22:58:47', '1', '33', '0', 'n');
+INSERT INTO `aluno` VALUES ('23', 'aposentado', 'lucas de oliveira, 1155/901', '81157815', '', '2010-05-17 23:00:21', '1', '34', '0', 'n');
+INSERT INTO `aluno` VALUES ('24', 'aposentada', 'cel bordini, 1644', '33319058', '', '2010-08-31 14:52:12', '1', '35', '50', 'n');
+INSERT INTO `aluno` VALUES ('25', 'medica', 'R. Eng. Ildefonso SimÃµes Lopes, 114 / 07 TrÃªs Figueiras Porto Alegre', '97129280', '', '2010-11-27 23:09:12', '1', '36', '0', 'n');
+INSERT INTO `aluno` VALUES ('26', 'medica', 'lucas de oliveira, 1035 /701', '99858794', '', '2010-05-17 23:05:24', '1', '37', '0', 'n');
+INSERT INTO `aluno` VALUES ('27', '', '', '81469100 - 30128111', '', '2010-05-17 23:07:55', '1', '38', '0', 'n');
+INSERT INTO `aluno` VALUES ('28', '', 'lucas de oliveira, 1033/701', '99998462 - 33322643', '', '2010-05-17 23:11:31', '1', '39', '0', 'n');
+INSERT INTO `aluno` VALUES ('29', 'relaï¿½ï¿½es publicas', 'lucas de oliveira, 1155/501', '99790805 - 33301092', '', '2010-12-07 13:32:14', '1', '40', '40', 'n');
+INSERT INTO `aluno` VALUES ('30', 'juiza', 'lucas de oliveira, 901 / 601', '99181940 - 33211940', '', '2010-05-17 23:16:13', '1', '41', '0', 'n');
+INSERT INTO `aluno` VALUES ('31', '', 'Dona leonor, 191/1001', '99270021 - 33077174', '', '2010-05-17 23:36:50', '1', '42', '0', 'n');
+INSERT INTO `aluno` VALUES ('32', '', 'monsenhor veras, 480 / 1701', '81217908 - 32176324', '', '2010-05-17 23:38:44', '1', '43', '0', 'n');
+INSERT INTO `aluno` VALUES ('33', 'empresario', 'monsenhor veras, 480 / 1701', '81846165', '', '2010-05-17 23:40:00', '1', '44', '0', 'n');
+INSERT INTO `aluno` VALUES ('34', 'aposentada', 'lavras, 511 / 203', '91549052 - 33310895', '', '2010-05-17 23:41:15', '1', '45', '0', 'n');
+INSERT INTO `aluno` VALUES ('35', 'medica', 'casemiro de abreu, 1337/201', '96780798', '', '2010-05-17 23:42:56', '1', '46', '0', 'n');
+INSERT INTO `aluno` VALUES ('36', 'medica', 'cabral, 795 / 602', '98048369', '', '2010-05-17 23:44:30', '1', '47', '0', 'n');
+INSERT INTO `aluno` VALUES ('37', '', 'lucas de oliveira, 865 / 202', '33336162', '', '2010-05-17 23:45:58', '1', '48', '0', 'n');
+INSERT INTO `aluno` VALUES ('38', 'juiz', 'lucas de oliveira, 865 / 202', '33336162', '', '2010-05-17 23:47:16', '1', '49', '0', 'n');
+INSERT INTO `aluno` VALUES ('39', 'engenheiro', 'iguaçu, 12', '81553337', '', '2010-05-17 23:48:21', '1', '50', '0', 'n');
+INSERT INTO `aluno` VALUES ('40', '', '', '', '', '2010-05-17 23:49:14', '1', '51', '0', 'n');
+INSERT INTO `aluno` VALUES ('41', 'MEDICO', 'luzitana, 1201/801', '84424252 - 33308079', '', '2010-05-17 23:51:05', '1', '52', '0', 'n');
+INSERT INTO `aluno` VALUES ('42', 'gerente de markting', 'lucas de oliveira,', '93177415 - 34071856', '', '2010-08-29 23:18:51', '1', '53', '45', 'n');
+INSERT INTO `aluno` VALUES ('43', '', 'Rua Demétrio Pereira dos Santos, 253', '3286 4948 - 8122 4246', '', '2010-11-06 18:30:14', '5', '58', '0', 'n');
+INSERT INTO `aluno` VALUES ('44', '', 'Rua Horácio Cardoso, 346', '3286 2713 - 3737 9016 (POA) - (4', '', '2010-08-01 17:11:48', '5', '59', '36', 'n');
+INSERT INTO `aluno` VALUES ('45', '', 'Avenida Borges de Medeiros, 3775 / 407', '9172 9386', 'correção postural - qualidade de vida', '2010-08-01 17:13:41', '5', '60', '36', 'n');
+INSERT INTO `aluno` VALUES ('46', '', 'Avenida Borges de Medeiros, 3218 / 304', '3286 9829 - 8114 1695', 'Qualidade de vida', '2010-08-01 17:15:29', '5', '61', '36', 'n');
+INSERT INTO `aluno` VALUES ('47', '', 'Rua Gralha Azul, 63 - bairro Avenida Central', '3286 9577 (comercial) - 99834224', 'perder peso, qualidade de vida, estética.', '2010-08-01 17:17:31', '5', '62', '36', 'n');
+INSERT INTO `aluno` VALUES ('48', 'professora aposentada', 'Rua Dr. Kiefer, 501 - Linha Carazal', '3814 3817', 'melhorar postura, fortalecer musculatura', '2010-08-01 17:19:48', '5', '63', '36', 'n');
+INSERT INTO `aluno` VALUES ('49', '', 'Honorato Lovato, 120 - Bairro Mato Queimado', '(51)9962 6860', '', '2010-08-01 17:21:43', '5', '64', '36', 'n');
+INSERT INTO `aluno` VALUES ('50', 'administrador aposentado', 'Horácio Cardoso, 55 / casa 12 - Bairro Planalto', '3295 2332 - 8133 6477', 'melhorar qualidade de vida e postura.', '2010-08-01 17:23:36', '5', '65', '36', 'n');
+INSERT INTO `aluno` VALUES ('51', '', 'Rua F.G. Bier, 1207', '3286 3404 - 9185 7082', 'postural, reforço muscular.', '2010-08-01 17:25:31', '5', '66', '20', 'n');
+INSERT INTO `aluno` VALUES ('52', '', 'Rua das Azaléias, 88', '3286 9613 - (51)9982 4652', 'qualidade de vida, recuperar musculatura.', '2010-08-01 17:27:26', '5', '67', '0', 'n');
+INSERT INTO `aluno` VALUES ('53', '', 'Rua Santana da Boa Vista, 280 / 308 - Bairro Bavária', '8128 0655 - 3295 8045 (hotel)', 'fortalecimento muscular e correção postural.', '2010-08-01 17:30:10', '5', '68', '0', 'n');
+INSERT INTO `aluno` VALUES ('54', '', 'Demétrio Pereira dos Santos, 453', '3286 1720', 'correção postural e qualidade de vida.', '2010-08-01 17:31:18', '4', '69', '0', 'n');
+INSERT INTO `aluno` VALUES ('55', '', 'Rua das Azaléias, 88', '3286 9613 - (51)99812328', 'qualidade de vida', '2010-08-01 17:33:29', '5', '70', '0', 'n');
+INSERT INTO `aluno` VALUES ('56', '', 'Estrada da Serra Grande, 286 - Rua São Pedro, 849/sala02', '3286 0686 - 9166 4028', 'saúde e estética', '2010-08-01 17:35:57', '5', '71', '0', 'n');
+INSERT INTO `aluno` VALUES ('57', 'dentista', 'Avenida das Hortências, 433 / 07', '9118 3400', 'firmar musculatura, correção postural, qualidade de vida.', '2010-08-01 17:37:23', '5', '72', '0', 'n');
+INSERT INTO `aluno` VALUES ('58', '', 'Avenida Borges de Medeiros, 3046 - Giz de Cera', '3036 1084', 'qualidade de vida', '2010-08-01 17:38:39', '5', '73', '0', 'n');
+INSERT INTO `aluno` VALUES ('59', '', '', '', 'qualidade de vida', '2010-08-03 14:07:34', '5', '74', '0', 'n');
+INSERT INTO `aluno` VALUES ('60', '', 'Rua Nereu Ramos, 290', '3286 2452 - 81177428', '', '2010-08-03 14:09:48', '5', '75', '0', 'n');
+INSERT INTO `aluno` VALUES ('61', '', 'Rua Santos Dumont, 236 - Bairro Piratini', '30360093 - 99350603', 'aliviar dores - fortalecer', '2010-08-03 14:17:31', '5', '76', '0', 'n');
+INSERT INTO `aluno` VALUES ('62', '', 'Pedro Benetti, 32 - Centro', '32952138 - 81140200', 'aliviar dores na coluna', '2010-08-03 14:19:42', '5', '77', '0', 'n');
+INSERT INTO `aluno` VALUES ('63', '', 'Ernesto Volk, 46 / 402', '3286 1383 - 8136 3424', 'qualidade de vida', '2010-08-03 14:22:03', '5', '78', '0', 'n');
+INSERT INTO `aluno` VALUES ('64', 'empresária do vestuário', 'Gustavo Welp, 87 - Bairro Planalto', '32866349 - 99719707', '', '2010-08-03 14:24:22', '5', '79', '0', 'n');
+INSERT INTO `aluno` VALUES ('65', '', 'Rua DemÃ©trio pereira dos Santos, 305 - Bairro Planalto, Gramado', '32862445', 'qualidade de vida', '2010-11-27 23:15:57', '5', '80', '0', 'n');
+INSERT INTO `aluno` VALUES ('66', 'empresária hoteleira', 'Rua Nereu Ramos, 290 (Hotel Azaléia)', '32862452', 'correção postural - reforço muscular', '2010-08-03 14:27:57', '5', '81', '0', 'n');
+INSERT INTO `aluno` VALUES ('67', '', 'Rua F.G. Bier', '3286 3125 - 99735185', '', '2010-08-03 14:29:48', '5', '82', '0', 'n');
+INSERT INTO `aluno` VALUES ('68', 'decoradora', 'Rua Monsenhor Constabile, 182/302', '3286 2771 - 99477616', '', '2010-08-03 14:31:17', '5', '83', '0', 'n');
+INSERT INTO `aluno` VALUES ('69', '', 'Rua 1Âº de maio, 3113 - VÃ¡rzea Grande', '3286 8196 - 9917 6395', '', '2010-11-27 23:18:52', '5', '84', '0', 'n');
+INSERT INTO `aluno` VALUES ('70', '', 'Rua das Fontes, 197', '3286 1307', '', '2010-08-03 14:38:16', '5', '85', '0', 'n');
+INSERT INTO `aluno` VALUES ('71', '', 'Rua Piratini, 1000 / 406', '3286 5238 - 9968 8639', '', '2010-08-03 14:40:13', '5', '86', '0', 'n');
+INSERT INTO `aluno` VALUES ('72', 'educadora física', 'Rua das Gralhas, 115 - Canela', '3282 4317 - 3282 4494 - 81412421', 'formação em Pilates', '2010-08-03 14:42:46', '5', '87', '0', 'n');
+INSERT INTO `aluno` VALUES ('73', '', 'Rua das Maravilhas, 400 T3 302 - Knorr Ville', '3286 7634 - 8143 0493', 'aumentar flexibilidade, queimar gorduras, tônus muscular, estética', '2010-08-03 14:44:34', '5', '88', '0', 'n');
+INSERT INTO `aluno` VALUES ('74', 'financiaria', 'Rua Hipólito José da Costa, 220 - Bairro Lagos de Gramado', '3295 1100', 'qualidade de vida', '2010-08-03 14:47:35', '5', '89', '0', 'n');
+INSERT INTO `aluno` VALUES ('75', '', 'Rua Prefeito Nelson Dinebier, 235', '3286 9845 (comercial) - 3286 249', 'aliviar cervicalgia', '2010-08-03 14:49:18', '5', '90', '0', 'n');
+INSERT INTO `aluno` VALUES ('76', '', 'José Pedro Piva, 337 - Bosque Sinoserra - Canela', '3282 7597', 'alongar, pernas (sente fracas) fortalecer, melhorar desconforto da cervical.', '2010-08-03 14:51:11', '5', '91', '0', 'n');
+INSERT INTO `aluno` VALUES ('77', '', 'Rua Nereu Ramos, 125 - Bairro Planalto, Gramado', '3286 1819 - 9912 1137', 'correção postural, emagrecer', '2010-11-27 23:21:07', '5', '92', '0', 'n');
+INSERT INTO `aluno` VALUES ('78', '', 'RS 115, 37 / casa 36848 - Várzea Grande', '3288 7768 - 96059959', 'reabilitar ombro e cervical', '2010-08-03 14:54:29', '5', '93', '0', 'n');
+INSERT INTO `aluno` VALUES ('79', '', 'Ermelinda Barbacavi, 77/201', '3286 7912 - 9166 2036', 'estética', '2010-08-03 14:56:22', '5', '94', '0', 'n');
+INSERT INTO `aluno` VALUES ('80', 'empresÃ¡rio', 'lucas de oliveira, 865/401', '93228174 - 99810736', '', '2010-11-27 23:22:17', '1', '95', '55', 'n');
+INSERT INTO `aluno` VALUES ('81', 'comerciante', '', '32951100', 'qualidade de vida', '2010-09-02 15:31:59', '5', '96', '0', 'n');
+INSERT INTO `aluno` VALUES ('82', '', 'Av. Borges de Medeiros, 2916/203', '32869294 - 91546001', '', '2010-09-02 15:33:57', '5', '97', '0', 'n');
+INSERT INTO `aluno` VALUES ('83', '', 'Rua Madre Veronica, 230/201', '32863439', 'qualidade de vida', '2010-09-02 15:36:32', '5', '98', '0', 'n');
+INSERT INTO `aluno` VALUES ('84', 'terapeuta holï¿½stica', '', '32952332 - 81336477', 'mais disposição, qualidade de vida', '2010-11-27 23:23:03', '5', '99', '0', 'n');
+INSERT INTO `aluno` VALUES ('85', '', 'Rua Alípio Vargas Ribeiro, 36 - loteamento vale das Colinas', '91073045 - 32861022', 'fortalecer musculatura, definição corporal e melhorar flexibilidade.', '2010-09-02 15:40:06', '5', '100', '0', 'n');
+INSERT INTO `aluno` VALUES ('86', '', 'Av. das Hortências, 3617', '32864802 - 99783855', 'correção postural, melhorar dores (cervicalgia)', '2010-09-02 15:42:48', '5', '101', '0', 'n');
+INSERT INTO `aluno` VALUES ('87', 'médica psiquiatra', 'Rua Gustavo Welp, 201 - Bairro Tirol', '32866215 - 99782817', 'condicionamento físico e postural.', '2010-09-02 15:44:38', '5', '102', '0', 'n');
+INSERT INTO `aluno` VALUES ('88', '', 'Rua Dr. Kiefer, 501 - carazal', '38143817 - 99817652', '', '2010-09-02 15:46:23', '5', '103', '0', 'n');
+INSERT INTO `aluno` VALUES ('89', 'aposentada', 'Ermelinda Barbacovi, 165 - casa 02', '32861503 - (51)93211977', 'aumentar massa muscular, melhorar flexibilidade.', '2010-09-02 15:48:14', '5', '104', '0', 'n');
+INSERT INTO `aluno` VALUES ('90', 'professora de educação física', 'Rua marechal Rondon, 156', '32865248 - 99750036', '', '2010-09-02 15:51:02', '5', '105', '0', 'n');
+INSERT INTO `aluno` VALUES ('91', '', 'Osvaldo Aranha, 301 - Bairro Planalto', '32863666 - 91042687', '', '2010-09-02 15:52:47', '5', '106', '0', 'n');
+INSERT INTO `aluno` VALUES ('92', '', 'Rua Ipê Roxo, 73 - Bairro Ipê Amarelo', '32862139 - 99783608', 'cervicalgia, correção postural', '2010-09-02 15:56:22', '5', '107', '0', 'n');
+INSERT INTO `aluno` VALUES ('93', '', 'Rua Madre Veronica, 230/201', '32863439', 'qualidade de vida, estética', '2010-09-02 15:57:41', '5', '108', '0', 'n');
+INSERT INTO `aluno` VALUES ('94', '', 'Rua Horácio Cardoso, 346', '32862713 - (51)33379016 - 811338', '', '2010-09-02 15:59:18', '5', '109', '0', 'n');
+INSERT INTO `aluno` VALUES ('95', '', 'Borges de Medeiros, 1489 - loja', '32865655 - 99712374', 'eliminar dores', '2010-09-02 16:00:43', '5', '110', '0', 'n');
+INSERT INTO `aluno` VALUES ('96', '', 'Ermelinda Barbacovi, 77 / 102 - Bairro Bavária', '32866031', '', '2010-09-02 16:02:05', '5', '111', '0', 'n');
+INSERT INTO `aluno` VALUES ('97', '', '', '32864948 - 32862241 (loja) - 812', 'Postura', '2010-09-02 16:03:37', '5', '112', '0', 'n');
+INSERT INTO `aluno` VALUES ('98', 'funcionária pública', 'João Carniel, 892/201', '96035111', '', '2010-09-02 16:52:53', '5', '113', '0', 'n');
+INSERT INTO `aluno` VALUES ('99', 'dentista', 'Rua Francisco Lorenzoni, 80/205', '32866670 - 81196787', '', '2010-09-02 16:54:20', '5', '114', '0', 'n');
+INSERT INTO `aluno` VALUES ('100', 'advogado', 'Av. Coronel Marcos, 1334, casa 12 - Porto Alegre', '(51)32200900 - (51)81793796', '', '2010-09-02 16:56:18', '5', '115', '0', 'n');
+INSERT INTO `aluno` VALUES ('101', 'funcionÃ¡ria pÃºblica', '', '32782008', '', '2010-11-27 23:25:26', '3', '116', '0', 'n');
+INSERT INTO `aluno` VALUES ('102', 'empresária', '', '', '', '2010-09-02 16:59:15', '3', '117', '36', 'n');
+INSERT INTO `aluno` VALUES ('103', 'dentista', 'Av. das HortÃªnsias, 1961 / sala 102, Gramado', '32867139 - 32951078', 'alongamento, flexibilidade, condicionamento físico.', '2010-11-27 23:28:32', '3', '118', '0', 'n');
+INSERT INTO `aluno` VALUES ('104', 'funcionária pública', 'Rua Gonçalves Dias, 170 / 1507 - Bairro Menino Deus - POA', '(51)93530229', '', '2010-09-02 17:02:28', '3', '119', '0', 'n');
+INSERT INTO `aluno` VALUES ('105', 'arquiteto', 'Rua Hilário Ribeiro, 40 / 1102', '(51)33465204 - 32228022 - 999800', '', '2010-09-02 17:04:05', '3', '120', '0', 'n');
+INSERT INTO `aluno` VALUES ('106', 'gerente comercial', 'SÃ£o Paulo', '(11)25890880 - (11)76063078', '', '2010-11-27 23:30:10', '3', '121', '0', 'n');
+INSERT INTO `aluno` VALUES ('107', 'fisioterpeuta', 'Rua NaÃ§Ãµes Unidas, 533, Gramado', '32959360', '', '2010-11-27 23:31:05', '3', '122', '0', 'n');
+INSERT INTO `aluno` VALUES ('108', 'médica', 'Rua nações Unidas, 533', '91600746', '', '2010-09-02 17:07:49', '3', '123', '0', 'n');
+INSERT INTO `aluno` VALUES ('109', 'funcionÃ¡ria pÃºblica', 'Rua Guilherme Oscar Bauer, 314, Jardim dos Pinheiros II, Canela', '32822697 - 96034761', '', '2010-11-27 23:32:23', '3', '124', '0', 'n');
+INSERT INTO `aluno` VALUES ('110', 'dentista', 'Francisco Lorenzoni, 80/205', '32866670', '', '2010-09-02 17:11:03', '3', '125', '0', 'n');
+INSERT INTO `aluno` VALUES ('111', 'médica', 'Rua Maximiliano F. Hann, 37/302 - Jardim Bela Vista', '81121286 - 81366645', '', '2010-09-02 17:12:28', '3', '126', '0', 'n');
+INSERT INTO `aluno` VALUES ('112', 'policial civil', 'Dona Carlinda, 810 - Bairro Centro de Canela', '(51)98690064 - 32821212', 'alongamento, equilíbrio, força', '2010-09-02 17:14:04', '3', '127', '0', 'n');
+INSERT INTO `aluno` VALUES ('113', 'do lar', 'Ildo Meneghetti, 244/01', '32866799', 'melhorar postura, emagrecimento, alívio da dor.', '2010-09-02 17:15:32', '3', '128', '0', 'n');
+INSERT INTO `aluno` VALUES ('114', 'medica', 'cel bordini, 1471 / 301', '99657323 - 33286834', '', '2010-09-03 17:01:40', '1', '129', '55', 'n');
+INSERT INTO `aluno` VALUES ('115', 'empresaria', '', '91120163', '', '2010-09-03 17:03:28', '1', '130', '40', 'n');
+INSERT INTO `aluno` VALUES ('116', 'medica', 'cel bordini, 1471 / 301', '99657323 - 33286834', '', '2010-09-08 14:08:14', '1', '131', '55', 's');
+INSERT INTO `aluno` VALUES ('117', 'Profissão', 'PIFJ ipgjopreig eh oepgh perogh', '0934-953985', 'iroe giphre ugh e9t 59phdfgoh 09 yt9phgoh- y8t9ohe9-wht 94ty9q34ty oprah498t h39-ty 9ypraoyg4-9 yt94 yt-94yt-94y t4', '2010-09-04 00:10:01', '1', '132', '49', 's');
+INSERT INTO `aluno` VALUES ('118', 'fu9we hpui hprw', 'vijow rjgorpwe gijoepgpo', '842-5348-957-', 'o´w gjroi gorepgj ewopjg pohgpioerhgi uoth0g9w85uyoh95- hp9te hg958- h-984uypoti689 h6 h46', '2010-09-04 00:10:13', '5', '133', '49', 's');
+INSERT INTO `aluno` VALUES ('119', 'Professora', 'lucas de oliveira, 1035 /1001', '92748343 - 33287974', '', '2010-10-26 23:48:38', '1', '138', '45', 'n');
+INSERT INTO `aluno` VALUES ('120', 'Advogado', 'Amelia telles, 265 / 401', '99518191', '', '2010-10-28 15:41:18', '1', '139', '35', 'n');
+INSERT INTO `aluno` VALUES ('121', '', 'Flat bela vista', '81146124', '', '2010-10-28 15:42:59', '1', '140', '45', 'n');
+INSERT INTO `aluno` VALUES ('122', 'empresaria', '', '', '', '2010-10-28 15:47:50', '1', '141', '45', 'n');
+INSERT INTO `aluno` VALUES ('123', 'estudante', 'almirante abreu, 354 / 301', '93341944 - 33315836', '', '2010-12-15 21:26:10', '1', '142', '45', 'n');
+INSERT INTO `aluno` VALUES ('124', 'professora', 'Rua Euclides da Cunha, 344/303', '91982993 - 33203500 - R.4413', '', '2010-11-04 13:38:18', '1', '143', '45', 'n');
+INSERT INTO `aluno` VALUES ('125', 'empresário', 'rua iguaçu, 12', '81553377', '', '2010-11-04 13:41:00', '1', '144', '40', 'n');
+INSERT INTO `aluno` VALUES ('126', 'empresaria', 'rua iguaçu, 12', '81860128', '', '2010-11-04 13:42:03', '1', '145', '40', 'n');
+INSERT INTO `aluno` VALUES ('127', 'estudante', '', '91247097', '', '2010-11-04 13:45:53', '1', '146', '45', 'n');
+INSERT INTO `aluno` VALUES ('128', 'estudante', '', '91247097', '', '2010-11-04 13:46:37', '1', '147', '45', 'n');
+INSERT INTO `aluno` VALUES ('129', '', '', '81212306', '', '2014-07-04 22:07:35', '1', '148', '20', 'n');
+INSERT INTO `aluno` VALUES ('130', 'Professora', 'barao de uba, 235/202', '96612858', '', '2010-11-04 13:56:05', '1', '149', '45', 'n');
+INSERT INTO `aluno` VALUES ('131', 'enfermeira', 'cel bordini,', '91884129', '', '2010-11-04 14:02:01', '1', '150', '45', 'n');
+INSERT INTO `aluno` VALUES ('132', 'estudante', 'Rua: F.G. Bier, 1207', '32863404', 'Reforçar joelhos, lombar e abdominais. Postura.', '2010-11-09 14:04:32', '5', '152', '20', 'n');
+INSERT INTO `aluno` VALUES ('133', 'funcionaria publica', 'Eng. Adolfo Stemer, 1611/404', '91144388', '', '2010-11-18 00:36:32', '1', '153', '45', 'n');
+INSERT INTO `aluno` VALUES ('134', '', 'cel andre belo, 620', '81159250', '', '2010-11-18 00:38:04', '1', '154', '45', 'n');
+INSERT INTO `aluno` VALUES ('135', 'do lar', 'cel bordini, 1656/01', '84148181 - 33986046', '', '2010-11-18 00:39:41', '1', '155', '45', 'n');
+INSERT INTO `aluno` VALUES ('136', 'Advogado', 'lucas de oliveira, 1152 / 801', '81111111', '', '2010-12-15 21:24:30', '1', '156', '50', 'n');
+INSERT INTO `aluno` VALUES ('137', '', 'Eng Olavo Nunes, 365 / 502', '99182154 - 33317003', '', '2010-11-23 13:35:42', '1', '157', '45', 'n');
+INSERT INTO `aluno` VALUES ('138', 'Aponsentada', 'Dr. TimÃ³teo, 600 / 502', '99713039 - 33952529', 'Fortalecimento Global', '2010-12-02 15:52:14', '1', '158', '45', 'n');
+INSERT INTO `aluno` VALUES ('139', 'estudante', 'rua caju, 84 / 501', '97071019', '', '2010-12-22 22:49:59', '1', '159', '40', 'n');
+INSERT INTO `aluno` VALUES ('140', 'executiva', 'Eng Olavo Nunes, 342 / 301', '81371537', 'Fortalecimento Global', '2011-01-03 13:27:36', '1', '160', '50', 'n');
+INSERT INTO `aluno` VALUES ('141', 'empresÃ¡rio', 'blue tree', '81820332', '', '2011-02-02 00:06:04', '1', '161', '45', 'n');
+INSERT INTO `aluno` VALUES ('142', 'psicologa', 'lucas de oliveira, 1152 / 1001', '81441539', '', '2011-03-03 14:04:58', '1', '162', '45', 'n');
+INSERT INTO `aluno` VALUES ('143', '', 'rua Mariland, 1471 / 202', '96852678', '', '2011-03-14 14:19:14', '1', '163', '45', 'n');
+INSERT INTO `aluno` VALUES ('144', '', 'barao de uba, 235/202', '99153099', '', '2011-03-29 14:21:56', '1', '165', '45', 'n');
+INSERT INTO `aluno` VALUES ('145', 'aposentado', 'lucas de oliveira, 1152 / 801', '84338434', '', '2011-03-29 14:23:34', '1', '166', '55', 'n');
+INSERT INTO `aluno` VALUES ('146', '', 'Eng Olavo Nunes, 99 / 302', '98062034', '', '2011-03-29 14:25:16', '1', '167', '55', 'n');
+INSERT INTO `aluno` VALUES ('147', 'medico', 'Eng Olavo Nunes, 99 / 302', '98051649', '', '2011-03-29 14:27:06', '1', '168', '55', 'n');
+INSERT INTO `aluno` VALUES ('148', '', 'lucas de oliveira,', '33886887', '', '2011-03-29 14:29:02', '1', '169', '40', 'n');
+INSERT INTO `aluno` VALUES ('149', 'estudante', 'lucas de oliveira,', '33886887', '', '2011-03-29 14:29:57', '1', '170', '40', 'n');
+INSERT INTO `aluno` VALUES ('150', 'secretÃ¡ria', '', '', '', '2011-04-12 14:28:05', '5', '171', '0', 'n');
+INSERT INTO `aluno` VALUES ('151', 'medica', 'Silva Jardim', '99764176', '', '2011-05-04 23:57:48', '1', '173', '55', 's');
+INSERT INTO `aluno` VALUES ('152', 'medica', 'Silva Jardim', '99764176', '', '2011-05-04 23:57:56', '1', '174', '55', 's');
+INSERT INTO `aluno` VALUES ('153', 'medica', 'Silva Jardim, 757 / 203', '99768081 - 99764176', '', '2011-05-05 15:30:41', '1', '175', '55', 'n');
+INSERT INTO `aluno` VALUES ('154', 'empresaria', 'rua Renato Almeida, 20 / 201', '99768025 - 33337339', '', '2011-05-09 23:09:10', '1', '176', '45', 'n');
+INSERT INTO `aluno` VALUES ('155', '', 'Lucas de Oliveira', '84239696', '', '2011-05-05 15:32:31', '1', '177', '45', 'n');
+INSERT INTO `aluno` VALUES ('156', 'advigada', 'passo da patria', '30845034', '', '2011-08-22 23:44:09', '1', '178', '45', 'n');
+INSERT INTO `aluno` VALUES ('157', 'Psicanalista', 'Lucas de Oliveira, 1152/601', '99017901 - 33882371', '', '2011-05-24 13:14:34', '1', '179', '45', 'n');
+INSERT INTO `aluno` VALUES ('158', 'Professora', 'Eng. Olavo Nunes, 342 / 1201', '81898880', '', '2011-05-30 22:23:58', '1', '180', '45', 'n');
+INSERT INTO `aluno` VALUES ('159', 'FuncionÃ¡ria publica', 'Pedro Chaves Barcelos, 1114 / 301', '99682469', '', '2011-05-30 22:26:14', '1', '181', '45', 'n');
+INSERT INTO `aluno` VALUES ('160', '', 'Flat Bela Vista', '81883706', '', '2011-05-30 22:27:50', '1', '182', '45', 'n');
+INSERT INTO `aluno` VALUES ('161', 'ed. fisica', 'lucas de oliveira', '93485355', '', '2011-06-08 12:34:27', '1', '183', '45', 'n');
+INSERT INTO `aluno` VALUES ('162', 'FuncionÃ¡ria publica', '', '91265033', '', '2011-07-03 23:22:44', '1', '184', '45', 'n');
+INSERT INTO `aluno` VALUES ('163', 'do lar', 'encantado, 277 / 601', '91290109 - 33327540', '', '2011-07-12 23:20:46', '1', '185', '45', 'n');
+INSERT INTO `aluno` VALUES ('164', 'Advogado', 'BarÃ£o de Uba, 182 / 204', '99662475 - 33328435', '', '2011-07-25 22:33:20', '1', '186', '0', 'n');
+INSERT INTO `aluno` VALUES ('165', 'psicologa / empresaria', 'lucas de oliveira, 1152 / 501', '99814720', '', '2011-08-02 12:30:10', '1', '187', '45', 'n');
+INSERT INTO `aluno` VALUES ('166', '', 'lucas de oliveira, 676 / 801', '98026451 - 99841824', '', '2011-08-10 00:12:32', '1', '188', '45', 'n');
+INSERT INTO `aluno` VALUES ('167', 'estudante', 'rua Gustavo Welp, 201', '99783997', 'melhorar postura', '2011-09-05 23:32:37', '5', '189', '0', 'n');
+INSERT INTO `aluno` VALUES ('168', 'publicitÃ¡rio', 'lopo gonÃ§alves, 653', '81585189', '', '2011-11-03 21:26:44', '1', '190', '55', 'n');
+INSERT INTO `aluno` VALUES ('169', 'advigada', 'Germano Petersen Jr., 52 / 601', '99197070 - 30615058', '', '2011-11-03 21:31:29', '1', '191', '40', 'n');
+INSERT INTO `aluno` VALUES ('170', 'psicologa', 'Germano Petersen Jr., 52 / 601', '92821803', '', '2011-11-03 21:32:57', '1', '192', '40', 'n');
+INSERT INTO `aluno` VALUES ('171', 'escriva de policia', 'lucas de oliveira', '81311142 - 33315899', '', '2011-11-03 21:34:45', '1', '193', '45', 'n');
+INSERT INTO `aluno` VALUES ('172', '', 'Eng. Olavo Nunes, 99 / 403', '33306663', '', '2011-11-03 21:36:29', '1', '194', '45', 'n');
+INSERT INTO `aluno` VALUES ('173', '', 'lajeado, 350/302', '81215781', '', '2013-02-20 00:01:48', '1', '195', '45', 'n');
+INSERT INTO `aluno` VALUES ('174', '', '', '', '', '2011-12-01 14:30:22', '1', '196', '45', 's');
+INSERT INTO `aluno` VALUES ('175', '', 'Rua Quintino Bocaiuva, 1290 / 902', '99823964 - 33213443', '', '2011-12-02 11:51:23', '1', '197', '45', 'n');
+INSERT INTO `aluno` VALUES ('176', 'mÃ©dico', 'Rua Quintino Bocaiuva, 1290 / 902', '93118175', '', '2011-12-02 11:52:25', '1', '198', '45', 'n');
+INSERT INTO `aluno` VALUES ('177', 'Advogado', 'Mostardeiro, 919 / 503', '93719516', '', '2011-12-05 22:20:42', '1', '199', '50', 'n');
+INSERT INTO `aluno` VALUES ('178', 'corretora de seguros', 'PraÃ§a Julio de Castilhos, 92 / 62', '93322061', '', '2011-12-16 17:20:38', '1', '200', '55', 'n');
+INSERT INTO `aluno` VALUES ('179', 'empresaria', 'Rua Paula Soares, 123', '92452660', '', '2012-01-12 21:43:58', '1', '201', '45', 'n');
+INSERT INTO `aluno` VALUES ('180', 'FuncionÃ¡ria publica', 'Rua iguaÃ§u, 12', '81860127', '', '2012-01-26 12:02:25', '1', '202', '45', 'n');
+INSERT INTO `aluno` VALUES ('181', 'mÃ©dico', 'jardim cristofel, 175 / 405', '98077942', '', '2012-01-31 01:04:29', '1', '206', '45', 'n');
+INSERT INTO `aluno` VALUES ('182', 'do lar', 'Thomaz Edson, 450', '99171398 - 32232693', '', '2012-02-07 21:52:39', '1', '207', '45', 'n');
+INSERT INTO `aluno` VALUES ('183', 'arquiteta', '14 de julho, 38', '99828503', '', '2012-03-05 22:28:29', '1', '208', '45', 'n');
+INSERT INTO `aluno` VALUES ('184', 'informatica', 'lucas de oliveira, 909 / 403', '96505404', '', '2012-02-27 15:32:26', '1', '209', '55', 'n');
+INSERT INTO `aluno` VALUES ('185', 'arquiteta', 'travessa', '99882756', '', '2013-05-15 21:35:02', '1', '210', '60', 'n');
+INSERT INTO `aluno` VALUES ('186', 'do lar', 'Eng Olavo Nunes, 183', '81818396', '', '2012-03-16 20:18:03', '1', '211', '45', 'n');
+INSERT INTO `aluno` VALUES ('187', 'aposentada', 'lucas de oliveira, 909 / 1004', '99828144 - 30227545', '', '2012-04-12 21:46:00', '1', '212', '45', 'n');
+INSERT INTO `aluno` VALUES ('188', 'dentista', 'lucas de oliveira, 909 / 1102', '98060576 - 33303377', '', '2012-04-16 21:52:45', '1', '213', '55', 'n');
+INSERT INTO `aluno` VALUES ('189', 'aposentada', 'Av. Mariland, 156 / 401', '91173493 - 33373675', '', '2012-04-18 22:19:00', '1', '214', '55', 'n');
+INSERT INTO `aluno` VALUES ('190', 'empresaria', 'Eng Olavo Nunes, 365 / 501', '99529537', '', '2012-04-25 15:32:32', '1', '215', '40', 'n');
+INSERT INTO `aluno` VALUES ('191', 'bancario', 'Dr. timoteo', '91846636', '', '2012-04-26 21:46:22', '1', '217', '45', 'n');
+INSERT INTO `aluno` VALUES ('192', 'engenehiro', 'Rua Reis Louzada, 167 / 601', '99711498 - 33318507', '', '2012-05-08 15:40:18', '1', '218', '45', 'n');
+INSERT INTO `aluno` VALUES ('193', 'FuncionÃ¡rio publico', 'rua santo antonio, 893 / 502', '99741006', '', '2012-05-15 23:17:13', '1', '219', '55', 'n');
+INSERT INTO `aluno` VALUES ('194', 'delegado', 'lucas de oliveira, 909 / 502', '84167824', '', '2012-06-25 22:31:04', '1', '220', '45', 'n');
+INSERT INTO `aluno` VALUES ('195', 'aposentada', 'lucas de oliveira, 1035/401', '99887872 - 33313921', '', '2012-06-29 18:12:10', '1', '221', '45', 'n');
+INSERT INTO `aluno` VALUES ('196', 'mÃ©dico', 'Casemiro de Abreu, 908/201', '92052314', '', '2012-06-29 18:14:00', '1', '222', '45', 'n');
+INSERT INTO `aluno` VALUES ('197', '', 'Gen Oscar Miranda, 160/501', '96995646', '', '2012-07-06 17:59:58', '1', '223', '45', 'n');
+INSERT INTO `aluno` VALUES ('198', 'empresÃ¡rio', 'Lucas de Oliveira, 1133/201', '', '', '2012-07-06 18:03:25', '1', '224', '50', 'n');
+INSERT INTO `aluno` VALUES ('199', 'dentista', 'Casemiro de Abreu, 1146', '91709591 - 30612237 - 33322124', '', '2012-08-02 14:26:27', '1', '225', '45', 'n');
+INSERT INTO `aluno` VALUES ('200', 'infraero', 'Av. Mariland, 1513/306', '81725995', '', '2012-09-06 22:48:14', '1', '226', '45', 'n');
+INSERT INTO `aluno` VALUES ('201', 'advogado', 'Des. Alves Nogueira, 223/503', '99161763 - 33332475', '', '2012-09-16 16:37:28', '1', '227', '45', 'n');
+INSERT INTO `aluno` VALUES ('202', 'adm', 'conde de figueira, 458 / 13', '99332332', '', '2012-10-02 23:18:44', '1', '228', '45', 'n');
+INSERT INTO `aluno` VALUES ('203', 'consultor', 'flat bela vista', '044- 91372603', '', '2012-10-16 00:02:00', '1', '229', '45', 'n');
+INSERT INTO `aluno` VALUES ('204', 'medica', 'Rua Furriel, 238/201', '98806308', '', '2013-01-10 21:45:44', '1', '230', '45', 'n');
+INSERT INTO `aluno` VALUES ('205', 'doceira', 'Lucas de Oliveira, 619 /02', '84569540 - 33306341', '', '2013-02-28 14:11:21', '1', '231', '60', 'n');
+INSERT INTO `aluno` VALUES ('206', 'funcionario publico', 'Verissimo de Amaral, 580 / 211', '84626268 - 81836567', '', '2013-03-04 22:12:23', '1', '232', '45', 'n');
+INSERT INTO `aluno` VALUES ('207', 'bancaria', '', '81274168', '', '2013-03-06 21:37:12', '1', '233', '50', 'n');
+INSERT INTO `aluno` VALUES ('208', 'estudante', 'Carlos von kozeritz, 466 / 202', '99192020', '', '2013-03-13 12:23:24', '1', '234', '60', 'n');
+INSERT INTO `aluno` VALUES ('209', '', 'Alameda Emilio de Menezes, 140 / 1101', '81157813', '', '2013-03-13 23:18:34', '1', '235', '45', 'n');
+INSERT INTO `aluno` VALUES ('210', 'diretora de marketing', 'flat bela vista', '97753892', '', '2013-03-20 23:15:20', '1', '236', '50', 'n');
+INSERT INTO `aluno` VALUES ('211', 'aposentado', 'Rua Quintino bocaiuva, 1234 / 1401', '93148614 - 33326310', '', '2013-03-21 22:24:30', '1', '237', '60', 'n');
+INSERT INTO `aluno` VALUES ('212', 'estudante', 'Rua Des. Moreno Loureiro Lima, 195', '95187888', '', '2013-04-24 00:23:47', '1', '238', '60', 'n');
+INSERT INTO `aluno` VALUES ('213', 'estudante', 'Rua Des. Moreno Loureiro Lima, 195', '95187888', '', '2013-04-24 00:24:12', '1', '239', '60', 'n');
+INSERT INTO `aluno` VALUES ('214', 'business', 'eng alvaro nunes pereira, 19 / 301', '011 99815293', '', '2013-04-25 22:18:25', '1', '240', '55', 'n');
+INSERT INTO `aluno` VALUES ('215', 'empresario', 'Rua Lucas de Oliveira, 1035 / 801', '99990009', '', '2013-04-29 22:49:15', '1', '241', '55', 'n');
+INSERT INTO `aluno` VALUES ('216', 'coca-cola', 'Cel. Bordini, 1692 / 403', '81214922', '', '2013-05-15 21:37:37', '1', '242', '50', 'n');
+INSERT INTO `aluno` VALUES ('217', 'Advogado', 'Cel Bordini, 1612 / 501', '92688424', '', '2013-05-23 22:43:24', '1', '243', '50', 'n');
+INSERT INTO `aluno` VALUES ('218', 'publicitaria', 'correa dauth, 125 / 203', '91010420', '', '2013-06-02 11:25:42', '1', '244', '50', 'n');
+INSERT INTO `aluno` VALUES ('219', 'marketing', 'Carlos Trein Filho, 985 / 602', '81426980', '', '2013-06-03 22:43:42', '1', '245', '50', 'n');
+INSERT INTO `aluno` VALUES ('220', 'aposentada', 'Rua Felicissimo de Azevedo, 1399 / 801', '99748716 - 33374972', '', '2013-06-07 19:42:44', '1', '246', '50', 'n');
+INSERT INTO `aluno` VALUES ('221', 'medica', 'Thomaz Edson, 450', '81244473', '', '2013-07-15 22:34:43', '1', '247', '50', 'n');
+INSERT INTO `aluno` VALUES ('222', 'empresaria', 'Lucas de oliveira, 1081', '91134966', '', '2013-07-19 21:01:07', '1', '248', '50', 'n');
+INSERT INTO `aluno` VALUES ('223', 'dentista', 'Silva Jardim, 1078 /1001', '33283041 - 91288249', '', '2013-08-01 23:45:04', '1', '249', '50', 'n');
+INSERT INTO `aluno` VALUES ('224', 'empresario', 'bloco B 919', '92571428', '', '2013-08-17 09:34:01', '7', '254', '0', 'n');
+INSERT INTO `aluno` VALUES ('225', '-', 'quinta da boa vista', '33306368', '', '2013-08-17 09:35:18', '7', '255', '0', 'n');
+INSERT INTO `aluno` VALUES ('226', 'professor', 'anita 2120 / 710', '30130388', '', '2013-08-17 09:36:20', '7', '256', '0', 'n');
+INSERT INTO `aluno` VALUES ('227', 'farmaceutico', 'francisco petuco, 380 / 309', '91926146', '', '2013-08-17 09:37:22', '7', '257', '0', 'n');
+INSERT INTO `aluno` VALUES ('228', 'aposentada', 'anita 2120 / 411', '33418750', '', '2013-08-17 09:38:18', '7', '258', '0', 'n');
+INSERT INTO `aluno` VALUES ('229', 'do lar', 'anita 2120 / 315', '33419001', '', '2013-08-17 09:39:39', '7', '259', '0', 'n');
+INSERT INTO `aluno` VALUES ('230', 'aposentada', 'anita 2120 / 606', '33411205', '', '2013-08-17 09:40:28', '7', '260', '0', 'n');
+INSERT INTO `aluno` VALUES ('231', 'arquiteta', 'anita 2120 / 611', '82220481', '', '2013-08-17 09:41:24', '7', '261', '0', 'n');
+INSERT INTO `aluno` VALUES ('232', 'estudante', 'anita 2120 / 606', '99342728', '', '2013-08-17 09:43:04', '7', '262', '0', 'n');
+INSERT INTO `aluno` VALUES ('233', 'desiner', 'anita 2120', '91475409', '', '2013-08-17 09:44:32', '7', '263', '0', 'n');
+INSERT INTO `aluno` VALUES ('234', 'farmaceutica', 'anita 2120 / 605', '33410473 / 99756419', '', '2013-08-17 09:45:51', '7', '264', '0', 'n');
+INSERT INTO `aluno` VALUES ('235', 'estudante', 'anita 2120 / 1201', '81563031', '', '2013-08-17 09:46:48', '7', '265', '0', 'n');
+INSERT INTO `aluno` VALUES ('236', 'analista de sistemas', 'anita 2120 / 903', '85347060', '', '2013-08-17 09:47:45', '7', '266', '0', 'n');
+INSERT INTO `aluno` VALUES ('237', 'funcionario publico', 'anita 2120 / 1215', '99854468', '', '2013-08-17 09:48:47', '7', '267', '0', 'n');
+INSERT INTO `aluno` VALUES ('238', 'do lar', 'anita 2120 / 415', '33289458', '', '2013-08-17 09:50:08', '7', '268', '0', 'n');
+INSERT INTO `aluno` VALUES ('239', 'aposentada', 'francisco petuco, 380 / 309', '93220918 - 35089036', '', '2013-08-17 09:51:04', '7', '269', '0', 'n');
+INSERT INTO `aluno` VALUES ('240', 'Advogada / corretora de imoveis', 'anita 2120 / 1210', '96564202', '', '2013-08-17 09:52:13', '7', '270', '0', 'n');
+INSERT INTO `aluno` VALUES ('241', 'Advogada', 'anita 2120 / 605', '96075768', '', '2013-08-17 09:53:15', '7', '271', '0', 'n');
+INSERT INTO `aluno` VALUES ('242', 'jornalista', 'Bloco B apto 215', '84053276 / 30850374', '', '2013-08-23 20:40:34', '7', '272', '0', 'n');
+INSERT INTO `aluno` VALUES ('243', 'estudante', 'bloco 1 / 606', '96335586', '', '2013-08-23 20:43:39', '7', '273', '0', 'n');
+INSERT INTO `aluno` VALUES ('244', 'aposentada', 'bloco A / apto 504', '33415996 / (Ronaldo - filho 5885', '', '2013-08-23 20:45:50', '7', '274', '0', 'n');
+INSERT INTO `aluno` VALUES ('245', 'professora', 'Anita Garibaldi, 2120 / 901', '97181373', '', '2013-08-23 20:47:01', '7', '275', '0', 'n');
+INSERT INTO `aluno` VALUES ('246', 'advogado', 'Anita Garibaldi, 2120 / 611', '85468308', '', '2013-08-23 20:48:34', '7', '276', '0', 'n');
+INSERT INTO `aluno` VALUES ('247', 'aposentado', 'Anita Garibaldi, 2120 / 415', '33289458 / 97535458', '', '2013-08-23 20:49:35', '7', '277', '0', 'n');
+INSERT INTO `aluno` VALUES ('248', 'empresario', 'Anita Garibaldi, 2120 / 411', '91624679', '', '2013-08-23 20:51:14', '7', '278', '0', 'n');
+INSERT INTO `aluno` VALUES ('249', 'aposentado', 'Anita Garibaldi, 2120 / 314', '33289649 / 81499787', '', '2013-08-23 20:52:10', '7', '279', '0', 'n');
+INSERT INTO `aluno` VALUES ('250', 'comerciario', 'Anita Garibaldi, 2120 / 701', '99620497', '', '2013-08-23 20:53:57', '7', '280', '0', 'n');
+INSERT INTO `aluno` VALUES ('251', 'advogado', 'Anita Garibaldi, 2120 / 312', '99638582', '', '2013-08-23 20:54:59', '7', '281', '0', 'n');
+INSERT INTO `aluno` VALUES ('252', 'programador', 'Anita Garibaldi, 1877', '97175677', '', '2013-08-23 20:56:34', '7', '282', '0', 'n');
+INSERT INTO `aluno` VALUES ('253', 'psicologa', 'Anita Garibaldi, 2120 / 912', '81343813', '', '2013-08-23 20:58:12', '7', '283', '0', 'n');
+INSERT INTO `aluno` VALUES ('254', 'relaÃ§oes publicas', 'Anita Garibaldi, 2120 / 1116', '99161863', '', '2013-08-23 20:59:27', '7', '284', '0', 'n');
+INSERT INTO `aluno` VALUES ('255', 'professora', 'anita 2120 / 1013', '93140594', '', '2013-08-26 22:50:04', '7', '285', '0', 'n');
+INSERT INTO `aluno` VALUES ('256', 'Advogada', 'anita 2120 / 712', '93238039', '', '2013-08-26 22:51:41', '7', '286', '0', 'n');
+INSERT INTO `aluno` VALUES ('257', 'do lar', 'anita 2120 / 1201', '33284191 / 81780019', '', '2013-08-26 22:53:08', '7', '287', '0', 'n');
+INSERT INTO `aluno` VALUES ('258', 'estudante', 'anita 2120 / 1201', '33284191 / 81562772', '', '2013-08-26 22:54:49', '7', '288', '0', 'n');
+INSERT INTO `aluno` VALUES ('259', 'professora', 'anita 2120 / 419', '33287107', '', '2013-08-26 22:55:56', '7', '289', '0', 'n');
+INSERT INTO `aluno` VALUES ('260', 'estudantes', 'anita garibaldi, 2120', '81820383', '', '2013-08-29 16:31:06', '7', '290', '0', 'n');
+INSERT INTO `aluno` VALUES ('261', 'aposentada', 'anita garibaldi, 2120 /313', '33771698 / 99184288', '', '2013-08-29 16:32:58', '7', '291', '0', 'n');
+INSERT INTO `aluno` VALUES ('262', 'contadora', 'anita garibaldi, 2120 /1214', '33372761', '', '2013-08-29 16:35:30', '7', '292', '0', 'n');
+INSERT INTO `aluno` VALUES ('263', 'fisioterapeuta', 'Anita Garibaldi, 2120 / 1319', '33285018', '', '2013-08-30 20:47:02', '7', '293', '0', 'n');
+INSERT INTO `aluno` VALUES ('264', 'estudante', 'anita garibaldi, 2120 / 916', '83005215', '', '2013-09-04 18:12:23', '7', '294', '0', 'n');
+INSERT INTO `aluno` VALUES ('265', 'eng. agronomo', 'anita garibaldi, 2120 / 315', '99747728', '', '2013-09-04 18:13:48', '7', '295', '0', 'n');
+INSERT INTO `aluno` VALUES ('266', 'estudante', 'anita garibaldi, 2120 / 301', '91309455', '', '2013-09-04 18:15:41', '7', '296', '0', 'n');
+INSERT INTO `aluno` VALUES ('267', 'estudante', 'anita garibaldi, 2120 / 1216', '30291635', '', '2013-09-19 10:24:27', '7', '297', '0', 'n');
+INSERT INTO `aluno` VALUES ('268', 'tec. enfarmagem', 'anita garibaldi, 2120 / 1216', '30291635', '', '2013-09-19 10:26:10', '7', '298', '0', 'n');
+INSERT INTO `aluno` VALUES ('269', 'eng. quimico', 'anita garibaldi, 2120 / 1204', '98884248', '', '2013-09-19 10:28:13', '7', '299', '0', 'n');
+INSERT INTO `aluno` VALUES ('270', 'estudante', 'anita garibaldi, 2120 / 811', '33282779', '', '2013-09-19 10:34:13', '7', '300', '0', 'n');
+INSERT INTO `aluno` VALUES ('271', 'administradora', 'anita garibaldi, 2120 / 213', '91037353', '', '2013-09-19 10:36:19', '7', '301', '0', 'n');
+INSERT INTO `aluno` VALUES ('272', 'administradora', 'anita garibaldi, 2120', '91292378', '', '2013-09-19 10:43:01', '7', '302', '0', 'n');
+INSERT INTO `aluno` VALUES ('273', 'estudante', 'anita garibaldi, 2120 / 409', '97818468', '', '2013-09-19 10:44:55', '7', '303', '0', 'n');
+INSERT INTO `aluno` VALUES ('274', 'estudante', 'anita garibaldi, 2120 / 409', '82125248', '', '2013-09-19 11:06:44', '7', '304', '0', 'n');
+INSERT INTO `aluno` VALUES ('275', 'advogada', 'anita garibaldi, 2120 / 03', '92095131', '', '2013-09-19 11:09:42', '7', '305', '0', 'n');
+INSERT INTO `aluno` VALUES ('276', 'estudante', 'anita garibaldi, 2120 / 217', '37370907', '', '2013-09-19 11:11:00', '7', '306', '0', 'n');
+INSERT INTO `aluno` VALUES ('277', 'estudante', 'anita garibaldi, 2120 / 1009', '33280137', '', '2013-09-19 11:13:36', '7', '307', '0', 'n');
+INSERT INTO `aluno` VALUES ('278', 'do lar', 'anita garibaldi, 2120 / 1009', '33280137 - 82390811', '', '2013-09-19 11:14:58', '7', '308', '0', 'n');
+INSERT INTO `aluno` VALUES ('279', 'estudante', 'anita garibaldi, 2120 / 704', '30262950', '', '2013-09-19 11:16:09', '7', '309', '0', 'n');
+INSERT INTO `aluno` VALUES ('280', 'geente financeira', 'anita garibaldi, 2120 / 704', '33424555', '', '2013-09-19 11:17:35', '7', '310', '0', 'n');
+INSERT INTO `aluno` VALUES ('281', 'aposentada', 'Quintino Bocaiuva, 1457 / 501', '33326686 - 96720387', '', '2013-10-01 23:48:42', '1', '311', '50', 'n');
+INSERT INTO `aluno` VALUES ('282', 'do lar', 'anita 2120 / 615', '33306368', '', '2013-10-02 22:28:45', '7', '312', '75', 'n');
+INSERT INTO `aluno` VALUES ('283', '-', 'anita 2120 / 217', '91213907', '', '2013-10-02 22:30:26', '7', '313', '0', 'n');
+INSERT INTO `aluno` VALUES ('284', 'comerciante', 'anita 2120 / 919', '92364371 - 33286819', '', '2013-10-02 22:31:51', '7', '314', '0', 'n');
+INSERT INTO `aluno` VALUES ('285', 'professor', 'anita 2120', '98569066 - 33729066', '', '2013-10-02 22:32:54', '7', '315', '0', 'n');
+INSERT INTO `aluno` VALUES ('286', 'estudante', 'anita 2120', '33729066', '', '2013-10-02 22:33:45', '7', '316', '0', 'n');
+INSERT INTO `aluno` VALUES ('287', 'aposentado', 'anita 2120 / 411', '33418750', '', '2013-10-02 22:34:46', '7', '317', '0', 'n');
+INSERT INTO `aluno` VALUES ('288', 'administradora', 'anita 2120 / 920', '82969526', '', '2013-10-02 22:36:04', '7', '318', '0', 'n');
+INSERT INTO `aluno` VALUES ('289', 'Advogada', 'anita 2120 / 405', '93235296', '', '2013-10-02 22:37:05', '7', '319', '0', 'n');
+INSERT INTO `aluno` VALUES ('290', 'servidor publico', 'anita garibaldi, 2120 / 514', '99915387', '', '2013-10-05 09:42:44', '7', '320', '0', 'n');
+INSERT INTO `aluno` VALUES ('291', 'estudante', 'anita 2120 / 611', '39976111', '', '2013-10-10 00:42:18', '7', '321', '0', 'n');
+INSERT INTO `aluno` VALUES ('292', 'estudante', 'anita 2120 / 801', '82432855', '', '2013-10-10 00:43:21', '7', '322', '0', 'n');
+INSERT INTO `aluno` VALUES ('293', 'estudante', 'anita 2120 / 911', '97606766', '', '2013-10-10 00:44:40', '7', '323', '0', 'n');
+INSERT INTO `aluno` VALUES ('294', 'estudante', 'anita 2120 / 611', '33281624', '', '2013-10-10 00:45:27', '7', '324', '0', 'n');
+INSERT INTO `aluno` VALUES ('295', 'estudante', 'anita 2120 / 406', '81863586', '', '2013-10-10 00:46:29', '7', '325', '0', 'n');
+INSERT INTO `aluno` VALUES ('296', 'medico', 'anita 2120 / 1110', '99490593', '', '2013-10-10 00:47:22', '7', '326', '0', 'n');
+INSERT INTO `aluno` VALUES ('297', 'bancario', 'anita 2120 / 1315', '21113577', '', '2013-10-10 00:48:51', '7', '327', '0', 'n');
+INSERT INTO `aluno` VALUES ('298', 'farmaceutica', 'Prof. barreto viana, 99', '81949081', '', '2013-10-14 22:54:00', '1', '328', '0', 'n');
+INSERT INTO `aluno` VALUES ('299', 'empresario', 'Prof. barreto viana, 99', '99999975', '', '2013-10-14 22:56:04', '1', '329', '0', 'n');
+INSERT INTO `aluno` VALUES ('300', 'corretor de imoveis', 'anita garibaldi, 2120 / 305', '33289383', '', '2013-10-18 18:55:16', '7', '330', '0', 'n');
+INSERT INTO `aluno` VALUES ('301', 'nutricionista', 'anita garibaldi, 2120 / 305', '33289383', '', '2013-10-18 18:56:56', '7', '331', '0', 'n');
+INSERT INTO `aluno` VALUES ('302', '-', 'anita garibaldi, 2120 / 1315', '97932606', '', '2013-10-18 18:58:29', '7', '332', '0', 'n');
+INSERT INTO `aluno` VALUES ('303', 'aposentado', 'anita garibaldi, 2120 / 1102', '37378095', '', '2013-10-18 18:59:45', '7', '333', '0', 'n');
+INSERT INTO `aluno` VALUES ('304', 'estudante', 'anita garibaldi, 2120 / 1108', '91088455', '', '2013-10-18 19:04:28', '7', '334', '0', 'n');
+INSERT INTO `aluno` VALUES ('305', 'estudante', 'anita garibaldi, 2120 / 505', '95160185', '', '2013-10-18 19:07:13', '7', '335', '0', 'n');
+INSERT INTO `aluno` VALUES ('306', 'estudante', 'anita garibaldi, 2120 / 712', '82168577', '', '2013-10-18 19:08:37', '7', '336', '0', 'n');
+INSERT INTO `aluno` VALUES ('307', 'assistente social', 'anita garibaldi, 2120 / 708', '33917549 / 92628173', '', '2013-10-24 21:32:10', '7', '337', '0', 'n');
+INSERT INTO `aluno` VALUES ('308', 'manicure', 'partenon', '85483619', '', '2013-10-28 23:13:03', '7', '338', '0', 'n');
+INSERT INTO `aluno` VALUES ('309', 'administrador', 'anita 2120 / 1307', '81336700', '', '2013-10-28 23:15:09', '7', '339', '0', 'n');
+INSERT INTO `aluno` VALUES ('310', 'aposentada', 'arthur rocha, 800', '33319128', '', '2013-11-08 16:38:18', '1', '340', '50', 'n');
+INSERT INTO `aluno` VALUES ('311', 'estudante', 'Rua Assuncao 455 / 101', '99910443', '', '2013-11-08 20:28:37', '7', '341', '0', 'n');
+INSERT INTO `aluno` VALUES ('312', 'eng. civil', 'anita garibaldi, 2120', '98462020', '', '2013-11-08 20:30:01', '7', '342', '0', 'n');
+INSERT INTO `aluno` VALUES ('313', 'bancaria', 'anita garibaldi, 2120 / 911', '97366766', '', '2013-11-08 20:31:16', '7', '343', '0', 'n');
+INSERT INTO `aluno` VALUES ('314', 'bancaria', 'anita garibaldi, 2120 / 1311', '85070587', '', '2013-11-08 20:32:58', '7', '344', '0', 'n');
+INSERT INTO `aluno` VALUES ('315', 'designer', 'anita garibaldi, 2120 / 303', '99032803', '', '2013-11-28 21:09:56', '7', '345', '0', 'n');
+INSERT INTO `aluno` VALUES ('316', 'psicologa', 'anita garibaldi, 2120 / 414', '91549855 / 85499193', '', '2013-11-28 21:14:27', '7', '346', '0', 'n');
+INSERT INTO `aluno` VALUES ('317', 'geente chile pneus', 'anita garibaldi, 2246 / 208', '97075140 /33426299', '', '2013-11-28 21:16:38', '7', '347', '0', 'n');
+INSERT INTO `aluno` VALUES ('318', 'professora aposentada', 'anita garibaldi, 1717 / 301', '33288451', '', '2013-11-28 21:18:06', '7', '348', '0', 'n');
+INSERT INTO `aluno` VALUES ('319', 'estudante', 'Rua Silva So, 223 / 101', '84656472', '', '2013-12-10 00:13:18', '1', '349', '60', 'n');
+INSERT INTO `aluno` VALUES ('320', 'musico', 'Rua Liberdade, 516 / 204', '81212110', '', '2013-12-11 00:03:10', '1', '350', '50', 'n');
+INSERT INTO `aluno` VALUES ('321', 'arquiteta', 'anita garibaldi, 2120 / 403', '33772609 / 96049464', '', '2013-12-13 18:18:45', '7', '351', '0', 'n');
+INSERT INTO `aluno` VALUES ('322', 'psicologa', 'anita garibaldi, 2120 / 1311', '81119943', '', '2013-12-13 18:21:01', '7', '352', '0', 'n');
+INSERT INTO `aluno` VALUES ('323', 'advogada', 'anita garibaldi, 2120 / 903', '33778956', '', '2013-12-13 18:23:03', '7', '353', '0', 'n');
+INSERT INTO `aluno` VALUES ('324', 'analista de sistemas', 'anita garibaldi, 2120', '35736007', '', '2013-12-13 18:24:41', '7', '354', '0', 'n');
+INSERT INTO `aluno` VALUES ('325', 'advogado', 'anita garibaldi, 1717 / 703', '95657274', '', '2013-12-13 18:26:41', '7', '355', '0', 'n');
+INSERT INTO `aluno` VALUES ('326', 'estudante', 'anita garibaldi, 2120 / 611', '35576111', '', '2013-12-13 18:29:34', '7', '356', '0', 'n');
+INSERT INTO `aluno` VALUES ('327', 'administrador', 'anita garibaldi, 2120 / 1308', '95992120', '', '2014-01-08 21:44:54', '7', '357', '0', 'n');
+INSERT INTO `aluno` VALUES ('328', 'comerciante', 'anita garibaldi, 2120 / 919', '91930822', '', '2014-01-08 21:46:51', '7', '358', '0', 'n');
+INSERT INTO `aluno` VALUES ('329', 'advogada', 'anita garibaldi, 2120 / 1104', '81865510', '', '2014-01-08 21:48:22', '7', '359', '0', 'n');
+INSERT INTO `aluno` VALUES ('330', 'estudante', 'anita garibaldi, 2120 / 909', '95189224', '', '2014-01-13 21:37:04', '7', '360', '0', 'n');
+INSERT INTO `aluno` VALUES ('331', 'aposentado', 'anita garibaldi, 2120 / 910', '85019887', '', '2014-01-13 21:39:28', '7', '361', '0', 'n');
+INSERT INTO `aluno` VALUES ('332', 'Advogada', 'Av. Ferdinand Kisslinger, 80 / 1620 A', '99536508', '', '2014-01-15 21:45:30', '1', '362', '50', 'n');
+INSERT INTO `aluno` VALUES ('333', 'administradora', 'anita garibaldi, 2120 / 417', '84112299', '', '2014-01-21 15:11:49', '7', '363', '0', 'n');
+INSERT INTO `aluno` VALUES ('334', 'estudante', 'anita garibaldi, 2120 / 906', '96919383', '', '2014-01-21 15:13:08', '7', '364', '0', 'n');
+INSERT INTO `aluno` VALUES ('335', 'servidor publico', 'anita garibaldi, 2120 / 1308', '33284935 / 99799093', '', '2014-01-21 15:14:53', '7', '365', '0', 'n');
+INSERT INTO `aluno` VALUES ('336', 'medica', 'Tito Livio Zambecari, 1011 / 901', '81260797', '', '2014-02-05 00:06:55', '1', '366', '0', 'n');
+INSERT INTO `aluno` VALUES ('337', 'do lar', 'flat bela vista', '027-988051002', '', '2014-02-05 00:08:45', '1', '367', '0', 'n');
+INSERT INTO `aluno` VALUES ('338', 'developer', 'rua Maua, 380', '99441419', '', '2014-02-13 10:47:52', '7', '368', '0', 'n');
+INSERT INTO `aluno` VALUES ('339', '-', 'anita garibaldi, 2120', '92720397', '', '2014-02-13 10:49:12', '7', '369', '0', 'n');
+INSERT INTO `aluno` VALUES ('340', 'aposentado', 'anita garibaldi, 2120 / 605', '99756548', '', '2014-02-13 10:54:48', '7', '370', '0', 'n');
+INSERT INTO `aluno` VALUES ('341', 'programador', 'anita garibaldi, 1877 / 106', '30846607', '', '2014-02-13 10:56:53', '7', '371', '0', 'n');
+INSERT INTO `aluno` VALUES ('342', 'consultor comercial', 'rua Dr. pereira neto, 2200 / 414', '32488687 / 81737904', '', '2014-02-13 10:58:49', '7', '372', '0', 'n');
+INSERT INTO `aluno` VALUES ('343', 'nutricionista', 'anita garibaldi, 2120 / 508', '96672273 / 33451192', '', '2014-02-13 11:00:26', '7', '373', '0', 'n');
+INSERT INTO `aluno` VALUES ('344', 'artista visual', 'anita garibaldi, 2120 / 806', '98584302 / 33413929', '', '2014-02-17 21:31:51', '7', '374', '0', 'n');
+INSERT INTO `aluno` VALUES ('345', 'arquiteto', 'Lucas de oliveira, 1487 / 402', '98003311 / 30265213', '', '2014-02-19 14:20:47', '1', '375', '0', 'n');
+INSERT INTO `aluno` VALUES ('346', 'administrador', 'anita garibaldi, 2120', '-', '', '2014-02-26 21:13:46', '7', '376', '0', 'n');
+INSERT INTO `aluno` VALUES ('347', 'estudante', 'anita garibaldi, 2120 / 701', '82894849', '', '2014-02-26 21:16:04', '7', '377', '0', 'n');
+INSERT INTO `aluno` VALUES ('348', 'empresaria', 'Rua Cabral, 983 / 1102', '99634162', '', '2014-02-27 21:34:22', '1', '378', '0', 'n');
+INSERT INTO `aluno` VALUES ('349', 'estudante', 'anita garibaldi, 2120 / 409', '85947405', '', '2014-03-06 21:02:40', '7', '379', '0', 'n');
+INSERT INTO `aluno` VALUES ('350', 'empresario', 'anita garibaldi, 2120 / 219', '99471193', '', '2014-03-06 21:06:20', '7', '380', '0', 'n');
+INSERT INTO `aluno` VALUES ('351', 'industrial', 'anita garibaldi, 2120 / 901', '84025909', '', '2014-03-12 21:31:20', '7', '382', '0', 'n');
+INSERT INTO `aluno` VALUES ('352', 'estudante', 'anita garibaldi, 2120 / 1201', '33284191', '', '2014-03-12 21:33:09', '7', '383', '0', 'n');
+INSERT INTO `aluno` VALUES ('353', 'professora', 'anita garibaldi, 2120 / 1318', '33289803', '', '2014-03-12 21:35:29', '7', '384', '0', 'n');
+INSERT INTO `aluno` VALUES ('354', 'administrador de empresas', 'anita garibaldi, 2120 / 1318', '33289803', '', '2014-03-12 21:37:19', '7', '385', '0', 'n');
+INSERT INTO `aluno` VALUES ('355', 'relacoes publicas', 'anita garibaldi, 2120 / 909', '81204780', '', '2014-03-12 21:39:08', '7', '386', '0', 'n');
+INSERT INTO `aluno` VALUES ('356', 'estudante', 'anita garibaldi, 2120 / 919', '33286819 / 93258944', '', '2014-03-12 21:40:42', '7', '387', '0', 'n');
+INSERT INTO `aluno` VALUES ('357', 'gestao de saude', 'anita garibaldi, 2120 / 910', '85019877', '', '2014-03-12 21:42:18', '7', '388', '0', 'n');
+INSERT INTO `aluno` VALUES ('358', 'do lar', 'cabral,', '99794058 / 33338075', '', '2014-03-13 16:00:09', '1', '389', '0', 'n');
+INSERT INTO `aluno` VALUES ('359', 'advogado', 'Eng. Olavo Nunes, 446 / 401', '81388052 / 30199913', '', '2014-03-17 08:00:05', '1', '390', '0', 'n');
+INSERT INTO `aluno` VALUES ('360', '-', 'casemiro de abreu, 1655 / 201', '99776861', '', '2014-03-17 08:05:04', '1', '391', '0', 'n');
+INSERT INTO `aluno` VALUES ('361', 'contadora', 'casemiro de abreu, 1668 / 902', '95084778', '', '2014-03-17 20:16:35', '1', '392', '0', 'n');
+INSERT INTO `aluno` VALUES ('362', '-', 'Lucas de Oliveira, 1350 / 604', '97023599 / 39077134', '', '2014-03-19 18:09:20', '1', '393', '0', 'n');
+INSERT INTO `aluno` VALUES ('363', 'representate comercial', 'Rua Olavo nunes, 183', '81818392', '', '2014-03-19 18:13:21', '1', '394', '0', 'n');
+INSERT INTO `aluno` VALUES ('364', 'estudante', 'anita garibaldi, 2120 / 819', '99421400', '', '2014-03-19 21:30:10', '7', '395', '0', 'n');
+INSERT INTO `aluno` VALUES ('365', 'funcionaria Publica', 'anita garibaldi, 2120 / 1311', '82216160', '', '2014-03-19 21:31:20', '7', '396', '0', 'n');
+INSERT INTO `aluno` VALUES ('366', 'estudante', 'anita garibaldi, 2120 / 503', '96393990', '', '2014-04-02 11:24:40', '7', '397', '0', 'n');
+INSERT INTO `aluno` VALUES ('367', 'administrador', 'anita garibaldi, 2120 / 402', '96469090', '', '2014-04-02 11:26:00', '7', '398', '0', 'n');
+INSERT INTO `aluno` VALUES ('368', 'farmaceutica', 'anita garibaldi, 2120 / 1003', '98442024', '', '2014-04-02 11:27:23', '7', '399', '0', 'n');
+INSERT INTO `aluno` VALUES ('369', '-', 'Lucas de oliveira, 1133 / 1101', '99822935 - 33328148', '', '2014-04-05 15:33:42', '1', '400', '60', 'n');
+INSERT INTO `aluno` VALUES ('370', '-', 'Lucas de oliveira, 576 / 502', '99918140', '', '2014-04-07 23:12:46', '1', '401', '0', 'n');
+INSERT INTO `aluno` VALUES ('371', '-', 'Rua Dona Leonor,', '', '', '2014-04-09 12:51:52', '1', '402', '0', 'n');
+INSERT INTO `aluno` VALUES ('372', '-', 'Rua Dona Leonor, 194', '99684412', '', '2014-04-09 12:53:50', '1', '403', '0', 'n');
+INSERT INTO `aluno` VALUES ('373', 'do lar', 'Rua Eng. Olavo Nunes, 183', '81818399 - 33325375', '', '2014-04-24 23:02:24', '1', '404', '0', 'n');
+INSERT INTO `aluno` VALUES ('374', 'funcionaria Publica', 'Rua Cabral, 1021 / 501', '81955119', '', '2014-04-28 17:06:32', '1', '405', '0', 'n');
+INSERT INTO `aluno` VALUES ('375', 'psicologa', 'Amelia Telles, 265/401', '96273785', '', '2014-05-02 08:55:53', '1', '406', '0', 'n');
+INSERT INTO `aluno` VALUES ('376', 'FuncionÃ¡ria PÃºblica', 'Av. Alegrete, 325/303', '99193077', 'melhora do tÃ´nus muscular', '2014-05-04 14:42:28', '8', '408', '45', 'n');
+INSERT INTO `aluno` VALUES ('377', 'aposentada', 'Rua MÃ¡rio LeitÃ£o, 60/204', '30196447/ 99730353', 'Fortalecimento global', '2014-05-04 17:48:30', '8', '409', '45', 'n');
+INSERT INTO `aluno` VALUES ('378', 'aposentado', 'Av. Alegrete, 455/201', '83406107', 'Fortalecimento global', '2014-07-06 21:06:32', '8', '410', '60', 'n');
+INSERT INTO `aluno` VALUES ('379', 'tÃ©cnico de informÃ¡tica', 'nÃ£o tem', '84489716', 'Fortalecimento global', '2014-05-04 17:52:36', '8', '411', '40', 'n');
+INSERT INTO `aluno` VALUES ('380', 'assistente tÃ©cnico - SEBRAE', 'Av. IjuÃ­, 133/26', '82151337', 'melhorar a postura e trabalhar a respiraÃ§Ã£o', '2014-05-04 17:54:44', '8', '412', '45', 'n');
+INSERT INTO `aluno` VALUES ('381', 'professora', 'anita garibaldi, 2120 / 1118', '33287377', '', '2014-05-05 16:12:26', '7', '413', '0', 'n');
+INSERT INTO `aluno` VALUES ('382', 'desenhista', 'anita garibaldi, 2120 / 908', '84001544', '', '2014-05-05 16:14:36', '7', '414', '0', 'n');
+INSERT INTO `aluno` VALUES ('383', 'servidora publica', 'anita garibaldi, 2120 / 1317', '91777779 - 35169186', '', '2014-05-05 16:16:54', '7', '415', '0', 'n');
+INSERT INTO `aluno` VALUES ('384', 'do lar', 'Cel Bordini, 1471 / 902', '99418150', '', '2014-05-19 23:27:57', '1', '416', '50', 'n');
+INSERT INTO `aluno` VALUES ('385', 'juiz', 'Ciro GaviÃ£o, 66/81', '98641160', '', '2014-05-20 18:19:43', '8', '417', '45', 'n');
+INSERT INTO `aluno` VALUES ('386', 'engenheira', 'Av. CajÃº, 84/501', '37374419/ 99717227', '', '2014-05-20 18:35:16', '8', '418', '60', 'n');
+INSERT INTO `aluno` VALUES ('387', '-', 'Gen Oscar Miranda, 97 / 301', '91129320 - 30194242', '', '2014-05-21 15:41:56', '1', '419', '50', 'n');
+INSERT INTO `aluno` VALUES ('388', 'bancaria', 'anita garibaldi, 2120 / 219', '99989454', '', '2014-05-28 16:14:47', '7', '420', '0', 'n');
+INSERT INTO `aluno` VALUES ('389', 'do lar', 'Dom guilherme, 2246', '33289152 - 98943238', '', '2014-05-30 19:45:06', '7', '421', '0', 'n');
+INSERT INTO `aluno` VALUES ('390', 'farmacÃªutica', 'Rua JoÃ£o Abott,516/501', '91133185', '', '2014-06-03 20:45:09', '8', '422', '40', 'n');
+INSERT INTO `aluno` VALUES ('391', 'engenheiro', 'Rua JoÃ£o Abott, 516/501', '91153851', '', '2014-06-03 20:49:47', '8', '423', '40', 'n');
+INSERT INTO `aluno` VALUES ('392', 'advogado', 'Av. Lavras, 236/202', '99586334', '', '2014-06-03 20:53:50', '8', '424', '40', 'n');
+INSERT INTO `aluno` VALUES ('393', 'fonoaudiologia', 'Quintino Bocaiuva, 1651 / 402', '99628899', '', '2014-06-11 12:22:59', '1', '425', '50', 'n');
+INSERT INTO `aluno` VALUES ('394', 'Advogado', 'Cel Bordini, 1614 / 501', '92688424', '', '2014-12-22 21:50:53', '8', '426', '60', 'n');
+INSERT INTO `aluno` VALUES ('395', 'administradora', 'Lucas de oliveira,', '84013863', '', '2014-07-04 22:09:13', '8', '427', '20', 'n');
+INSERT INTO `aluno` VALUES ('396', '', 'sao manoel...', '81212306', '', '2014-07-04 22:15:25', '8', '428', '20', 'n');
+INSERT INTO `aluno` VALUES ('397', 'publicitÃ¡ria', 'Rua Santa CecÃ­lia, 2129/801', '99128443', '', '2014-07-06 21:06:03', '8', '429', '45', 'n');
+INSERT INTO `aluno` VALUES ('398', 'representante comercial', 'lucas de oliveira, 712 / 202', '98808180', '', '2014-07-10 23:53:40', '1', '430', '60', 'n');
+INSERT INTO `aluno` VALUES ('399', 'administrador', 'Rua Sao Simao,', '91298035', '', '2014-07-12 15:36:16', '8', '431', '35', 'n');
+INSERT INTO `aluno` VALUES ('400', 'dentista', 'anita garibaldi, 2120/ 411', '99457286', '', '2014-07-21 21:28:46', '7', '432', '0', 'n');
+INSERT INTO `aluno` VALUES ('401', 'administrador', 'anita garibaldi, 2120/ 411', '96531364', '', '2014-07-21 21:30:11', '7', '433', '0', 'n');
+INSERT INTO `aluno` VALUES ('402', 'advogada', 'Rua Pedro Ivo, 266', '3332-9698/ 9998-6044', '', '2014-07-23 10:25:50', '8', '434', '45', 'n');
+INSERT INTO `aluno` VALUES ('403', 'engenheiro', 'anita garibaldi, 2120 / 1311', '33984774', '', '2014-07-25 17:54:21', '7', '435', '0', 'n');
+INSERT INTO `aluno` VALUES ('404', 'estudante', 'anita garibaldi, 2120 / 805', '93863261', '', '2014-07-25 17:56:19', '7', '436', '0', 'n');
+INSERT INTO `aluno` VALUES ('405', 'jornalista', 'anita garibaldi, 2120 /306', '83354700', '', '2014-07-25 17:57:56', '7', '437', '0', 'n');
+INSERT INTO `aluno` VALUES ('406', 'nutricionista', 'Av. Taquara, 218/23', '8143-5562', '', '2014-07-26 18:05:44', '8', '438', '45', 'n');
+INSERT INTO `aluno` VALUES ('407', 'FuncionÃ¡ria PÃºblica aposentada', 'Rua BarÃ£o do Ãšba, 591/701', '33307553', '', '2014-08-03 20:44:52', '8', '439', '55', 'n');
+INSERT INTO `aluno` VALUES ('408', 'professora', 'anita garibaldi, 2120 / 212', '33288156 / 91973760', '', '2014-08-01 16:26:21', '7', '440', '0', 'n');
+INSERT INTO `aluno` VALUES ('409', 'estudante', 'anita garibaldi, 2120 / 910', '95080369', '', '2014-08-01 16:29:40', '7', '441', '0', 'n');
+INSERT INTO `aluno` VALUES ('410', 'estudante', 'Rua Adolfo Stern, 161/802', '8137-6045', '', '2014-08-03 20:49:45', '8', '442', '60', 'n');
+INSERT INTO `aluno` VALUES ('411', 'professora', 'anita garibaldi, 2120 / 701', '81018731', '', '2014-08-07 16:18:20', '7', '443', '0', 'n');
+INSERT INTO `aluno` VALUES ('412', 'auxiliar administrativa', 'anita 2120 / 801', '84912537 / 91726827', '', '2014-08-09 13:15:37', '7', '444', '0', 'n');
+INSERT INTO `aluno` VALUES ('413', 'arquiteta', 'anita garibaldi, 2120 / 913', '95049827', '', '2014-08-13 12:44:07', '7', '445', '0', 'n');
+INSERT INTO `aluno` VALUES ('414', '-', 'rua Luiz siegman 170 / 1004', '98933727', '', '2014-08-13 12:46:11', '7', '446', '0', 'n');
+INSERT INTO `aluno` VALUES ('415', 'advogado', 'anita garibaldi, 2120 / 408', '99584536', '', '2014-08-15 18:38:17', '7', '447', '0', 'n');
+INSERT INTO `aluno` VALUES ('416', 'arquiteta', 'Beco Souza Costa, 400/703', '93326811', '', '2014-08-23 19:53:52', '8', '448', '40', 'n');
+INSERT INTO `aluno` VALUES ('417', 'advogado', 'Av. Nilo PeÃ§anha, 9690/601', '81184077', '\n', '2014-08-23 19:55:29', '8', '449', '45', 'n');
+INSERT INTO `aluno` VALUES ('418', 'Advogado', 'Felicissimo de Azevedo, 1379/301', '97040055', '', '2014-08-28 13:42:06', '1', '450', '50', 'n');
+INSERT INTO `aluno` VALUES ('419', 'publicitaria', 'anita garibaldi, 2120 / 803', '92863506', '', '2014-09-02 12:24:08', '7', '451', '0', 'n');
+INSERT INTO `aluno` VALUES ('420', 'servidor publico', 'anita garibaldi, 2120 /', '93134522', '', '2014-09-02 12:26:04', '7', '452', '0', 'n');
+INSERT INTO `aluno` VALUES ('421', 'professora', 'Duque de Caxias, 1191/403', '9997-3082', '', '2014-09-09 22:05:43', '8', '453', '45', 'n');
+INSERT INTO `aluno` VALUES ('422', 'analista judiciÃ¡rio', 'Rua da RepÃºblica, 541/325', '9603-1303', '', '2014-09-15 20:08:34', '8', '454', '45', 'n');
+INSERT INTO `aluno` VALUES ('423', 'programador', 'anita garibaldi, 2120 / 306', '83354800', '', '2014-09-15 21:13:37', '7', '455', '0', 'n');
+INSERT INTO `aluno` VALUES ('424', 'professor', 'Av. Ipiranga 6681', '81261712', '', '2014-09-25 20:35:42', '7', '456', '0', 'n');
+INSERT INTO `aluno` VALUES ('425', 'corretor de imoveis', 'anita garibaldi, 2381 / 601', '96959092', '', '2014-09-25 20:37:46', '7', '457', '0', 'n');
+INSERT INTO `aluno` VALUES ('426', 'dentista', 'anita garibaldi, 2120 / 1303', '91217499 - 33346911 - 33330567', '', '2014-09-25 20:39:57', '7', '458', '0', 'n');
+INSERT INTO `aluno` VALUES ('427', 'estudante', 'Rua Portugal, 1297 / 106', '81437133', '', '2014-09-30 16:20:14', '7', '459', '0', 'n');
+INSERT INTO `aluno` VALUES ('428', 'aposentada', 'avenida NilÃ³polis, 250/514', '3273-7725/ 9981-4480', '', '2014-10-01 21:07:33', '8', '460', '50', 'n');
+INSERT INTO `aluno` VALUES ('429', 'bibliotecaria', 'anita garibaldi, 2120 / 1002', '82647070', '', '2014-10-06 20:39:44', '7', '461', '0', 'n');
+INSERT INTO `aluno` VALUES ('430', 'servidora publica', 'anita garibaldi, 2120 / 715', '30247876', '', '2014-10-08 14:26:49', '7', '462', '0', 'n');
+INSERT INTO `aluno` VALUES ('431', 'Tec. eletronico', 'anita garibaldi, 2120 / 511', '99681574', '', '2014-10-14 15:29:08', '7', '463', '0', 'n');
+INSERT INTO `aluno` VALUES ('432', 'estudante', 'avenida NilÃ³polis, 280/903', '8114-8777', '\n', '2014-10-21 20:32:12', '8', '464', '45', 'n');
+INSERT INTO `aluno` VALUES ('433', 'fisioterapeuta', 'Rua JoÃ£o Ernesto Schimidt, 251/303', '8123-2582', '\n', '2014-10-21 20:33:43', '8', '465', '50', 'n');
+INSERT INTO `aluno` VALUES ('434', 'artista plÃ¡stica', 'Coronel Bordini, 1614/501', '9268-4525', '\n', '2015-06-28 21:37:01', '8', '466', '60', 'n');
+INSERT INTO `aluno` VALUES ('435', 'empresaria', 'anita garibaldi, 2120 / 1301', '81863223', '', '2014-10-24 11:33:11', '7', '467', '0', 'n');
+INSERT INTO `aluno` VALUES ('436', 'geente de contas dell', 'anita garibaldi, 2120 / 914', '93222603', '', '2014-10-24 11:35:12', '7', '468', '0', 'n');
+INSERT INTO `aluno` VALUES ('437', 'coordenador de marketing', 'anita garibaldi, 2120 / 914', '9735', '', '2014-10-24 11:37:36', '7', '469', '0', 'n');
+INSERT INTO `aluno` VALUES ('438', 'coordenador de marketing', 'anita garibaldi, 2120 / 914', '97355783', '', '2014-10-24 11:38:03', '7', '470', '0', 'n');
+INSERT INTO `aluno` VALUES ('439', 'engenheiro', 'anita garibaldi, 2120 / 510', '99810461', '', '2014-11-04 21:03:40', '7', '471', '0', 'n');
+INSERT INTO `aluno` VALUES ('440', 'empresario', 'Rua Gaston Englert, 574 / 301', '81884310', '', '2014-11-13 22:59:25', '1', '472', '0', 'n');
+INSERT INTO `aluno` VALUES ('441', 'professora', '-', '92486868', '', '2014-11-14 18:28:26', '7', '473', '0', 'n');
+INSERT INTO `aluno` VALUES ('442', 'biologo', 'anita garibaldi, 2120 / 1003', '91670562', '', '2014-11-14 18:32:03', '7', '474', '0', 'n');
+INSERT INTO `aluno` VALUES ('443', 'representate comercial', 'anita garibaldi, 2120 / 1319', '33285018', '', '2014-11-14 18:34:15', '7', '475', '0', 'n');
+INSERT INTO `aluno` VALUES ('444', '-', 'Antonio Parreiras, 140 / 1102', '81720022', '', '2014-11-18 16:11:39', '1', '476', '0', 'n');
+INSERT INTO `aluno` VALUES ('445', 'advogada', 'Rua Alegrete, 423/701', '9650-0505', 'reforÃ§o muscular', '2014-11-18 21:15:37', '8', '477', '45', 'n');
+INSERT INTO `aluno` VALUES ('446', 'corretora', 'Rua Alegrete, 423/701', '9917-7362', 'reforÃ§o muscular', '2014-11-18 21:17:10', '8', '478', '45', 'n');
+INSERT INTO `aluno` VALUES ('447', 'empresÃ¡ria', 'Rua Lageado, 366/802', '9941-0304', 'melhorar postura', '2014-11-18 21:18:55', '8', '479', '45', 'n');
+INSERT INTO `aluno` VALUES ('448', 'mÃ©dica', 'Rua Cel bordini, 1614/501', '92688417', '', '2014-11-20 22:32:10', '8', '480', '50', 'n');
+INSERT INTO `aluno` VALUES ('449', 'juÃ­za', 'Lucas de oliveira, 1025 / 601', '95971483', '', '2014-12-02 13:26:14', '1', '481', '0', 'n');
+INSERT INTO `aluno` VALUES ('450', 'FuncionÃ¡ria PÃºblica', 'Av. Alegrete, 485/302', '99421459', '', '2014-12-08 09:04:07', '8', '482', '60', 'n');
+INSERT INTO `aluno` VALUES ('451', 'aposentada', 'anita garibaldi, 2120 / 408', '99388188', '', '2014-12-15 21:22:32', '7', '483', '0', 'n');
+INSERT INTO `aluno` VALUES ('452', 'psicanalista', 'anita garibaldi, 2120 / 917', '97076883', '', '2014-12-15 21:24:00', '7', '484', '0', 'n');
+INSERT INTO `aluno` VALUES ('453', 'engenheiro', 'Alegrete, 423/501', '', 'forÃ§a de abdomen\n', '2014-12-18 07:02:13', '8', '486', '45', 'n');
+INSERT INTO `aluno` VALUES ('454', '-', '-', '-', '-', '2015-01-05 16:28:16', '8', '487', '50', 'n');
+INSERT INTO `aluno` VALUES ('455', 'farmaceutica', 'Rua Dona Laura, 813 / 202', '99461679', '', '2015-01-06 23:21:51', '1', '488', '50', 'n');
+INSERT INTO `aluno` VALUES ('456', 'professora', 'des. augusto loureiro lima, 129/201', '33319007 / 99869086', '', '2015-01-07 21:26:05', '7', '489', '0', 'n');
+INSERT INTO `aluno` VALUES ('457', 'musico', 'anita garibaldi, 2120 / 1208', '95483294', '', '2015-01-19 21:54:04', '7', '490', '0', 'n');
+INSERT INTO `aluno` VALUES ('458', 'aposentada', 'anita garibaldi, 2120 / 308', '30622499 - 99660945', '', '2015-01-19 21:56:25', '7', '491', '0', 'n');
+INSERT INTO `aluno` VALUES ('459', 'dentista', 'anita garibaldi, 2120 / 312', '98280390', '', '2015-01-28 20:57:00', '7', '492', '0', 'n');
+INSERT INTO `aluno` VALUES ('460', 'hotelaria', 'anita garibaldi, 2120 / 312', '95772803', '', '2015-01-28 20:58:56', '7', '493', '0', 'n');
+INSERT INTO `aluno` VALUES ('461', 'policial civil', 'anita garibaldi, 2120 / 218', '98304710', '', '2015-01-28 21:06:51', '7', '494', '0', 'n');
+INSERT INTO `aluno` VALUES ('462', 'aposentado', 'anita garibaldi, 2120 / 304', '34074123', '', '2015-02-04 12:38:42', '7', '495', '0', 'n');
+INSERT INTO `aluno` VALUES ('463', 'do lar', 'anita garibaldi, 2120 / 304', '34074123', '', '2015-02-04 12:40:03', '7', '496', '0', 'n');
+INSERT INTO `aluno` VALUES ('464', 'biomedica', 'anita garibaldi, 2120 / 210', '89165558', '', '2015-02-04 12:41:37', '7', '497', '0', 'n');
+INSERT INTO `aluno` VALUES ('465', 'psicologa', 'Rua Portugal, 1297 / 408', '92243673 / 99096767', '', '2015-02-09 20:54:00', '7', '498', '0', 'n');
+INSERT INTO `aluno` VALUES ('466', 'publicitÃ¡rio', 'Rua Miguel Tostes, 326/201', '95086929', '', '2015-04-09 20:02:53', '8', '500', '45', 'n');
+INSERT INTO `aluno` VALUES ('467', 'desembargador', 'Lucas de Oliveira, 1350 / 302', '92342280 - 33324231', '', '2015-03-02 00:09:15', '1', '501', '50', 'n');
+INSERT INTO `aluno` VALUES ('468', 'gerente de marketing', 'Av. Alegrete, 423/802', '9999-1600', '', '2015-03-04 20:36:15', '8', '502', '50', 'n');
+INSERT INTO `aluno` VALUES ('469', '-', 'Casemiro de Abreu, 1655 / 1004', '92352430', '', '2015-03-05 22:44:34', '1', '503', '50', 'n');
+INSERT INTO `aluno` VALUES ('470', 'aposentada', 'Quintino Bocaiuva, 1495 / 1003', '054 99193490', '', '2015-03-09 21:37:57', '1', '504', '0', 'n');
+INSERT INTO `aluno` VALUES ('471', 'auxiliar administrativa', 'anita garibaldi, 2120 / 911', '89065014', '', '2015-03-10 11:24:10', '7', '505', '0', 'n');
+INSERT INTO `aluno` VALUES ('472', 'estudante', 'anita garibaldi, 2120 /', '95086604', '', '2015-03-18 20:19:20', '7', '506', '0', 'n');
+INSERT INTO `aluno` VALUES ('473', 'assistente social', 'Nilo PeÃ§anha, 25/401 Bloco 2', '3331-0240 / 95958017', '', '2015-03-19 21:38:52', '8', '507', '50', 'n');
+INSERT INTO `aluno` VALUES ('474', 'engenheiro', 'Rua Carlos Trein Filho, 412 / 401', '84229626', '', '2015-03-20 12:28:13', '1', '508', '50', 'n');
+INSERT INTO `aluno` VALUES ('475', 'do lar', 'Rua Ulisses Cabral, 339', '99881436 / 33344339', '', '2015-03-25 15:57:25', '1', '509', '50', 'n');
+INSERT INTO `aluno` VALUES ('476', 'mÃ©dica', 'dona leonor, 174/907', '99436942', '', '2015-04-06 21:18:48', '8', '510', '45', 'n');
+INSERT INTO `aluno` VALUES ('477', 'funcionaria Publica', 'anita garibaldi, 2120 / 612', '91487365', '', '2015-04-08 20:45:44', '7', '511', '0', 'n');
+INSERT INTO `aluno` VALUES ('478', 'professora', 'anita garibaldi, 2120 / 904', '30290846 / (53) 84080846', '', '2015-04-08 20:47:17', '7', '512', '0', 'n');
+INSERT INTO `aluno` VALUES ('479', 'estilista', 'Lucas de Oliveira, 1152 /', '92530123', '', '2015-04-09 22:17:53', '1', '513', '50', 'n');
+INSERT INTO `aluno` VALUES ('480', 'administradora', 'Av. Alegrete, 423/501', '99712670', '', '2015-04-19 20:38:34', '8', '514', '45', 'n');
+INSERT INTO `aluno` VALUES ('481', 'gerente restaurante', 'pedro chaves barcelos, 714', '93938374', '', '2015-04-24 11:52:21', '7', '515', '0', 'n');
+INSERT INTO `aluno` VALUES ('482', 'medico', 'anita garibaldi, 2120 / 605', '33410473', '', '2015-04-24 11:54:08', '7', '516', '0', 'n');
+INSERT INTO `aluno` VALUES ('483', 'medica', 'Lucas de Oliveira, 2412 / 601', '99231300', '', '2015-04-30 13:58:17', '1', '517', '50', 'n');
+INSERT INTO `aluno` VALUES ('484', 'medico', 'Lucas de Oliveira, 2412 / 601', '99562109', '', '2015-04-30 13:59:34', '1', '518', '50', 'n');
+INSERT INTO `aluno` VALUES ('485', 'medico', 'Cel Bordini, 1307 / 702', '99681502', '', '2015-04-30 14:00:40', '1', '519', '50', 'n');
+INSERT INTO `aluno` VALUES ('486', 'empresario', 'Rua Visconde Dupra, 289 / 401', '97778699', '', '2015-04-30 14:07:06', '1', '520', '90', 'n');
+INSERT INTO `aluno` VALUES ('487', 'massagista', 'Padre caquice, 2884 / 0206', '92969696', '', '2015-04-30 15:37:12', '8', '521', '0', 'n');
+INSERT INTO `aluno` VALUES ('488', 'arquiteta', 'anita garibaldi, 2120 / 216', '33286702', '', '2015-05-06 14:23:44', '7', '522', '0', 'n');
+INSERT INTO `aluno` VALUES ('489', 'estudante', 'anita garibaldi, 2120 / 409', '97283581', '', '2015-05-06 14:25:39', '7', '523', '0', 'n');
+INSERT INTO `aluno` VALUES ('490', 'estudante', 'anita garibaldi, 2120 / 505', '81161988', '', '2015-05-06 14:27:57', '7', '524', '0', 'n');
+INSERT INTO `aluno` VALUES ('491', 'professor', 'anita garibaldi, 2120 / 402', '96469090', '', '2015-05-06 14:29:52', '7', '525', '0', 'n');
+INSERT INTO `aluno` VALUES ('492', 'estudante (doutorado)', 'anita garibaldi, 2120 / 1305', '45-84092780', '', '2015-05-16 12:18:28', '7', '526', '0', 'n');
+INSERT INTO `aluno` VALUES ('493', 'aposentada', 'Rua Azevedo sodre, 263 / 301', '30244192', '', '2015-05-16 12:21:58', '7', '527', '0', 'n');
+INSERT INTO `aluno` VALUES ('494', 'educadora fisica', 'Rua Anita Garibaldi, 2120 / 513', '96004455', '', '2015-05-16 12:28:06', '7', '528', '0', 'n');
+INSERT INTO `aluno` VALUES ('495', 'administradora', 'ProtÃ¡sio Alves', '91678222', 'fortalecimento global', '2015-05-21 22:06:11', '8', '529', '40', 'n');
+INSERT INTO `aluno` VALUES ('496', 'advogado', 'Rua Cabral, 1280/902', '9191-5454', 'fortalecimento global\n', '2015-06-28 21:41:18', '8', '530', '50', 'n');
+INSERT INTO `aluno` VALUES ('497', 'autonoma', 'lucas de oliveira', '94139898', '\n', '2015-06-10 16:37:17', '8', '531', '20', 'n');
+INSERT INTO `aluno` VALUES ('498', 'consultora empresarial', 'lavras, 550/202', '99916691', '', '2015-06-21 12:48:49', '8', '532', '50', 'n');
+INSERT INTO `aluno` VALUES ('499', 'jornalista', 'praÃ§a Carlos SimÃ£o Arnt, 105/304', '84229236', '', '2015-06-21 12:50:26', '8', '533', '45', 'n');
+INSERT INTO `aluno` VALUES ('500', 'terapeuta ocupacional', 'general neto, 17', '91236193', '', '2015-06-21 12:52:21', '8', '534', '40', 'n');
+INSERT INTO `aluno` VALUES ('501', '-', 'Av. Luiz Manoel Gonzaga, 188 / 1201', '96847720', '', '2015-07-02 13:47:28', '1', '535', '0', 'n');
+INSERT INTO `aluno` VALUES ('502', 'empresario', 'flat bela vista', '048- 91077729', '', '2015-07-13 21:05:15', '1', '536', '60', 'n');
+INSERT INTO `aluno` VALUES ('503', 'aposentado', '-', '99553355 - 33281069', '', '2015-07-15 15:46:58', '1', '537', '60', 'n');
+INSERT INTO `aluno` VALUES ('504', 'advogado', 'Lucas de Oliveira, 1152 / 601', '84117946', '', '2015-07-22 15:04:30', '1', '538', '50', 'n');
+INSERT INTO `aluno` VALUES ('505', 'servidora pÃºblica', 'Avenida SinimbÃº, 223/102', '96480142', '', '2015-07-27 21:47:37', '8', '539', '45', 'n');
+INSERT INTO `aluno` VALUES ('506', 'mÃ©dica', 'Luis Manuel de Gonzaga, 470/1906', '93097073', 'fortalecer\n', '2015-08-05 20:33:56', '8', '540', '45', 'n');
+INSERT INTO `aluno` VALUES ('507', 'estudante', 'Carazinho, 700/105', '8116-2903', 'melhorar a postura', '2015-08-07 16:45:31', '8', '541', '45', 'n');
+INSERT INTO `aluno` VALUES ('508', 'advogado', 'anita garibaldi, 2120 / 1007', '81665340', '', '2015-08-18 13:04:10', '7', '542', '0', 'n');
+INSERT INTO `aluno` VALUES ('509', 'estudante', 'anita garibaldi, 2120 / 707', '93274817', '', '2015-08-18 13:05:47', '7', '543', '0', 'n');
+INSERT INTO `aluno` VALUES ('510', 'comerciaria', 'anita garibaldi, 2120 / 208', '84469572 / 32379392', '', '2015-08-18 13:07:23', '7', '544', '0', 'n');
+INSERT INTO `aluno` VALUES ('511', 'professora', 'anita garibaldi, 2120 / 702', '33073227 / 92351600', '', '2015-08-18 13:08:49', '7', '545', '0', 'n');
+INSERT INTO `aluno` VALUES ('512', 'aposentada', 'anita garibaldi, 2120 / 610', '30286738 / 96835752', '', '2015-08-18 13:10:51', '7', '546', '0', 'n');
+INSERT INTO `aluno` VALUES ('513', 'advogado', 'anita garibaldi, 2120 / 215 B', '98925202', '', '2015-08-18 13:12:21', '7', '547', '0', 'n');
+INSERT INTO `aluno` VALUES ('514', 'chef de cozinha', 'anita garibaldi, 2120 / 602', '85421416', '', '2015-08-29 03:55:11', '7', '548', '0', 's');
+INSERT INTO `aluno` VALUES ('515', 'industrial', 'Rua Azevedo sodre, 26 / 301', '91858539', '', '2015-08-18 13:16:47', '7', '549', '0', 'n');
+INSERT INTO `aluno` VALUES ('516', 'engenheiro', 'Av. Alegrete, 423/1701', '99656884', 'Melhorar a sindrome do piriforme', '2015-08-21 22:24:37', '8', '550', '45', 'n');
+INSERT INTO `aluno` VALUES ('517', 'engenheiro', 'Av. Alegrete, 423/1701', '81218490', 'fortalecer lombar e melhorar a postura', '2015-08-21 22:26:35', '8', '551', '45', 'n');
+INSERT INTO `aluno` VALUES ('518', 'aposentada', 'Av. Nilo pecanha, 1452 / 1401', '33283389', '', '2015-08-27 19:01:42', '1', '552', '0', 'n');

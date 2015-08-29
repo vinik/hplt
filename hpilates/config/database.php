@@ -34,49 +34,49 @@
 | the active record class
 */
 
-$active_group = "producao";
-//$active_group = "desenv";
+// $active_group = "producao";
+$active_group = "desenv";
 $active_record = TRUE;
 
-$db['default']['hostname'] = "vnix.us";
-$db['default']['username'] = "vnix";
-$db['default']['password'] = "m4jd93y33";
-$db['default']['database'] = "vnix_db";
-$db['default']['dbdriver'] = "mysql";
-$db['default']['dbprefix'] = "";
-$db['default']['pconnect'] = TRUE;
-$db['default']['db_debug'] = TRUE;
-$db['default']['cache_on'] = FALSE;
-$db['default']['cachedir'] = "";
-$db['default']['char_set'] = "utf8";
-$db['default']['dbcollat'] = "utf8_general_ci";
+// $db['default']['hostname'] = "vnix.us";
+// $db['default']['username'] = "vnix";
+// $db['default']['password'] = "m4jd93y33";
+// $db['default']['database'] = "vnix_db";
+// $db['default']['dbdriver'] = "mysql";
+// $db['default']['dbprefix'] = "";
+// $db['default']['pconnect'] = TRUE;
+// $db['default']['db_debug'] = TRUE;
+// $db['default']['cache_on'] = FALSE;
+// $db['default']['cachedir'] = "";
+// $db['default']['char_set'] = "utf8";
+// $db['default']['dbcollat'] = "utf8_general_ci";
 
 $db['desenv']['hostname'] = "localhost";
 $db['desenv']['username'] = "root";
-$db['desenv']['password'] = "abrete";
+$db['desenv']['password'] = "";
 $db['desenv']['database'] = "hpilates2";
-$db['desenv']['dbdriver'] = "mysql";
+$db['desenv']['dbdriver'] = "mysqli";
 $db['desenv']['dbprefix'] = "";
 $db['desenv']['pconnect'] = TRUE;
 $db['desenv']['db_debug'] = TRUE;
 $db['desenv']['cache_on'] = FALSE;
 $db['desenv']['cachedir'] = "";
-$db['desenv']['char_set'] = "ISO 8859-2";
-$db['desenv']['dbcollat'] = "latin2_general_ci";
+$db['desenv']['char_set'] = "utf8";
+$db['desenv']['dbcollat'] = "utf8_general_ci";
 
 
-$db['producao']['hostname'] = "pwweb2.procempa.com.br";
-$db['producao']['username'] = "hpilates";
-$db['producao']['password'] = "bancodedados";
-$db['producao']['database'] = "hpilatesbd";
-$db['producao']['dbdriver'] = "mysql";
-$db['producao']['dbprefix'] = "";
-$db['producao']['pconnect'] = TRUE;
-$db['producao']['db_debug'] = TRUE;
-$db['producao']['cache_on'] = FALSE;
-$db['producao']['cachedir'] = "";
-$db['producao']['char_set'] = "ISO 8859-2";
-$db['producao']['dbcollat'] = "latin2_general_ci";
+// $db['producao']['hostname'] = "pwweb2.procempa.com.br";
+// $db['producao']['username'] = "hpilates";
+// $db['producao']['password'] = "bancodedados";
+// $db['producao']['database'] = "hpilatesbd";
+// $db['producao']['dbdriver'] = "mysql";
+// $db['producao']['dbprefix'] = "";
+// $db['producao']['pconnect'] = TRUE;
+// $db['producao']['db_debug'] = TRUE;
+// $db['producao']['cache_on'] = FALSE;
+// $db['producao']['cachedir'] = "";
+// $db['producao']['char_set'] = "ISO 8859-2";
+// $db['producao']['dbcollat'] = "latin2_general_ci";
 
 
 /* End of file database.php */
