@@ -90,6 +90,13 @@ if(NULL != $aluno){
               </div>
             </div>
 
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                </div>
+            </div>
+
             <div class="form-group"><label class="col-md-2 control-label" for="endereco">Endereço</label>
               <div class="col-md-10">
                 <input id="endereco" name="endereco" type="text" placeholder="Endereço" class="form-control input-md">
@@ -115,16 +122,18 @@ if(NULL != $aluno){
               </div>
             </div>
 
+            <input type="submit" class="input-submit" value="Enviar" id="btnSubmit"/>
             </fieldset>
         </form>
     </div>
+</div>
 
 
 
 
 
 
-
+<!--
     <fieldset>
         <legend><?php echo $titulo_form; ?></legend>
         <div id="divFotoAluno" class="ui-widget ui-widget-content ui-corner-all" style="float: left; width: 120px; height: 160px; margin-right: 20px;">FOTO</div>
@@ -190,5 +199,6 @@ if(NULL != $aluno){
 
         <input type="submit" class="input-submit" value="Enviar" id="btnSubmit"/>
     </fieldset>
-    </form>
-</div>
+    </form> -->
+<!-- </div>
+ -->

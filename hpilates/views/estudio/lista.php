@@ -1,23 +1,19 @@
-<div id="divToolbarEstudio" >
-	<?php
-	echo anchor('estudios/novo', 'Novo estúdio', 'class="BUTTON_NEW_FULL"');
-	?>
+<div id="divToolbarEstudio" align="right">
+    <a class="btn btn-primary" href="novo"> + Novo Estúdio</a>
 </div>
 
-<BR></BR>
-
-<table class="list">
+<table class="table table-striped">
 	<thead>
 		<tr>
-			<th width="20">#</th>
-			<th width="280">Nome</th>
-			<th width="200">Endereço</th>
-			<th width="200">Telefone</th>
-			<th width="30"></th>
+			<th>#</th>
+			<th>Nome</th>
+			<th>Endereço</th>
+			<th>Telefone</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
-		<?php 
+		<?php
 		if(count($colecao_estudio) > 0){
 			foreach($colecao_estudio as $estudio){
 				?>
@@ -28,7 +24,7 @@
 			<td><?php echo $estudio->get_telefone(); ?></td>
 			<td><?php echo anchor('estudios/remover/'.$estudio->get_id(), 'Remover', 'class="BUTTON_REMOVE"'); ?></td>
 		</tr>
-				<?php 
+				<?php
 			}
 		}
 		?>
