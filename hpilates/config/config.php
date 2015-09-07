@@ -14,6 +14,7 @@
 */
 // $config['base_url']	= "http://www.hpilates.com/sistema";
 // $config['base_url']  = "http://capablanca/hpilates";
+// $config['base_url']  = "http://localhost/hpilates";
 $config['base_url']	= "http://localhost/hpilates";
 
 /*
@@ -26,7 +27,7 @@ $config['base_url']	= "http://localhost/hpilates";
 | variable so that it is blank.
 |
 */
-$config['index_page'] = "index.php";
+$config['index_page'] = "index";
 //$config['index_page'] = "index";
 
 /*
@@ -162,7 +163,7 @@ $config['directory_trigger'] 	= 'd'; // experimental not currently in use
 | Error Logging Threshold
 |--------------------------------------------------------------------------
 |
-| If you have enabled error logging, you can set an error threshold to 
+| If you have enabled error logging, you can set an error threshold to
 | determine what gets logged. Threshold options are:
 | You can enable error logging by setting a threshold over zero. The
 | threshold determines what gets logged. Threshold options are:

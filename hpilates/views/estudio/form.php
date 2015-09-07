@@ -1,4 +1,4 @@
-<?php 
+<?php
 if(NULL != $estudio){
 	$id = $estudio->get_id();
 	$lbl_id = '/';
@@ -14,46 +14,34 @@ if(NULL != $estudio){
 }
 ?>
 
+<div>
+    <?php
+        echo form_open('estudios/processar' . $lbl_id . $id, array('class' => "form-horizontal"));
+    ?>
+    <fieldset>
+        <legend><?php echo $titulo_form; ?></legend>
 
-<?php echo form_open('estudios/processar' . $lbl_id . $id); ?>
+        <div class="form-group"><label class="col-md-2 control-label" for="nome">Nome</label>
+            <div class="col-md-10">
+                <input id="txtNome" name="nome" type="text" value="<?php echo $nome; ?>" placeholder="Nome" class="form-control input-md" required="">
+            </div>
+        </div>
 
-  	<fieldset>
-		<legend>
-			<?php echo $titulo_form; ?>
-		</legend>
-		
-		<table>
-			<tbody>
-				<tr>
-					<th>
-						<label>Nome</label>
-					</th>
-					<td>
-						<input type="text" size="60" name="nome" class="input-text" value="<?php echo $nome; ?>" id="txtNome"  maxlength="100" maxsize="100" />
-					</td>
-				</tr>
-				<tr>
-					<th>
-						<label >Endereço</label>
-					</th>
-					<td>
-						<input type="text" size="60" name="endereco" class="input-text" value="<?php echo $endereco; ?>" id="q10"  maxlength="100" maxsize="100" />
-					</td>
-				</tr>
-				<tr>
-					<th>
-						<label >Telefone</label>
-					</th>
-					<td>
-						<input type="text" size="60" name="telefone" class="input-text" value="<?php echo $telefone; ?>" id="q11"  maxlength="100" maxsize="100" />
-					</td>
-				</tr>
-			</tbody>
-		</table>
+        <div class="form-group"><label class="col-md-2 control-label" for="endereco">Endereço</label>
+            <div class="col-md-10">
+                <input id="endereco" name="endereco" type="text" value="<?php echo $endereco; ?>" placeholder="Endereço" class="form-control input-md" required="">
+            </div>
+        </div>
 
-		<input type="submit" value="Enviar" class="input-submit"/>
+        <div class="form-group"><label class="col-md-2 control-label" for="telefone">Telefone</label>
+            <div class="col-md-10">
+                <input id="telefone" name="telefone" type="text" value="<?php echo $telefone; ?>" placeholder="Telefone" class="form-control input-md" required="">
+            </div>
+        </div>
 
-
-	</fieldset>
-  
-</form>
+        <div class="box-footer">
+            <button type="submit" value="Enviar" class="btn btn-primary pull-left">Cadastrar</button>
+        </div>
+    </fieldset>
+    <?php echo form_close();?>
+</div>

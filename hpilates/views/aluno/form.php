@@ -30,20 +30,15 @@ if(NULL != $aluno){
 }
 ?>
 
-<div class="container" id="divFormAluno">
+<div>
+    <?php
+        echo form_open('alunos/processar', array('id' => 'frmCfgGerais', 'class' => "form-horizontal"));
+        // echo form_open_multipart('alunos/processar' . $lbl_id . $id, array('id'=> 'frmAluno'));
+    ?>
+    <fieldset>
+        <legend>Novo Aluno</legend>
 
-    <div class="row">
-        <?php echo form_open_multipart('alunos/processar' . $lbl_id . $id, array('id'=> 'frmAluno'));?>
-        <div id="divToolbarAluno" align='right' >
-            <a class="btn btn-primary" href="novo"> + Novo Aluno</a>
-        </div>
-
-        <form class="form-horizontal">
-            <fieldset>
-
-            <legend>Novo Aluno</legend>
-
-            <div class="form-group"><label class="col-md-2 control-label" for="nome">Nome</label>
+        <div class="form-group"><label class="col-md-2 control-label" for="nome">Nome</label>
               <div class="col-md-10">
                 <input id="txtNome" name="nome" type="text" value="<?php echo $nome; ?>" placeholder="Nome" class="form-control input-md" required="">
               </div>
@@ -84,16 +79,10 @@ if(NULL != $aluno){
               </div>
             </div>
 
-            <div class="form-group"><label class="col-md-2 control-label" for="email">Email</label>
-              <div class="col-md-10">
-                <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md">
-              </div>
-            </div>
-
             <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-10">
-                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                <label class="col-md-2 control-label" for="email">Email</label>
+                <div class="col-md-10">
+                    <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md">
                 </div>
             </div>
 
@@ -122,83 +111,10 @@ if(NULL != $aluno){
               </div>
             </div>
 
-            <input type="submit" class="input-submit" value="Enviar" id="btnSubmit"/>
-            </fieldset>
-        </form>
-    </div>
-</div>
-
-
-
-
-
-
-<!--
-    <fieldset>
-        <legend><?php echo $titulo_form; ?></legend>
-        <div id="divFotoAluno" class="ui-widget ui-widget-content ui-corner-all" style="float: left; width: 120px; height: 160px; margin-right: 20px;">FOTO</div>
-        <table>
-            <tbody>
-                <tr>
-                    <th><label for="txtNome">Nome</label></th>
-                    <td><input type="text" size="60" name="nome" class="input-text" value="<?php echo $nome; ?>" id="txtNome"  maxlength="100" maxsize="100" /></td>
-                </tr>
-                <tr>
-                    <th><label for="dtDataNascimento">Data de nascimento</label></th>
-                    <td><input type="text" size="60" name="data_nascimento" class="DATEFIELD input-text" value="<?php echo $data_nascimento; ?>" id="dtDataNascimento"  maxlength="100" maxsize="100" /></td>
-                </tr>
-                <tr>
-                    <th><label for="txtProfissao">Profissão</label></th>
-                    <td><input type="text" size="60" name="profissao" class="input-text" value="<?php echo $profissao; ?>" id="txtProfissao"  maxlength="100" maxsize="100" /></td>
-                </tr>
-                <tr>
-                    <th>
-                        <label for="selEstudio">Estúdio</label>
-                    </th>
-                    <td>
-                        <select class="other" name="id_estudio" id="sel_estudio" >
-                            <option></option>
-                          <?php
-                          if(count($colecao_estudio) > 0){
-                            foreach($colecao_estudio as $estudio){
-                                $selected = ' ';
-                                if($estudio->get_id() == $id_estudio){
-                                    $selected = 'selected="selected" ';
-                                }
-                                ?>
-                                <option value="<?php echo $estudio->get_id(); ?>" <?php echo $selected; ?> ><?php echo $estudio->get_nome(); ?></option>
-                                <?php
-                            }
-                          }
-                          ?>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th><label for="txtEmail">Email</label></th>
-                    <td><input type="text" size="60" name="email" class="input-text" value="<?php echo $email; ?>" id="txtEmail"  maxlength="100" maxsize="100" /></td>
-                </tr>
-                <tr>
-                    <th><label for="txtEndereco">Endereço</label></th>
-                    <td><input type="text" size="60" name="endereco" class="input-text" value="<?php echo $endereco; ?>" id="txtEndereco"  maxlength="100" maxsize="100" /></td>
-                </tr>
-                <tr>
-                    <th><label for="txtTelefone">Telefone</label></th>
-                    <td><input type="text" size="60" name="telefone" class="input-text" value="<?php echo $telefone; ?>" id="txtTelefone"  maxlength="100" maxsize="100" /></td>
-                </tr>
-                <tr>
-                    <th><label for="txaObjetivos">Objetivos</label></th>
-                    <td><textarea cols="50" rows="10" name="objetivos" class="input-text" id="txaObjetivos" ><?php echo $objetivos; ?></textarea></td>
-                </tr>
-                <tr>
-                    <th><label for="txaObjetivos">Hora/aula R$</label></th>
-                    <td><input type="text" size="10" name="valor_aula" class="input-text" value="<?php echo $valor_aula; ?>" id="txtValorAula"  maxlength="10" maxsize="10" /></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <input type="submit" class="input-submit" value="Enviar" id="btnSubmit"/>
+          <div class="box-footer">
+            <button type="submit" id="btnSubmit" value="Enviar" class="btn btn-primary">Cadastrar</button>
+          </div>
     </fieldset>
-    </form> -->
-<!-- </div>
- -->
+    <!-- <input type="submit"  class="input-submit"> -->
+    <?php echo form_close();?>
+</div>

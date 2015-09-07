@@ -107,8 +107,8 @@ class Supercontroller extends Controller {
     function lista(){
         $nome_modelo = $this->modelo;
         $nome_controller = $this->nome_controller;
-        $$nome_modelo = $this->$nome_modelo;
-        $colecao = $$nome_modelo->search();
+        $nome_modelo = $this->$nome_modelo;
+        $colecao = $nome_modelo->search();
         $data['colecao_' . $nome_modelo] = $colecao;
         $this->visao($nome_modelo . '/lista', $data);
     }
@@ -121,11 +121,11 @@ class Supercontroller extends Controller {
 
     function editar($id){
         $nome_modelo = $this->modelo;
-        $$nome_modelo = $this->$nome_modelo;
-        $$nome_modelo->set_id($id);
-        $$nome_modelo->retrieve();
+        $nome_modelo = $this->$nome_modelo;
+        $nome_modelo->set_id($id);
+        $nome_modelo->retrieve();
 
-        $data[$nome_modelo] = $$nome_modelo;
+        $data[$nome_modelo] = $nome_modelo;
 
         $this->visao($nome_modelo . '/form', $data);
     }
@@ -135,27 +135,27 @@ class Supercontroller extends Controller {
      */
     function processar($id = NULL){
         $nome_modelo = $this->modelo;
-        $$nome_modelo = $this->$nome_modelo;
+        $nome_modelo = $this->$nome_modelo;
 
         $nome_controller = $this->nome_controller;
 
-        $campos = $$nome_modelo->get_fields_arr();
+        $campos = $nome_modelo->get_fields_arr();
 
         foreach($campos as $campo){
             $$campo = $this->input->post($campo);
         }
 
-        $data[$$nome_modelo->get_key()] = $id;
+        $data[$nome_modelo->get_key()] = $id;
         foreach($campos as $campo){
             $data[$campo] = $$campo;
         }
 
         $msg = '';
 
-        $$nome_modelo->populate($data);
-        if($$nome_modelo->validate()){
+        $nome_modelo->populate($data);
+        if($nome_modelo->validate()){
             if(NULL !== $id){
-                $resultado = $$nome_modelo->update();
+                $resultado = $nome_modelo->update();
                 if($resultado){
                     $msg = $this->lang->line('sucesso.atualizar_objeto');
                     $this->session->set_flashdata(MESSAGE_TYPE_SUCCESS, $msg);
@@ -166,7 +166,7 @@ class Supercontroller extends Controller {
                     redirect($nome_controller . '/editar/' . $id, 'refresh');
                 }
             } else {
-                $resultado = $$nome_modelo->create();
+                $resultado = $nome_modelo->create();
                 if($resultado){
                     $msg = $this->lang->line('sucesso.criar_objeto');
                     $this->session->set_flashdata(MESSAGE_TYPE_SUCCESS, $msg);
@@ -178,7 +178,7 @@ class Supercontroller extends Controller {
                 }
             }
         } else {
-            $msg = $$nome_modelo->get_erros();
+            $msg = $nome_modelo->get_erros();
             $this->session->set_flashdata(MESSAGE_TYPE_ERROR, implode(br(), $msg));
             if(NULL !== $id){
                 redirect($nome_controller . '/editar/' . $id, 'refresh');
@@ -197,11 +197,11 @@ class Supercontroller extends Controller {
     function remover($id){
         $nome_controller = $this->nome_controller;
         $nome_modelo = $this->modelo;
-        $$nome_modelo = $this->$nome_modelo;
-        $$nome_modelo->set_id($id);
-        $$nome_modelo->retrieve();
+        $nome_modelo = $this->$nome_modelo;
+        $nome_modelo->set_id($id);
+        $nome_modelo->retrieve();
 
-        $resultado = $$nome_modelo->delete();
+        $resultado = $nome_modelo->delete();
 
         if($resultado){
             $msg = $this->lang->line('sucesso.remover_objeto');
