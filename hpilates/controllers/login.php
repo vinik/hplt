@@ -1,21 +1,19 @@
 <?php
 
 class Login extends Controller {
-    
+
     function Login() {
         parent::Controller();
         $this->load->library('simplelogin');
     }
-    
+
     function index(){
         $this->load->view('form_login');
     }
 
     function processar(){
-        // $username = $this->input->post('username');
-        // $password = $this->input->post('senha');
-        $username = 'eduardo';
-        $password = '123456';
+        $username = $this->input->post('username');
+        $password = $this->input->post('senha');
 
         if ($this->simplelogin->login($username, $password)) {
             redirect('agenda/agenda_estudio', 'refresh');
