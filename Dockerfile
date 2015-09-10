@@ -1,11 +1,11 @@
-FROM vinik/web:latest
+FROM ubuntu:latest
 MAINTAINER Vinícius Kirst <vinicius.kirst@gmail.com.br>
 
-# RUN apt-get update
-# RUN apt-get install -y --force-yes apache2 php5 curl php5-curl php5-intl php5-mcrypt wget
+RUN apt-get update
+RUN apt-get install -y --force-yes apache2 php5 curl php5-curl php5-intl php5-mcrypt wget
 
-# RUN a2enmod php5
-# RUN a2enmod rewrite
+RUN a2enmod php5
+RUN a2enmod rewrite
 
 # Manually set up the apache environment variables
 ENV APACHE_RUN_USER www-data
