@@ -15,7 +15,7 @@
 // $config['base_url']	= "http://www.hpilates.com/sistema";
 // $config['base_url']  = "http://capablanca/hpilates";
 // $config['base_url']  = "http://localhost/hpilates";
-$config['base_url']	= "http://localhost/hpilates";
+$config['base_url']	= "http://localhost/hplt";
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +27,7 @@ $config['base_url']	= "http://localhost/hpilates";
 | variable so that it is blank.
 |
 */
-$config['index_page'] = "index";
+$config['index_page'] = "index.php";
 //$config['index_page'] = "index";
 
 /*
