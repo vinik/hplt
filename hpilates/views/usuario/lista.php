@@ -10,7 +10,7 @@
 			<th>Username</th>
 			<th>Email</th>
 			<th>Nível</th>
-			<th></th>
+			<th>Ações</th>
 		</tr>
 	</thead>
 	<tbody>

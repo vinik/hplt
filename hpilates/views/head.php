@@ -11,22 +11,17 @@
 
     <link rel="stylesheet" media="screen,projection" type="text/css" href="<?php echo base_url(); ?>css/reset.css" />
     <link rel="stylesheet" media="screen,projection" type="text/css" href="<?php echo base_url(); ?>css/main.css" />
-    <!--[if lte IE 7]><link rel="stylesheet" media="screen,projection" type="text/css" href="<?php echo base_url(); ?>css/main-ie.css" /><![endif]-->
     <link rel="stylesheet" media="screen,projection" type="text/css" href="<?php echo base_url(); ?>css/skin/main.css" />
     <link rel="stylesheet" media="screen,projection" type="text/css" href="<?php echo base_url(); ?>css/custom.css" />
     <link rel="stylesheet" media="screen,projection" type="text/css" href="<?php echo base_url(); ?>css/style.css" />
-
     <link rel="stylesheet" href="<?php echo base_url(); ?>css/redmond/jquery-ui-1.8.2.custom.css" type="text/css">
-    <link type="text/css" href="<?php echo base_url(); ?>css/fullcalendar2.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>css/framework.css" type="text/css">
 
+    <link type="text/css" href="<?php echo base_url(); ?>css/fullcalendar2.css" rel="stylesheet" />
     <link type="text/css" href="<?php echo base_url(); ?>css/mbContainer.css" rel="stylesheet" />
 
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.4.2.min.js"></script>
@@ -43,6 +38,7 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>js/vnix.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/map_functions.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=pt-br"></script>
+
 
     <?php
     if(count($script_src) > 0){
@@ -85,8 +81,6 @@
             $.unblockUI();
         });
 
-        //$(".containerPlus").buildContainers({elementsPath: "' . base_url() . '"});
-
         build_buttons();
 
         $("#dialog").dialog({
@@ -103,19 +97,14 @@
             $(this).hide('slow');
         });
 
-
-
         <?php
-                if(count($scripts) > 0){
-                    foreach($scripts as $script){
-                        echo $script;
-
-                    }
+            if(count($scripts) > 0){
+                foreach($scripts as $script){
+                    echo $script;
                 }
+            }
         ?>
-
-
     });
 
     </script>
-    </head>
+</head>

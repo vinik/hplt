@@ -1,4 +1,4 @@
-<?php 
+<?php
 if(NULL != $usuario){
 	$id = $usuario->get_id();
 	$lbl_id = '/';
@@ -63,10 +63,10 @@ $niveis = array(
 	?>
 <div id="abasFormUsuario">
 	<ul>
-		
-		
-		
-		
+
+
+
+
 	</ul>
 	<fieldset id="divFormInfo">
 		<legend>Informações pessoais</legend>

@@ -71,7 +71,7 @@ class Alunos extends Supercontroller {
 
         $data['aulas'] = $colecao_eventos;
 
-        $this->add_script_src('alunos');
+        // $this->add_script_src('alunos');
 
         $this->visao('aluno/form', $data);
     }
@@ -172,6 +172,7 @@ class Alunos extends Supercontroller {
         $aluno = $this->aluno;
         $colecao = $aluno->search();
         $data['colecao_aluno'] = $colecao;
+
         $this->visao('aluno/lista', $data);
     }
 

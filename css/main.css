@@ -5,7 +5,7 @@
     File:       main.css
     Version:    1.40
     Updated:    2010-04-01
-    
+
 -------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 body {font:0.8em/1.5 "arial", sans-serif;}
@@ -34,7 +34,7 @@ LAYOUT
 #header ul#user {float:right; margin-top:12px;}
 #header ul#user li {display:inline;}
 #header ul#user li a {display:block; float:left; margin-left:15px;}
-#content {position:relative; padding:25px; overflow:hidden;}
+#content {position:relative; padding:25px;}
 #content #search {position:absolute; top:15px; right:25px; margin:0;}
 #content .cols {position:relative; background:url("../skin/cols.gif") 155px 0 repeat-y;}
 #content .cols-aside {float:left; width:140px; padding-right:35px;}

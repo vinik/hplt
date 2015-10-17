@@ -9,7 +9,7 @@
 			<th>Nome</th>
 			<th>Endereço</th>
 			<th>Telefone</th>
-			<th></th>
+			<th>Ações</th>
 		</tr>
 	</thead>
 	<tbody>
