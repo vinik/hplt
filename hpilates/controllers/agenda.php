@@ -52,24 +52,24 @@ class Agenda extends Supercontroller {
 		
 		$data['titulo'] = $this->lang->line('menu.agenda');
 		
-		// $evento = $this->evento;
-		// $data['tipos_repeticao'] = $evento->get_tipos_repeticao();
+		$evento = $this->evento;
+		$data['tipos_repeticao'] = $evento->get_tipos_repeticao();
 		
-		// $aluno = $this->aluno;
+		$aluno = $this->aluno;
 		
-		// $estudio = $this->estudio;
-		// $colecao_estudio = $estudio->search();
-		// $data['estudios'] = $colecao_estudio;
+		$estudio = $this->estudio;
+		$colecao_estudio = $estudio->search();
+		$data['estudios'] = $colecao_estudio;
 		
 		
 		
-		// $aluno = $this->aluno;
-		// $colecao_aluno = $aluno->search();
-		// $data['alunos'] = $colecao_aluno;
+		$aluno = $this->aluno;
+		$colecao_aluno = $aluno->search();
+		$data['alunos'] = $colecao_aluno;
 		
-		// $professor = $this->professor;
-		// $colecao_professor = $professor->search();
-		// $data['professores'] = $colecao_professor;
+		$professor = $this->professor;
+		$colecao_professor = $professor->search();
+		$data['professores'] = $colecao_professor;
 		
 		$this->visao('agenda/calendar', $data);
 	}
