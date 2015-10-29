@@ -389,7 +389,7 @@ class Agenda extends Supercontroller {
 	}
 	
 	function agenda_estudio($id_estudio = FALSE){
-		
+
 		$this->add_script_src('agenda');
 		
 		$data['titulo'] = $this->lang->line('menu.agenda');
@@ -445,7 +445,7 @@ class Agenda extends Supercontroller {
 		$professor = $this->professor;
 		$colecao_professor = $professor->search();
 		$data['professores'] = $colecao_professor;
-		
+
 		$this->visao('agenda/estudio', $data);
 	}
 

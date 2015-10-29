@@ -56,12 +56,22 @@
       }
     }
 
-    die(var_dump($opcoes_tiporepeticao));
+    // die(var_dump($opcoes_estudio));
  ?>
 
 
-  <div style="background-color:#C0C0C0">
-      <div id="calendar"></div>
+  <div>
+      <ul class="nav nav-tabs">
+          <?php
+
+            foreach ($opcoes_estudio as $estudioId => $estudioNome) {
+              ?>
+                <li><?php echo anchor('agenda/agenda_estudio/' . $estudioId, $estudioNome); ?></li>
+              <?
+            }
+          ?>
+      </ul>
+      <div  style="background-color:#E0E0E0" id="calendar"></div>
   </div>
 
 <!-- jQuery 2.1.4 -->
@@ -123,10 +133,10 @@
         right: 'month,agendaWeek,agendaDay'
       },
       buttonText: {
-        today: 'Hoje',
-        month: 'Mês',
-        week: 'Semana',
-        day: 'Dia'
+        today: 'today',
+        month: 'month',
+        week: 'week',
+        day: 'day'
       },
       //Random default events
       events: [

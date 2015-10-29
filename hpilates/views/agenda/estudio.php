@@ -103,7 +103,7 @@ $("#abaEstudio<?php echo $estudio->get_id(); ?>").ready(function(){
 		dayClick: function(date, allDay, jsEvent, view) {
 //			$("#box").fadeIn();
 
-			abrirFormEvento();
+			// abrirFormEvento();
 			
 //	        if (allDay) {
 //	            alert('Clicked on the entire day: ' + date);
