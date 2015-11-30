@@ -168,6 +168,7 @@ class Usuario extends Supermodel
 	
 	function get_nivel_acesso(){
 		$niveis = array(
+			NIVEL_DEFAULT => '',
 			NIVEL_ALUNO => 'Aluno',
 			NIVEL_PROFESSOR => 'Professor',
 			NIVEL_ROOT => 'Administrador'

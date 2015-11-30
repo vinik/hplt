@@ -12,8 +12,8 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://www.hpilates.com/sistema";
-//$config['base_url']	= "http://capablanca/hpilates";
+// $config['base_url']	= "http://www.hpilates.com/sistema";
+$config['base_url']	= "http://localhost/new_hpilates";
 
 /*
 |--------------------------------------------------------------------------

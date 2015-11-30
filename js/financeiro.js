@@ -9,20 +9,7 @@ $(document).ready(function(){
 
 function painelFinanceiro(){
 	if($('#divTabsFinanceiroEstudios').length > 0){
-		
-		$('#btnVoltar').button({
-			text: false,
-			icons: {
-				primary: 'ui-icon-circle-triangle-w'
-			}
-		});
-		$('#btnAvancar').button({
-			text: false,
-			icons: {
-				primary: 'ui-icon-circle-triangle-e'
-			}
-		});
-		
+
 		$("#divDialogConfirmRemovePayment").dialog({
 			autoOpen: false,
 			resizable: false,
@@ -210,26 +197,3 @@ function deleteDespesa(id_despesa){
 		}
 	});
 }
-
-
-/*
-function reloadPaymentList(estudioId){
-	
-	var mes = $('#htnPaymentMes').val();
-	var ano = $('#htnPaymentAno').val();
-	
-	var pars = 'mes=' + mes + '&ano='+ano;
-	
-	$.ajax({
-		url: siteUrl + '/financeiro/lista_pagamentos/' + estudioId,
-		data: pars,
-		type: 'POST',
-		success: function(response){
-			$('#divListaPagamentos' + estudioId).empty();
-			$('#divListaPagamentos' + estudioId).append(response);
-			build_buttons();
-		}
-		
-	});
-}
-*/

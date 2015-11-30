@@ -34,8 +34,8 @@
 | the active record class
 */
 
-$active_group = "producao";
-//$active_group = "desenv";
+// $active_group = "producao";
+$active_group = "desenv";
 $active_record = TRUE;
 
 $db['default']['hostname'] = "vnix.us";
@@ -53,7 +53,7 @@ $db['default']['dbcollat'] = "utf8_general_ci";
 
 $db['desenv']['hostname'] = "localhost";
 $db['desenv']['username'] = "root";
-$db['desenv']['password'] = "abrete";
+$db['desenv']['password'] = "";
 $db['desenv']['database'] = "hpilates2";
 $db['desenv']['dbdriver'] = "mysql";
 $db['desenv']['dbprefix'] = "";
@@ -61,8 +61,8 @@ $db['desenv']['pconnect'] = TRUE;
 $db['desenv']['db_debug'] = TRUE;
 $db['desenv']['cache_on'] = FALSE;
 $db['desenv']['cachedir'] = "";
-$db['desenv']['char_set'] = "ISO 8859-2";
-$db['desenv']['dbcollat'] = "latin2_general_ci";
+$db['desenv']['char_set'] = "utf8";
+$db['desenv']['dbcollat'] = "utf8_general_ci";
 
 
 $db['producao']['hostname'] = "pwweb2.procempa.com.br";

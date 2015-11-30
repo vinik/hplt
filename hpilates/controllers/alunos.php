@@ -5,8 +5,7 @@ class Alunos extends Supercontroller
 	
 	var $nome_controller = 'alunos';
 	
-	function Alunos()
-	{
+	function Alunos() {
 		parent::Supercontroller();
 		
 		//autentication

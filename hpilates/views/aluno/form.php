@@ -121,7 +121,7 @@ if(NULL != $aluno){
 						<label for="txaObjetivos">Objetivos</label>
 					</th>
 					<td>
-						<textarea cols="50" rows="10" name="objetivos" class="input-text" id="txaObjetivos" ><?php echo $objetivos; ?></textarea>
+						<textarea cols="50" rows="1" name="objetivos" class="input-text" id="txaObjetivos" ><?php echo $objetivos; ?></textarea>
 					</td>
 				</tr>
 				<tr>

@@ -53,6 +53,7 @@ define('MESSAGE_TYPE_WARNING', 'warning');
 /*
  * N�veis de acesso
  */
+define('NIVEL_DEFAULT',        '0');
 define('NIVEL_ROOT',		'1');
 define('NIVEL_PROFESSOR',	'2');
 define('NIVEL_ALUNO',		'3');
