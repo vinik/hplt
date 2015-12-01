@@ -16,28 +16,13 @@ require_once 'estudio.php';
 class Professor extends Usuario
 {
 
-	/**
-	 * Campo id
-	 */
 	var $id;
-	
-	/**
-	 * Campo telefone
-	 */
 	var $telefone;
-	
-	/**
-	 * Campo endereco
-	 */
 	var $endereco;
-	
 	var $id_usuario;
-	
 	var $deleted;
-	
-	/**
-	 * Construtor do objeto
-	 */
+	var $username;
+
 	function Professor()
 	{
 		parent::Supermodel();
@@ -47,80 +32,43 @@ class Professor extends Usuario
 		$this->set_key('id');
 	}
 
-		
-	/**
-	 * Getter do campo id
-	 * @return id
-	 */
 	function get_id(){
 		return $this->id;
 	}
-	
-	/**
-	 * Setter do campo id
-	 * @param id
-	 */
 	function set_id($id){
 		$this->id = $id;
 	}
-		
-	/**
-	 * Getter do campo id_usuario
-	 * @return id_usuario
-	 */
 	function get_id_usuario(){
 		return $this->id_usuario;
 	}
-	
-	/**
-	 * Setter do campo id_usuario
-	 * @param id
-	 */
 	function set_id_usuario($id){
 		$this->id_usuario = $id;
 	}
-	
-	/**
-	 * Getter do campo telefone
-	 * @return telefone
-	 */
 	function get_telefone(){
 		return $this->telefone;
 	}
-	
-	/**
-	 * Setter do campo telefone
-	 * @param telefone
-	 */
 	function set_telefone($telefone){
 		$this->telefone = $telefone;
 	}
-	
-	/**
-	 * Getter do campo endereco
-	 * @return endereco
-	 */
 	function get_endereco(){
 		return $this->endereco;
 	}
-	
-	/**
-	 * Setter do campo endereco
-	 * @param endereco
-	 */
 	function set_endereco($endereco){
 		$this->endereco = $endereco;
 	}
-	
+	function get_username(){
+		return $this->username;
+	}
+	function set_username($username){
+		$this->username = $username;
+	}
 	function get_estudio(){
 		return '';
 	}
-	
 	function get_deleted()
 	{
 		return $this->deleted;
 	}
-	
 	function set_deleted($d)
 	{
 		if ($d != NAO) {

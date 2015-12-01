@@ -6,45 +6,21 @@ require_once('usuario.php');
  * Classe modelo Aluno
  * @author vinik
  */
-class Aluno extends Usuario
-{
+class Aluno extends Usuario {
 
-    /**
-     * Campo id
-     */
     var $id;
-    
-    /**
-     * Campo profiss�o
-     * @var string
-     */
     var $profissao;
-    
-    /**
-     * Campo telefone
-     */
     var $telefone;
-    
-    /**
-     * Campo endereco
-     */
     var $endereco;
-    
-    /**
-     * Objetivo
-     * @var string
-     */
     var $objetivos;
-    
     var $id_estudio;
-    
     var $id_usuario;
-    
     var $valor_aula;
-    
     var $deleted;
-    
-    
+    var $estudio_nome;
+    var $username;
+    var $senha;
+
     /**
      * Construtor do objeto
      */
@@ -57,104 +33,62 @@ class Aluno extends Usuario
         $this->set_key('id');
     }
 
-        
-    /**
-     * Getter do campo id
-     * @return id
-     */
     function get_id(){
         return $this->id;
     }
-    
-    /**
-     * Setter do campo id
-     * @param id
-     */
     function set_id($id){
         $this->id = $id;
     }
-    
-    /**
-     * Getter do campo telefone
-     * @return telefone
-     */
     function get_telefone(){
         return $this->telefone;
     }
-    
-    /**
-     * Setter do campo telefone
-     * @param telefone
-     */
     function set_telefone($telefone){
         $this->telefone = $telefone;
     }
-    
-    /**
-     * Getter do campo endereco
-     * @return endereco
-     */
     function get_endereco(){
         return $this->endereco;
     }
-    
-    /**
-     * Setter do campo endereco
-     * @param endereco
-     */
     function set_endereco($endereco){
         $this->endereco = $endereco;
     }
-    
     function get_profissao(){
         return $this->profissao;
     }
-    
     function set_profissao($p){
         $this->profissao = $p;
     }
-    
     function get_objetivos(){
         return $this->objetivos;
     }
-    
     function set_objetivos($o){
         $this->objetivos = $o;
     }
-    
     function get_id_estudio(){
         return $this->id_estudio;
     }
-    
     function set_id_estudio($i){
         $this->id_estudio = $i;
     }
-    
     function get_id_usuario()
     {
         return $this->id_usuario;
     }
-    
     function set_id_usuario($i)
     {
         $this->id_usuario = $i;
     }
-    
     function get_valor_aula()
     {
         return $this->valor_aula;
     }
-    
     function set_valor_aula($v)
     {
         $this->valor_aula = $v;
     }
-    
     function get_deleted()
     {
         return $this->deleted;
     }
-    
     function set_deleted($d)
     {
         if ($d != NAO) {
@@ -162,6 +96,25 @@ class Aluno extends Usuario
         }
         $this->deleted = $d;
     }
+    function set_estudio_nome($estudio_nome) {
+        $this->estudio_nome = $estudio_nome;
+    }
+    function get_estudio_nome(){
+        return $this->estudio_nome;
+    }
+    function set_senha($senha){
+        $this->senha = $senha;
+    }
+    function get_senha(){
+        return $this->senha;
+    }
+    function set_username($username){
+        $this->username = $username;
+    }
+    function get_username(){
+        return $this->username;
+    }
+
     
     function create()
     {
@@ -261,7 +214,7 @@ class Aluno extends Usuario
         
         $objs = array();
         
-        $this->db->select('a.id as id,u.nome as nome,u.id as id_usuario,username,email,a.telefone,a.endereco,data_nascimento,a.cdate,valor_aula,a.deleted as deleted,u.avatar as avatar ');
+        $this->db->select('a.id as id,u.nome as nome,u.id as id_usuario,username,email,a.telefone,a.endereco,data_nascimento,a.cdate,valor_aula,a.deleted as deleted,u.avatar as avatar, e.nome as estudio_nome');
         $this->db->join('usuario u', 'u.id = a.id_usuario');
         $this->db->join('estudio e', 'e.id = a.id_estudio');
         $this->db->where('a.deleted', NAO);
@@ -289,6 +242,7 @@ class Aluno extends Usuario
                 $aluno->set_telefone($row->telefone);
                 $aluno->set_endereco($row->endereco);
                 $aluno->set_valor_aula($row->valor_aula);
+                $aluno->set_estudio_nome($row->estudio_nome);
                 $aluno->set_data_nascimento($this->datas->mysql_para_normal($row->data_nascimento));
                 array_push($objs, $aluno);
             }

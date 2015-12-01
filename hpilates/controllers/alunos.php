@@ -18,8 +18,7 @@ class Alunos extends Supercontroller
 		$this->set_modelo('aluno');
 	}
 	
-	function index()
-	{
+	function index() {
 		$data['titulo'] = $this->lang->line('menu.alunos');
 		$aluno = $this->aluno;
 		$colecao_aluno = $aluno->search(array('order_by' => 'cdate', 'order_direction' => 'DESC', 'total' => 5));
@@ -107,12 +106,13 @@ class Alunos extends Supercontroller
 	}
 	
 	function processar($id = NULL){
-		
+
 		//recebe os dados
 		$nome = $this->input->post('nome');
 		$username = $this->input->post('username');
 		$email = $this->input->post('email');
 		$senha = $this->input->post('senha');
+
 		$data_nascimento = $this->input->post('data_nascimento');
 		
 		$data_nascimento = $this->datas->normal_para_mysql($data_nascimento);
@@ -137,6 +137,7 @@ class Alunos extends Supercontroller
 			$aluno->set_username($username);
 			$aluno->set_nivel($nivel);
 		}
+		
 		$aluno->set_nome($nome);
 		$aluno->set_senha($senha);
 		$aluno->set_data_nascimento($data_nascimento);

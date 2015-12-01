@@ -63,6 +63,8 @@ $lang['alunos.editaraluno'] = 'Editar informações do aluno';
 $lang['alunos.infoaluno'] = 'Informações do aluno';
 $lang['sucesso.alunos.remover_aluno'] = 'Aluno removido com sucesso.';
 $lang['erro.alunos.remover_aluno'] = 'Ocorreu um erro ao remover aluno.';
+$lang['alunos.coluna.estudio'] = 'Estúdio';
+$lang['alunos.coluna.acoes'] = 'Ações';
 
 //professores
 $lang['professores.novoprofessor'] = 'Novo professor';

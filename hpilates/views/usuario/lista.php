@@ -3,9 +3,8 @@
         <div class="row">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"><?php echo $this->lang->line('usuario.lista')?></h3>
                     <?php
-                        echo anchor('usuarios/novo', $this->lang->line('usuario.novo'), 'class="btn btn-primary" type="button" style="float:right;"');
+                        echo anchor('usuarios/novo', $this->lang->line('usuario.novo'), 'class="btn btn-primary" type="button"');
                     ?>
                 </div>
             <div class="box-body">
@@ -31,13 +30,12 @@
                             <td><?php echo $usuario->get_username(); ?></td>
                             <td><?php echo $usuario->get_email(); ?></td>
                             <td><?php echo $usuario->get_nivel_acesso(); ?></td>
-                            <td><?php 
-                                echo anchor('usuarios/remover/'.$usuario->get_id(), ' ', 'class="glyphicon glyphicon-remove" title="Remover"'); 
-                                ?>&nbsp;<?php
-                                echo anchor('usuarios/editar/' . $usuario->get_id(), ' ', 'class="glyphicon glyphicon-search" title="Visualizar"');
-                            ?></td>
+                            <td>
+                                <?php echo anchor('usuarios/remover/'.$usuario->get_id(), ' ', 'class="glyphicon glyphicon-remove" title="Remover"'); ?>
+                                <?php echo anchor('usuarios/editar/' . $usuario->get_id(), ' ', 'class="glyphicon glyphicon-search" title="Visualizar"'); ?>
+                            </td>
                         </tr>
-                                <?php 
+                        <?php 
                             }
                         }
                         ?>

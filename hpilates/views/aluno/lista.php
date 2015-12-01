@@ -3,9 +3,8 @@
         <div class="row">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Lista de Alunos</h3>
                     <?php
-                        echo anchor('alunos/novo', $this->lang->line('alunos.novoaluno'), 'class="btn btn-primary" type="button" style="float:right;"');
+                        echo anchor('alunos/novo', $this->lang->line('alunos.novoaluno'), 'class="btn btn-primary" type="button"');
                     ?>
                 </div>
             <div class="box-body">
@@ -16,7 +15,8 @@
                             <th>Nome</th>
                             <th>Email</th>
                             <th>Telefone</th>
-                            <th>Ações</th>
+                            <th><?php echo $this->lang->line('alunos.coluna.estudio') ?></th>
+                            <th><?php echo $this->lang->line('alunos.coluna.acoes') ?></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -29,6 +29,7 @@
                             <td><?php echo anchor('alunos/ver/' . $aluno->get_id(), $aluno->get_nome()); ?></td>
                             <td><?php echo $aluno->get_email(); ?></td>
                             <td><?php echo $aluno->get_telefone(); ?></td>
+                            <td><?php echo $aluno->get_estudio_nome(); ?></td>
                             <td><?php 
                                 echo anchor('alunos/remover/'.$aluno->get_id(), ' ', 'class="glyphicon glyphicon-remove" title="Remover"'); 
                                 ?>&nbsp;<?php

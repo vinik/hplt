@@ -29,8 +29,6 @@
 
 
 
-
-
     <script type="text/javascript" src="<?php echo base_url(); ?>assert/jQuery/jQuery-2.1.4.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-ui.min.js"></script>
     <!-- plugins -->
@@ -53,8 +51,8 @@
     
     
     <script type="text/javascript" src="<?php echo base_url().'assert/bootstrap/js/bootstrap.min.js'?>"></script>
-    <script type="text/javascript" src="<?php echo base_url().'assert/datatables/jquery.dataTables.min.js'?>"></script>
-    <script type="text/javascript" src="<?php echo base_url().'assert/datatables/dataTables.bootstrap.min.js'?>"></script>
+    <script type="text/javascript" src="<?php echo base_url().'assert/datatables/jquery.dataTables.js'?>"></script>
+    <script type="text/javascript" src="<?php echo base_url().'assert/datatables/dataTables.bootstrap.js'?>"></script>
     <script type="text/javascript" src="<?php echo base_url().'assert/slimScroll/jquery.slimscroll.min.js'?>"></script>
     <script type="text/javascript" src="<?php echo base_url().'assert/app.min.js'?>"></script>
     <?php

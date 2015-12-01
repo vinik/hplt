@@ -9,7 +9,6 @@ if(NULL != $professor){
 	$data_nascimento= $professor->get_data_nascimento();
 	$email = $professor->get_email();
 	$username = $professor->get_username();
-	$senha = $professor->get_senha();
 	$avatar = $professor->get_avatar_full();
 }
 
@@ -90,6 +89,14 @@ if(NULL != $professor){
 						</th>
 						<td>
 							<?php echo $telefone; ?>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label for="txtUsuario">Usuário</label>
+						</th>
+						<td>
+							<?php echo $username; ?>
 						</td>
 					</tr>
 					

@@ -3,9 +3,8 @@
         <div class="row">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Lista de professores</h3>
                     <?php
-                        echo anchor('professores/novo', $this->lang->line('professores.novoprofessor'), 'class="btn btn-primary" type="button" style="float:right;"');
+                        echo anchor('professores/novo', $this->lang->line('professores.novoprofessor'), 'class="btn btn-primary" type="button"');
                     ?>
                 </div>
             <div class="box-body">

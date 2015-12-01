@@ -11,32 +11,30 @@ require_once 'aluno.php';
  * @author vinik
  * campos
  * 
-CREATE TABLE `pagamentos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_aluno` int(11) NOT NULL,
-  `numero_aulas` int(11) NOT NULL,
-  `hora_aula` double NOT NULL,
-  `desconto` double NOT NULL,
-  `data_pagamento` date NOT NULL,
-  `valor` double NOT NULL,
-  `especie` int(11) DEFAULT NULL,
-  `cdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `fk_pagamento_aluno` (`id_aluno`),
-  CONSTRAINT `fk_pagamento_aluno` FOREIGN KEY (`id_aluno`) REFERENCES `aluno` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+ * CREATE TABLE `pagamentos` (
+ *   `id` int(11) NOT NULL AUTO_INCREMENT,
+ *   `id_aluno` int(11) NOT NULL,
+ *   `numero_aulas` int(11) NOT NULL,
+ *   `hora_aula` double NOT NULL,
+ *   `desconto` double NOT NULL,
+ *   `data_pagamento` date NOT NULL,
+ *   `valor` double NOT NULL,
+ *   `especie` int(11) DEFAULT NULL,
+ *   `cdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ *   PRIMARY KEY (`id`),
+ *   KEY `fk_pagamento_aluno` (`id_aluno`),
+ *   CONSTRAINT `fk_pagamento_aluno` FOREIGN KEY (`id_aluno`) REFERENCES `aluno` (`id`)
+ * ) ENGINE=InnoDB DEFAULT CHARSET=latin1
  * 
- * 
- * 
-id
-id_aluno
-numero_aulas
-hora_aula
-desconto
-data_pagamento
-valor
-especie
-cdate
+ * id
+ * id_aluno
+ * numero_aulas
+ * hora_aula
+ * desconto
+ * data_pagamento
+ * valor
+ * especie
+ * cdate
  * 
  */
 class Pagamento extends Supermodel
@@ -84,8 +82,7 @@ class Pagamento extends Supermodel
     /**
      * Construtor do objeto
      */
-    function Pagamento()
-    {
+    function Pagamento() {
         parent::Supermodel();
 
         $this->set_table_name('pagamentos');

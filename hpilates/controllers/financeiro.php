@@ -428,8 +428,7 @@ class Financeiro extends Supercontroller {
         echo '<p class="msg msg-ok">Despesa removida, ' . anchor('financeiro', 'recarregue') . ' a p&aacute;gina para refazer o c&aacute;lculo</p>';
     }
     
-    function remover_pagamento($id_pagamento)
-    {
+    function remover_pagamento($id_pagamento) {
         $pagamento = $this->pagamento;
         $pagamento->set_id($id_pagamento);
         $pagamento->retrieve();
@@ -449,9 +448,9 @@ class Financeiro extends Supercontroller {
             }
         }
         $pagamento->delete();
+
+        redirect(base_url() . 'financeiro/');
         echo '<p class="msg msg-ok">Pagamento removido, ' . anchor('financeiro', 'recarregue') . ' a p&aacute;gina para refazer o c&aacute;lculo</p>';
-        
-        
     }
     
     function lista_pagamentos($id_estudio)

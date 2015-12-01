@@ -7,7 +7,6 @@ if(NULL != $professor){
 	$endereco = $professor->get_endereco();
 	$data_nascimento= $professor->get_data_nascimento();
 	$email = $professor->get_email();
-	
 	$estudios_professor = $professor->get_estudios();
 } else {
 	$id = '';
@@ -72,10 +71,18 @@ if(NULL != $professor){
 				</tr>
 				<tr>
 					<th>
+						<label>Usuário</label>
+					</th>
+					<td>
+						<input type="text" size="60" name="username" class="input-text" value="" id="q13"  maxlength="20"/>
+					</td>
+				</tr>
+				<tr>
+					<th>
 						<label >Senha</label>
 					</th>
 					<td>
-						<input type="text" size="60" name="q13_Senha" class="input-text" value="" id="q13"  maxlength="100" maxsize="100" />
+						<input type="password" size="60" name="senha" class="input-text" value="" id="q13"  maxlength="20"/>
 					</td>
 				</tr>
 				<tr>

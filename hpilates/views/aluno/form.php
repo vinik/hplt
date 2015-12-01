@@ -31,7 +31,7 @@ if(NULL != $aluno){
 ?>
  
 
-<div id="divFormAluno" style="padding-bottom: 20px; height: 400px;">
+<div id="divFormAluno" style="padding-bottom: 20px;">
 	<?php echo form_open_multipart('alunos/processar' . $lbl_id . $id, array('id'=> 'frmAluno'));?>
 	<div id="divToolbarAluno" >
 		<?php
@@ -130,6 +130,22 @@ if(NULL != $aluno){
 					</th>
 					<td>
 						<input type="text" size="10" name="valor_aula" class="input-text" value="<?php echo $valor_aula; ?>" id="txtValorAula"  maxlength="10" maxsize="10" />
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="txtUsuario">Usuário</label>
+					</th>
+					<td>
+						<input type="text" size="60" name="username" class="input-text" value="<?php echo $username; ?>" id="txtUsuario"  maxlength="20"/>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="txtSenha">Senha</label>
+					</th>
+					<td>
+						<input type="password" size="60" name="senha" class="input-text" value="<?php echo $senha; ?>" id="txtSenha"  maxlength="20"/>
 					</td>
 				</tr>
 			</tbody>

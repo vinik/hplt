@@ -14,6 +14,7 @@ if(NULL != $aluno){
 	$username = $aluno->get_username();
 	$senha = $aluno->get_senha();
 	$valor_aula = $aluno->get_valor_aula();
+	$username = $aluno->get_username();
 	$avatar = $aluno->get_avatar_full();
 }
 
@@ -117,6 +118,16 @@ if(NULL != $aluno){
 						</th>
 						<td>
 							<?php echo $valor_aula; ?>
+						<username>
+						</get_username>
+					</tr>
+
+					<tr>
+						<th>
+							<label for="txtUsername">Usuário</label>
+						</th>
+						<td>
+							<?php echo $username; ?>
 						</td>
 					</tr>
 					

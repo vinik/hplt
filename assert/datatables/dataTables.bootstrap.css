@@ -1,6 +1,6 @@
 div.dataTables_length label {
 	font-weight: normal;
-	text-align: left;
+	text-align: right;
 	white-space: nowrap;
 }
 
@@ -9,8 +9,12 @@ div.dataTables_length select {
 	display: inline-block;
 }
 
-div.dataTables_filter {
+div.dataTables_length {
 	text-align: right;
+}
+
+div.dataTables_filter {
+    text-align: left;
 }
 
 div.dataTables_filter label {
@@ -43,8 +47,8 @@ div.dataTables_paginate ul.pagination {
 
 @media screen and (max-width: 767px) {
 	div.dataTables_wrapper > div.row > div,
-	div.dataTables_length,
 	div.dataTables_filter,
+    div.dataTables_length,
 	div.dataTables_info,
 	div.dataTables_paginate {
 		text-align: center;

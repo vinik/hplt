@@ -9,8 +9,6 @@
     $valor_total_despesas = 0;
 ?>
 
-
-
 <div id="divControleFinanceiro">
     
     <div>
@@ -99,8 +97,8 @@
                                                     <td><?php echo $pagamento->get_desconto(); ?></td>
                                                     <td><?php echo $pagamento->get_valor(); ?></td>
                                                     <td>
-                                                        <?php echo anchor('financeiro/editar/' . $pagamento->get_id(), ' ', 'class="glyphicon glyphicon-pencil"'); ?>
-                                                        <a class="glyphicon glyphicon-remove" onclick="confirmDeletePayment(<?php echo $pagamento->get_id(); ?>, <?php echo $item_estudio->get_id(); ?>);"></a>
+                                                        <?php echo anchor('financeiro/editar/' . $pagamento->get_id(), ' ', array('class' => "glyphicon glyphicon-pencil", 'title' => 'Editar')); ?>
+                                                        <?php echo anchor('financeiro/remover_pagamento/' . $pagamento->get_id(),' ', array( 'onclick' => "return confirm('Deseja realmente deletar este pagamento?')", 'class' =>"glyphicon glyphicon-remove", 'title' => 'Remover')); ?>
                                                     </td>
                                                 </tr>
                                             <?php 
@@ -111,8 +109,8 @@
                                         <tr>
                                             <td colspan="2" align="right">TOTAL</td>
                                             <td><?php echo $contador_aulas; ?></td>
-                                            <td>1</td>
-                                            <td>1</td>
+                                            <td></td>
+                                            <td></td>
                                             <td colspan="2">R$ <?php echo $valor_total_estudio; ?></td>
                                         </tr>
                                     </tfoot>
@@ -239,25 +237,22 @@
     </div>
 <?php }?>  <!-- END COUNT ESTUDIOS -->
 
-    <div id="divDialogConfirmRemoveDespesa" title="Remover despesa?">
-        <p class="msg msg-warning" style="color: black;">Esta despesa será permanentemente removida e não poderá ser recuperada. Você tem certeza?</p>
-        <input type="hidden" id="hdnIdDespesaDelete"/>
-    </div>
+<div id="divDialogConfirmRemoveDespesa" title="Remover despesa?">
+    <p class="msg msg-warning" style="color: black;">Esta despesa será permanentemente removida e não poderá ser recuperada. Você tem certeza?</p>
+    <input type="hidden" id="hdnIdDespesaDelete"/>
+</div>
 
-    <div id="divDialogConfirmRemovePayment" title="Remover pagamento?">
-        <p class="msg msg-warning" style="color: black;">Este pagamento será permanentemente removido e não poderá ser recuperado. Você tem certeza?</p>
-        <input type="hidden" id="hdnPaymentIdDelete"/>
-        <input type="hidden" id="hdnPaymentIdEstudio"/>
-        <input type="hidden" id="hdnPaymentMes" value="<?php echo $mes; ?>"/>
-        <input type="hidden" id="hdnPaymentAno" value="<?php echo $ano; ?>"/>
-    </div>
+<div id="divDialogConfirmRemovePayment" title="Remover pagamento?">
+    <p class="msg msg-warning" style="color: black;">Este pagamento será permanentemente removido e não poderá ser recuperado. Você tem certeza?</p>
+    <input type="hidden" id="hdnPaymentIdDelete"/>
+    <input type="hidden" id="hdnPaymentIdEstudio"/>
+    <input type="hidden" id="hdnPaymentMes" value="<?php echo $mes; ?>"/>
+    <input type="hidden" id="hdnPaymentAno" value="<?php echo $ano; ?>"/>
+</div>
 
-
-
-
-    <script>
-      $(function () {
-        $("#resultsTablePayment").DataTable();
-        $("#resultsTableExpense").DataTable();
-      });
-    </script>
+<script>
+  $(function () {
+    $("#resultsTablePayment").DataTable();
+    $("#resultsTableExpense").DataTable();
+  });
+</script>
