@@ -12,20 +12,20 @@
 | EXPLANATION OF VARIABLES
 | -------------------------------------------------------------------
 |
-|	['hostname'] The hostname of your database server.
-|	['username'] The username used to connect to the database
-|	['password'] The password used to connect to the database
-|	['database'] The name of the database you want to connect to
-|	['dbdriver'] The database type. ie: mysql.  Currently supported:
-				 mysql, mysqli, postgre, odbc, mssql, sqlite, oci8
-|	['dbprefix'] You can add an optional prefix, which will be added
-|				 to the table name when using the  Active Record class
-|	['pconnect'] TRUE/FALSE - Whether to use a persistent connection
-|	['db_debug'] TRUE/FALSE - Whether database errors should be displayed.
-|	['cache_on'] TRUE/FALSE - Enables/disables query caching
-|	['cachedir'] The path to the folder where cache files should be stored
-|	['char_set'] The character set used in communicating with the database
-|	['dbcollat'] The character collation used in communicating with the database
+|   ['hostname'] The hostname of your database server.
+|   ['username'] The username used to connect to the database
+|   ['password'] The password used to connect to the database
+|   ['database'] The name of the database you want to connect to
+|   ['dbdriver'] The database type. ie: mysql.  Currently supported:
+                 mysql, mysqli, postgre, odbc, mssql, sqlite, oci8
+|   ['dbprefix'] You can add an optional prefix, which will be added
+|                to the table name when using the  Active Record class
+|   ['pconnect'] TRUE/FALSE - Whether to use a persistent connection
+|   ['db_debug'] TRUE/FALSE - Whether database errors should be displayed.
+|   ['cache_on'] TRUE/FALSE - Enables/disables query caching
+|   ['cachedir'] The path to the folder where cache files should be stored
+|   ['char_set'] The character set used in communicating with the database
+|   ['dbcollat'] The character collation used in communicating with the database
 |
 | The $active_group variable lets you choose which connection group to
 | make active.  By default there is only one group (the "default" group).
@@ -35,7 +35,8 @@
 */
 
 // $active_group = "producao";
-$active_group = "desenv";
+// $active_group = "desenv";
+$active_group = "openshift";
 $active_record = TRUE;
 
 $db['default']['hostname'] = "vnix.us";
@@ -63,6 +64,19 @@ $db['desenv']['cache_on'] = FALSE;
 $db['desenv']['cachedir'] = "";
 $db['desenv']['char_set'] = "utf8";
 $db['desenv']['dbcollat'] = "utf8_general_ci";
+
+$db['openshift']['hostname'] = DB_HOST;
+$db['openshift']['username'] = DB_USER;
+$db['openshift']['password'] = DB_PASSWORD;
+$db['openshift']['database'] = DB_NAME;
+$db['openshift']['dbdriver'] = "mysql";
+$db['openshift']['dbprefix'] = "";
+$db['openshift']['pconnect'] = TRUE;
+$db['openshift']['db_debug'] = TRUE;
+$db['openshift']['cache_on'] = FALSE;
+$db['openshift']['cachedir'] = "";
+$db['openshift']['char_set'] = "utf8";
+$db['openshift']['dbcollat'] = "utf8_general_ci";
 
 
 $db['producao']['hostname'] = "pwweb2.procempa.com.br";

@@ -18,6 +18,12 @@ define('FILE_WRITE_MODE', 0666);
 define('DIR_READ_MODE', 0755);
 define('DIR_WRITE_MODE', 0777);
 
+define('DB_NAME', getenv('OPENSHIFT_APP_NAME'));
+define('DB_USER', getenv('OPENSHIFT_MYSQL_DB_USERNAME'));
+define('DB_PASSWORD', getenv('OPENSHIFT_MYSQL_DB_PASSWORD'));
+define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST') . ':' . getenv('OPENSHIFT_MYSQL_DB_PORT'));
+
+
 /*
 |--------------------------------------------------------------------------
 | File Stream Modes
