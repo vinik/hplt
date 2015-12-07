@@ -37,6 +37,7 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.hoverintent.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/mbMenu.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/mbContainer.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script> <!--ISSO AQUI FEZ A AGENDA ABRIR -->
     <script type="text/javascript" src="<?php echo base_url(); ?>js/fullcalendar.js"></script>
 
     <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.maskedinput.js"></script>

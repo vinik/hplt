@@ -80,6 +80,9 @@ $lang['erro.alunos.remover_professor'] = 'Ocorreu um erro ao remover professor.'
 $lang['estudios.novoestudio'] = 'Novo estúdio';
 $lang['estudios.editarestudio'] = 'Editar informações do estúdio';
 $lang['estudios.verestudio'] = 'Informações do estúdio';
+$lang['estudios.coluna.endereco'] = 'Endereço';
+$lang['estudios.coluna.acoes'] = 'Ações';
+
 $lang['sucesso.alunos.remover_professor'] = 'Estúdio removido com sucesso.';
 $lang['erro.alunos.remover_professor'] = 'Ocorreu um erro ao remover estúdio.';
 
@@ -94,7 +97,8 @@ $lang['usuario.delete.success'] = 'Usuário removido com sucesso.';
 $lang['configs.gerais.title'] = 'Configurações Gerais';
 $lang['configs.inicio_expediente'] = 'Expediente inicia às ';
 $lang['configs.intervalo_campo_horas'] = 'Intervalo padrão em campos de hora '; 
-$lang['configs.valor_aula_padrao'] = 'Valor padrão das aulas'; 
+$lang['configs.valor_aula_padrao'] = 'Valor padrão das aulas individuais'; 
+$lang['configs.valor_aula_padrao_dupla'] = 'Valor padrão das aulas em duplas'; 
 
 
 $lang['configs.save.success'] = 'Configurações salvas.';

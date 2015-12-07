@@ -33,19 +33,19 @@ define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST') . ':' . getenv('OPENSHIFT_MY
 |
 */
 
-define('FOPEN_READ', 							'rb');
-define('FOPEN_READ_WRITE',						'r+b');
-define('FOPEN_WRITE_CREATE_DESTRUCTIVE', 		'wb'); // truncates existing file data, use with care
-define('FOPEN_READ_WRITE_CREATE_DESTRUCTIVE', 	'w+b'); // truncates existing file data, use with care
-define('FOPEN_WRITE_CREATE', 					'ab');
-define('FOPEN_READ_WRITE_CREATE', 				'a+b');
-define('FOPEN_WRITE_CREATE_STRICT', 			'xb');
-define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
+define('FOPEN_READ',                            'rb');
+define('FOPEN_READ_WRITE',                      'r+b');
+define('FOPEN_WRITE_CREATE_DESTRUCTIVE',        'wb'); // truncates existing file data, use with care
+define('FOPEN_READ_WRITE_CREATE_DESTRUCTIVE',   'w+b'); // truncates existing file data, use with care
+define('FOPEN_WRITE_CREATE',                    'ab');
+define('FOPEN_READ_WRITE_CREATE',               'a+b');
+define('FOPEN_WRITE_CREATE_STRICT',             'xb');
+define('FOPEN_READ_WRITE_CREATE_STRICT',        'x+b');
 
 
 
 
-define('MAXIMO_RESULTADOS_BUSCA',	1000);
+define('MAXIMO_RESULTADOS_BUSCA',   1000);
 
 define('SIM', 's');
 define('NAO', 'n');
@@ -60,44 +60,45 @@ define('MESSAGE_TYPE_WARNING', 'warning');
  * N�veis de acesso
  */
 define('NIVEL_DEFAULT',        '0');
-define('NIVEL_ROOT',		'1');
-define('NIVEL_PROFESSOR',	'2');
-define('NIVEL_ALUNO',		'3');
+define('NIVEL_ROOT',        '1');
+define('NIVEL_PROFESSOR',   '2');
+define('NIVEL_ALUNO',       '3');
 
 /*
  * Tipos de repeti��o
  */
-define('TIPO_REPETICAO_DIARIO',		1);
-define('TIPO_REPETICAO_SEMANAL',	2);
-define('TIPO_REPETICAO_QUINZENAL',	3);
-define('TIPO_REPETICAO_MENSAL',	4);
+define('TIPO_REPETICAO_DIARIO',     1);
+define('TIPO_REPETICAO_SEMANAL',    2);
+define('TIPO_REPETICAO_QUINZENAL',  3);
+define('TIPO_REPETICAO_MENSAL', 4);
 
 /*
  * Formatos de data
  */
-define('FORMATO_DATA_HUMANO',		'm/d/Y');
-define('FORMATO_DATA_HUMANO_BR',	'd/m/Y');
-define('FORMATO_HORA_HUMANO',		'h:i');
-define('FORMATO_DATA_MYSQL',		'Y-m-d');
-define('FORMATO_DATAHORA_MYSQL',	'Y-m-d h:i:s');
-define('FORMATO_DATA_MYSQL_NULL',	'0000-00-00');
+define('FORMATO_DATA_HUMANO',       'm/d/Y');
+define('FORMATO_DATA_HUMANO_BR',    'd/m/Y');
+define('FORMATO_HORA_HUMANO',       'h:i');
+define('FORMATO_DATA_MYSQL',        'Y-m-d');
+define('FORMATO_DATAHORA_MYSQL',    'Y-m-d h:i:s');
+define('FORMATO_DATA_MYSQL_NULL',   '0000-00-00');
 
 /*
  * Valores default
  */
-define('INTERVALO_SELECT_PADRAO',	15);
-define('VALOR_PADRAO_AULA',	1);
+define('INTERVALO_SELECT_PADRAO',   15);
+define('VALOR_PADRAO_AULA', 1);
 
 /*
  * TIPOS DEFAULT
  */
-define('TIPO_HORAS',	1);
-define('TIPO_SELECT',	2);
-define('TIPO_VALOR',	3);
+define('TIPO_HORAS',    1);
+define('TIPO_SELECT',   2);
+define('TIPO_VALOR',    3);
 
-define('CONFIG_INICIO_EXPEDIENTE',	0);
-define('CONFIG_INTERVALO_CAMPO_HORAS',	1);
-define('CONFIG_VALOR_PADRAO_AULA',	2);
+define('CONFIG_INICIO_EXPEDIENTE',          0);
+define('CONFIG_INTERVALO_CAMPO_HORAS',      1);
+define('CONFIG_VALOR_PADRAO_AULA',          2);
+define('CONFIG_VALOR_PADRAO_AULA_DUPLA',    3);
 
 define('ESPECIE_DINHEIRO', 1);
 define('ESPECIE_CHEQUE', 2);
