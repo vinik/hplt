@@ -35,8 +35,8 @@
 */
 
 // $active_group = "producao";
-$active_group = "desenv";
-// $active_group = "openshift";
+// $active_group = "desenv";
+$active_group = "openshift";
 $active_record = TRUE;
 
 $db['default']['hostname'] = "vnix.us";
