@@ -1,7 +1,4 @@
-<?php
-?>
 <table class="list">
-
 	<thead>
 		<tr>
 			<th width="20"></th>
@@ -37,7 +34,13 @@
 				?>
 			</td>
 			<td id="tdValor<?php echo $evento_pago->get_id(); ?>">
-				<?php echo $aluno->get_valor_aula(); ?>
+				<?php
+				if ('n' == $evento_pago->get_iddupla()) {
+					echo $valor_individual;
+				} else {
+					echo $valor_dupla;
+				}
+				?>
 			</td>
 		</tr>
 				<?php
@@ -70,7 +73,13 @@
 				?>
 			</td>
 			<td id="tdValor<?php echo $evento->get_id(); ?>">
-				<?php echo $aluno->get_valor_aula(); ?>
+				<?php
+				if ('n' == $evento->get_iddupla()) {
+					echo $valor_individual;
+				} else {
+					echo $valor_dupla;
+				}
+				?>
 			</td>
 		</tr>
 				<?php

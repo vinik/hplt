@@ -17,14 +17,14 @@ if(NULL != $professor){
 <div id="divViewerProfessor" >
 	<div id="divToolbarProfessor" >
 		<?php
-		echo anchor('professores/novo', 'Novo', 'class="BUTTON_NEW_FULL"');
-		?>
-		<?php
-		echo anchor('professores/editar/'.$professor->get_id(), 'Editar', 'class="BUTTON_EDIT_FULL"');
-		?>
-		<?php
-		echo anchor('professores/agenda/'.$professor->get_id(), 'Agenda', 'class="BUTTON"');
-		?>
+            echo anchor('professores/novo', $this->lang->line('novo'), 'class="btn btn-primary" type="button"');
+        ?>
+        <?php
+            echo anchor('professores/editar/'.$professor->get_id(), $this->lang->line('editar'), 'class="btn btn-primary" type="button"');
+        ?>
+        <?php
+            echo anchor('professores/agenda/'.$professor->get_id(), $this->lang->line('agenda'), 'class="btn btn-primary" type="button"');
+        ?>
 	</div>
 	<div id="divViewerProfessorLeft" class="col-50">
 		

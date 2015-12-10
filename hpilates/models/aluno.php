@@ -125,16 +125,16 @@ class Aluno extends Usuario {
         $dados_usuario['data_nascimento'] = $this->get_data_nascimento();
         $dados_usuario['nivel'] = NIVEL_ALUNO;
         $dados_usuario['avatar'] = NULL;
-        
+
         $dados_aluno['endereco'] = $this->get_endereco();
         $dados_aluno['telefone'] = $this->get_telefone();
         $dados_aluno['profissao'] = $this->get_profissao();
         $dados_aluno['id_estudio'] = $this->get_id_estudio();
         $dados_aluno['objetivos'] = $this->get_objetivos();
         $dados_aluno['valor_aula'] = $this->get_valor_aula();
-        
+
         $dados_aluno['deleted'] = NAO;
-        
+
         if($this->cdate){
             $stmt = '$dados_usuario[$this->date_field] = $this->get_'.$this->date_field.'();';
             eval($stmt);
@@ -191,7 +191,9 @@ class Aluno extends Usuario {
     }
     
     function search($params = false){
-        $order_by = $this->get_key();
+        // $order_by = $this->get_key();
+        //Sobrescrevendo a busca para trazer ordenação do aluno SEMPRE por nome alfabetico
+        $order_by = 'u.nome';
         $order_direction = 'ASC';
         $inicial = 0;
         $total = MAXIMO_RESULTADOS_BUSCA;
@@ -209,7 +211,6 @@ class Aluno extends Usuario {
             if(isset($params['total'])){
                 $total = $params['total'];
             }
-                
         }
         
         $objs = array();
@@ -222,7 +223,6 @@ class Aluno extends Usuario {
         if (NULL != $this->get_id_estudio()) {
             $this->db->where('a.id_estudio', $this->get_id_estudio());
         }
-        
         
         $this->db->distinct($this->key);
         $this->db->order_by($order_by, $order_direction);

@@ -52,13 +52,18 @@ $lang['agenda.tipoevento.diario'] = 'Diariamente';
 $lang['agenda.tipoevento.semanal'] = 'Semanalmente';
 $lang['agenda.tipoevento.quinzenal'] = 'Quinzenalmente';
 $lang['agenda.tipoevento.mensal'] = 'Mensalmente';
+$lang['agenda.novo_evento'] = 'Novo Evento';
 $lang['sucesso.agenda.remover_evento'] = 'Evento removido com sucesso.';
 $lang['erro.agenda.remover_evento'] = 'Ocorreu um erro ao remover evento.';
 
 $lang['novo'] = 'Novo';
+$lang['editar'] = 'Editar';
+$lang['remover'] = 'Remover';
+$lang['agenda'] = 'Agenda';
 
 //alunos
 $lang['alunos.novoaluno'] = 'Novo aluno';
+$lang['alunos.editaraluno_simple'] = 'Editar aluno';
 $lang['alunos.editaraluno'] = 'Editar informações do aluno';
 $lang['alunos.infoaluno'] = 'Informações do aluno';
 $lang['sucesso.alunos.remover_aluno'] = 'Aluno removido com sucesso.';
@@ -75,13 +80,15 @@ $lang['erro.professores.atualizaprofessor'] = 'Ocorreu um erro ao atualizar prof
 $lang['sucesso.alunos.remover_professor'] = 'Professor removido com sucesso.';
 $lang['erro.alunos.remover_professor'] = 'Ocorreu um erro ao remover professor.';
 
-
 //estúdios
 $lang['estudios.novoestudio'] = 'Novo estúdio';
 $lang['estudios.editarestudio'] = 'Editar informações do estúdio';
 $lang['estudios.verestudio'] = 'Informações do estúdio';
 $lang['estudios.coluna.endereco'] = 'Endereço';
 $lang['estudios.coluna.acoes'] = 'Ações';
+$lang['estudios.form.nome'] = 'Nome';
+$lang['estudios.form.endereco'] = 'Endereço';
+$lang['estudios.form.telefone'] = 'Telefone';
 
 $lang['sucesso.alunos.remover_professor'] = 'Estúdio removido com sucesso.';
 $lang['erro.alunos.remover_professor'] = 'Ocorreu um erro ao remover estúdio.';
@@ -100,6 +107,16 @@ $lang['configs.intervalo_campo_horas'] = 'Intervalo padrão em campos de hora ';
 $lang['configs.valor_aula_padrao'] = 'Valor padrão das aulas individuais'; 
 $lang['configs.valor_aula_padrao_dupla'] = 'Valor padrão das aulas em duplas'; 
 
-
 $lang['configs.save.success'] = 'Configurações salvas.';
 
+// FORM
+
+$lang['form.informacoes_pessoais'] = 'Informações Pessoais';
+$lang['form.dados_acesso'] = 'Dados de Acesso';
+$lang['form.nome'] = 'Nome';
+$lang['form.email'] = 'Email';
+$lang['form.data_nascimento'] = 'Data Nascimento';
+$lang['form.username'] = 'Username';
+$lang['form.password'] = 'Senha';
+$lang['form.nivel_acesso'] = 'Nível Acesso';
+$lang['form.avatar'] = 'Avatar';

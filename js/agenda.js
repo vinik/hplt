@@ -19,7 +19,7 @@ function agenda(){
         onIconize:function(o){},
         effectDuration:200,
         onRestore: function(){
-        	$('#containerBox').mb_centerOnWindow(false);
+        	$('#containerBox').mb_centerOnWindow(true);
         }
       });
 	
@@ -52,7 +52,7 @@ function agenda(){
 			}
 		}
 	});
-	
+
 	$("#divDialogEventoViewer").dialog({
 		autoOpen: false,
 		resizable: false,

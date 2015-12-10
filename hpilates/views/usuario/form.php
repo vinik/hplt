@@ -69,12 +69,12 @@ $niveis = array(
 		
 	</ul>
 	<fieldset id="divFormInfo">
-		<legend>Informações pessoais</legend>
+		<legend><?php echo $this->lang->line('form.informacoes_pessoais') ?></legend>
 		<table>
 			<tbody>
 				<tr>
 					<th>
-						<label>Nome</label>
+						<label><?php echo $this->lang->line('form.nome') ?></label>
 					</th>
 					<td>
 						<input type="text" size="60" name="nome" class="input-text" value="<?php echo $nome; ?>" id="txtNome"  maxlength="100" maxsize="100" />
@@ -82,7 +82,7 @@ $niveis = array(
 				</tr>
 				<tr>
 					<th>
-						<label>Email</label>
+						<label><?php echo $this->lang->line('form.email') ?></label>
 					</th>
 					<td>
 						<input type="text" size="60" name="email" class="input-text" value="<?php echo $email; ?>" id="txtNome"  maxlength="100" maxsize="100" />
@@ -90,7 +90,7 @@ $niveis = array(
 				</tr>
 				<tr>
 					<th>
-						<label>Data de nascimento</label>
+						<label><?php echo $this->lang->line('form.data_nascimento') ?></label>
 					</th>
 					<td>
 						<input type="text" size="60" name="data_nascimento" class="input-text" value="<?php echo $data_nascimento; ?>" id="txtDataNascimento"  maxlength="100" maxsize="100" />
@@ -100,12 +100,12 @@ $niveis = array(
 		</table>
 	</fieldset>
 	<fieldset id="divFormSenha">
-		<legend>Dados de acesso</legend>
+		<legend><?php echo $this->lang->line('form.dados_acesso') ?></legend>
 		<table>
 			<tbody>
 				<tr>
 					<th>
-						<label>Username</label>
+						<label><?php echo $this->lang->line('form.username') ?></label>
 					</th>
 					<td>
 						<input type="text" size="60" name="username" class="input-text" value="<?php echo $username; ?>" id="txtUsername"  maxlength="100" maxsize="100" />
@@ -113,7 +113,7 @@ $niveis = array(
 				</tr>
 				<tr>
 					<th>
-						<label>Senha</label>
+						<label><?php echo $this->lang->line('form.password') ?></label>
 					</th>
 					<td>
 						<input type="text" size="60" name="senha" class="input-text" value="<?php echo $senha; ?>" id="txtSenha"  maxlength="100" maxsize="100" />
@@ -121,7 +121,7 @@ $niveis = array(
 				</tr>
 				<tr>
 					<th>
-						<label>Nível de acesso</label>
+						<label><?php echo $this->lang->line('form.nivel_acesso') ?></label>
 					</th>
 					<td>
 						<?php echo form_dropdown('nivel', $niveis, $nivel, 'class="input-text"'); ?>
@@ -131,9 +131,9 @@ $niveis = array(
 		</table>
 	</fieldset>
 	<fieldset id="divFormAvatar">
-		<legend>Avatar</legend>
+		<legend><?php echo $this->lang->line('form.avatar') ?></legend>
 		<ul>
-		  <li><label>Avatar</label> N/A</li>
+		  <li><label><?php echo $this->lang->line('form.avatar') ?></label> N/A</li>
 		</ul>
 	</fieldset>
 </div>

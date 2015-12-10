@@ -35,8 +35,8 @@ if(NULL != $aluno){
 	<?php echo form_open_multipart('alunos/processar' . $lbl_id . $id, array('id'=> 'frmAluno'));?>
 	<div id="divToolbarAluno" >
 		<?php
-		echo anchor('alunos/novo', 'Novo aluno', 'class="BUTTON_NEW_FULL"');
-		?>
+            echo anchor('alunos/novo', $this->lang->line('alunos.novoaluno'), 'class="btn btn-primary" type="button"');
+        ?>
 	</div>
 	
 			

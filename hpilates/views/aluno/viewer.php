@@ -23,11 +23,11 @@ if(NULL != $aluno){
 <div id="divViewerAluno">
 	<div id="divToolbarAluno">
 		<?php
-		echo anchor('alunos/novo', 'Novo aluno', 'class="BUTTON_NEW_FULL"');
-		?>
-		<?php
-		echo anchor('alunos/editar/'.$aluno->get_id(), 'Editar aluno', 'class="BUTTON_EDIT_FULL"');
-		?>
+            echo anchor('alunos/novo', $this->lang->line('novo'), 'class="btn btn-primary" type="button"');
+        ?>
+        <?php
+            echo anchor('alunos/editar/'.$aluno->get_id(), $this->lang->line('editar'), 'class="btn btn-primary" type="button"');
+        ?>
 	</div>
 	<div id="divViewerAlunoLeft"  class="col-50">
 		

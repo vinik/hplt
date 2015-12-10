@@ -94,6 +94,7 @@ define('VALOR_PADRAO_AULA', 1);
 define('TIPO_HORAS',    1);
 define('TIPO_SELECT',   2);
 define('TIPO_VALOR',    3);
+define('TIPO_VALOR_DUPLA',    4);
 
 define('CONFIG_INICIO_EXPEDIENTE',          0);
 define('CONFIG_INTERVALO_CAMPO_HORAS',      1);

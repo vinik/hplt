@@ -144,8 +144,20 @@ class Financeiro extends Supercontroller {
         $aluno->retrieve();
         
         $data['aluno'] = $aluno;
-        
+
+        // Busca valor das aulas inviduais da configuração
+        $configs = $this->vnix_config;
+        $valoresAula = $configs->get_valores_aula();
+        $data['valor_individual'] = $valoresAula[0]->get_valor();
+        $data['valor_dupla'] = $valoresAula[1]->get_valor();
+
         if($aluno->get_nome()){
+
+            if ($aluno->get_valor_aula() != 0){
+                $data['valor_individual'] = $aluno->get_valor_aula();
+                $data['valor_dupla'] = $aluno->get_valor_aula();
+            }
+
             $lista_eventos = array();
             
             $evento = $this->evento;
@@ -172,20 +184,13 @@ class Financeiro extends Supercontroller {
                     $evento2->set_id_pagamento_aluno2($pagamento->get_id());
                     
                     $lista_eventos_pagos = $evento2->search();
-
                 }
-                
                 $data['lista_eventos_pagos'] = $lista_eventos_pagos;
-                
             }
-            
             $data['lista_eventos'] = $lista_eventos;
-            
         }
-        
+
         $this->load->view('financeiro/aulas_em_aberto', $data);
-        
-        
     }
     
     function processar($id_pagamento = NULL)

@@ -168,7 +168,7 @@ class Estudio extends Supermodel
 	function search()
 	{
 		$this->db->where('deleted', NAO);
-		return parent::search();
+		return parent::search(array('order_by' => 'nome'));
 	}
 	
 	function get_professores()

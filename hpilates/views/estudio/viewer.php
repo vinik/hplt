@@ -15,18 +15,18 @@ if(NULL != $estudio){
 ?>
 
 <div id="divToolbarEstudio">
-			<?php
-			echo anchor('estudios/novo', 'Novo estúdio', 'class="BUTTON_NEW_FULL"');
-			?>
-			<?php
-			echo anchor('estudios/editar/' . $estudio->get_id(), 'Editar estúdio', 'class="BUTTON_EDIT_FULL"');
-			?>
-			<?php
-			echo anchor('estudios/remover/' . $estudio->get_id(), 'Remover estúdio', 'class="BUTTON_REMOVE_FULL"');
-			?>
-			<?php
-			echo anchor('agenda/agenda_estudio/' . $estudio->get_id(), 'Agenda', 'class="BUTTON"');
-			?>
+		<?php
+            echo anchor('estudios/novo', $this->lang->line('novo'), 'class="btn btn-primary" type="button"');
+        ?>
+        <?php
+            echo anchor('estudios/editar/'.$estudio->get_id(), $this->lang->line('editar'), 'class="btn btn-primary" type="button"');
+        ?>
+        <?php
+            echo anchor('estudios/remover/'.$estudio->get_id(), $this->lang->line('remover'), 'class="btn btn-primary" type="button"');
+        ?>
+        <?php
+            echo anchor('agenda/agenda_estudio/'.$estudio->get_id(), $this->lang->line('agenda'), 'class="btn btn-primary" type="button"');
+        ?>
 </div>
 
 <div id="divLeft" class="col-50">

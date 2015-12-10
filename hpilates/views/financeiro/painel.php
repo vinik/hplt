@@ -43,6 +43,7 @@
                 $pagamentos = $pagamento->busca_mes($mes, $ano, $item_estudio->get_id());
                 $despesas = $despesa->busca_mes($mes, $ano, $item_estudio->get_id());
         ?>
+
             <div id="abaEstudio<?php echo $item_estudio->get_id();?>" style="margin: 20px;">
 
                 <!-- CONTAINER PAGAMENTOS -->
@@ -51,7 +52,7 @@
 
                     <div>
                         <?php
-                        echo anchor('financeiro/novo', $this->lang->line('financeiro.nova_transacao'), 'class="btn btn-primary" type="button" style="float:right;"');
+                        echo anchor('financeiro/novo', $this->lang->line('financeiro.nova_transacao'), 'class="btn btn-primary" style="float:right; color: white"');
                         ?>
                     </div>
                     <BR></BR>
@@ -133,7 +134,7 @@
                     <h2>Despesas</h2>
                     
                     <div id="divToolbarDespesas" >
-                        <?php echo anchor('financeiro/nova_despesa', $this->lang->line('financeiro.nova_despesa'), 'class="btn btn-primary" type="button" style="float:right;"'); ?>
+                        <?php echo anchor('financeiro/nova_despesa', $this->lang->line('financeiro.nova_despesa'), 'class="btn btn-primary" style="float:right; color: white"'); ?>
                     </div>
 
                     <BR></BR>

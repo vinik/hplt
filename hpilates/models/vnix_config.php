@@ -194,7 +194,7 @@ class Vnix_config extends Supermodel
             CONFIG_VALOR_PADRAO_AULA_DUPLA  =>  array(
                 'ordem' =>  4,
                 'nome'  =>  'valor_padrao_aula_dupla',
-                'tipo'  =>  TIPO_VALOR,
+                'tipo'  =>  TIPO_VALOR_DUPLA,
                 'valor' =>  VALOR_PADRAO_AULA
             )
         
@@ -222,7 +222,32 @@ class Vnix_config extends Supermodel
         
         return true;
     }*/
-    
-        
 
+
+    function get_valores_aula(){
+        $objs = array();
+
+        $inicial = 0;
+        $total = MAXIMO_RESULTADOS_BUSCA;
+        
+        $this->db->where_in('tipo', array(3,4));
+        
+        $query = $this->db->get($this->table_name, $total, $inicial);
+
+        if($query->num_rows() > 0){
+            foreach ($query->result() as $row)
+            {
+                $config = new Vnix_config();
+                $config->set_id($row->id);
+                $config->set_tipo($row->tipo);
+                $config->set_valor($row->valor);
+                $config->set_ordem($row->ordem);
+                array_push($objs, $config);
+            }
+        }
+        
+        $query->free_result();
+        
+        return $objs;
+    }
 }

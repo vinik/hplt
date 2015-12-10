@@ -26,7 +26,7 @@ if(NULL != $estudio){
 			<tbody>
 				<tr>
 					<th>
-						<label>Nome</label>
+						<label><?php echo $this->lang->line('estudios.form.nome') ?></label>
 					</th>
 					<td>
 						<input type="text" size="60" name="nome" class="input-text" value="<?php echo $nome; ?>" id="txtNome"  maxlength="100" maxsize="100" />
@@ -34,7 +34,7 @@ if(NULL != $estudio){
 				</tr>
 				<tr>
 					<th>
-						<label >Endereço</label>
+						<label><?php echo $this->lang->line('estudios.form.endereco') ?></label>
 					</th>
 					<td>
 						<input type="text" size="60" name="endereco" class="input-text" value="<?php echo $endereco; ?>" id="q10"  maxlength="100" maxsize="100" />
@@ -42,7 +42,7 @@ if(NULL != $estudio){
 				</tr>
 				<tr>
 					<th>
-						<label >Telefone</label>
+						<label><?php echo $this->lang->line('estudios.form.telefone') ?></label>
 					</th>
 					<td>
 						<input type="text" size="60" name="telefone" class="input-text" value="<?php echo $telefone; ?>" id="q11"  maxlength="100" maxsize="100" />

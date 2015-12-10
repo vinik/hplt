@@ -16,8 +16,7 @@ class Agenda extends Supercontroller {
         $this->set_modelo('evento');
     }
     
-    function index()
-    {
+    function index() {
         redirect('agenda/agenda_estudio', 'refresh');
         $this->add_script_src('agenda');
         
@@ -29,17 +28,15 @@ class Agenda extends Supercontroller {
         $aluno = $this->aluno;
         
         $estudio = $this->estudio;
-        $colecao_estudio = $estudio->search();
+        $colecao_estudio = $estudio->search(array('order_by' => 'nome'));
         $data['estudios'] = $colecao_estudio;
         
-        
-        
         $aluno = $this->aluno;
-        $colecao_aluno = $aluno->search();
+        $colecao_aluno = $aluno->search(array('order_by' => 'u.nome'));
         $data['alunos'] = $colecao_aluno;
         
         $professor = $this->professor;
-        $colecao_professor = $professor->search();
+        $colecao_professor = $professor->search(array('order_by' => 'u.nome'));
         $data['professores'] = $colecao_professor;
         
         $this->visao('agenda/painel', $data);

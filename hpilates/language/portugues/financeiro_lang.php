@@ -16,8 +16,10 @@ $lang['financeiro.form.pagamento.data_pagamento'] = 'Data';
 $lang['financeiro.form.total_aulas'] = 'Aulas';
 $lang['financeiro.aulas.data'] = 'Data';
 $lang['financeiro.aulas.dupla'] = 'Tipo (dupla/indv)';
+
 $lang['financeiro.aulas.em_dupla'] = 'dupla';
 $lang['financeiro.aulas.individual'] = 'individual';
+
 $lang['financeiro.aulas.valor'] = 'Hora/aula R$';
 
 $lang['financeiro.form_despesa.title'] = 'Nova despesa';
