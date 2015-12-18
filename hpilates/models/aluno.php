@@ -256,7 +256,9 @@ class Aluno extends Usuario {
     function update(){
         $dados_usuario['username'] = $this->get_username();
         $dados_usuario['email'] = $this->get_email();
-        $dados_usuario['senha'] = $this->get_senha();
+        if ($this->get_senha() !== null && $this->get_senha() !== ''){
+            $dados_usuario['senha'] = $this->get_senha();
+        }
         $dados_usuario['nome'] = $this->get_nome();
         $dados_usuario['data_nascimento'] = $this->get_data_nascimento();
         $dados_usuario['nivel'] = $this->get_nivel();
@@ -265,6 +267,7 @@ class Aluno extends Usuario {
         $dados_aluno['endereco'] = $this->get_endereco();
         $dados_aluno['telefone'] = $this->get_telefone();
         $dados_aluno['valor_aula'] = $this->get_valor_aula();
+        $dados_aluno['objetivos'] = $this->get_objetivos();
         $dados_aluno['deleted'] = $this->get_deleted();
         
         $this->db->where('id', $this->get_id_usuario());

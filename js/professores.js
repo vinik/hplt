@@ -3,14 +3,6 @@ $(document).ready(function(){
 	viewer_professor();
 });
 
-function form_professor(){
-	if($('#frmProfessor').length > 0){
-		$('#divProfessorEstudios').buttonset();
-		
-		
-	}
-}
-
 function viewer_professor(){
 	if($('#divViewerProfessor').length > 0){
 		$('#btnAddFoto').button({

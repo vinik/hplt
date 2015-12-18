@@ -96,13 +96,17 @@ if(NULL != $professor){
 							<div id="divProfessorEstudios">
 								<?php 
 								foreach ($estudios as $item_estudio) {
-									if (in_array($item_estudio->get_id(), $estudios_professor)) {
+
+									$estudioId = $item_estudio->get_id();
+
+									if (in_array($estudioId, $estudios_professor)) {
 										$checked = ' checked="checked" ';
 									} else {
 										$checked = '';
 									}
 									?>
-									<input type="checkbox" name="estudio[]" id="cbEstudio<?php echo $item_estudio->get_id(); ?>" value="<?php echo $item_estudio->get_id(); ?>" <?php echo $checked; ?>/><label for="cbEstudio<?php echo $item_estudio->get_id(); ?>"><?php echo $item_estudio->get_nome(); ?></label>
+									<input type="checkbox" name="estudio[]" id="cbEstudio<?php echo $estudioId; ?>" value="<?php echo $estudioId; ?>"  <?php echo $checked; ?>/>
+									<label for="cbEstudio<?php echo $estudioId; ?>"><?php echo $item_estudio->get_nome(); ?></label>
 									<?php 
 								}
 								?>

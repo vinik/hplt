@@ -383,7 +383,7 @@ class Agenda extends Supercontroller {
             $estudio->retrieve();
             $colecao_estudio = array(0 => $estudio);
         }
-        
+
         $data['estudios'] = $colecao_estudio;
         
         if(FALSE === $id_estudio){

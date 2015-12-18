@@ -18,11 +18,12 @@
     <link type="text/css" href="<?php echo base_url(); ?>css/fullcalendar2.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>css/framework.css" type="text/css">
     <link type="text/css" href="<?php echo base_url(); ?>css/mbContainer.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo base_url(); ?>css/jquery-ui-datepicker.css" rel="stylesheet" />
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="<?php echo base_url().'assert/bootstrap/css/bootstrap.min.css'?>">
+    <link rel="stylesheet" href="<?php echo base_url().'assert/bootstrap/css/bootstrap.css'?>">
     <link rel="stylesheet" href="<?php echo base_url().'assert/datatables/dataTables.bootstrap.css'?>">
     <link rel="stylesheet" href="<?php echo base_url().'assert/AdminLTE.min.css'?>">
     <link rel="stylesheet" href="<?php echo base_url().'assert/skins/_all-skins.min.css'?>">

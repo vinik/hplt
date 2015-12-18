@@ -5,6 +5,7 @@ require_once('supercontroller.php');
 class Financeiro extends Supercontroller {
     
     protected $nome_controller = 'financeiro';
+    private $translateMonth = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
     
     function Financeiro() {
         parent::Supercontroller();
@@ -26,6 +27,7 @@ class Financeiro extends Supercontroller {
     }
     
     function index() {
+
         $data['titulo'] = $this->lang->line('menu.financeiro');
         
         $pagamento = $this->pagamento;
@@ -38,6 +40,8 @@ class Financeiro extends Supercontroller {
         $year = intval(date('Y'));
         $data['mes'] = $month;
         $data['ano'] = $year;
+
+        $data['descricao_data'] = $this->translateMonth[$month - 1] . ' ' . $year;
         
         $estudio = $this->estudio;
         $colecao_estudios = array();
@@ -58,7 +62,7 @@ class Financeiro extends Supercontroller {
     }
     
     function painel($mes, $ano){
-        
+
         $mes = intval($mes);
         $ano = intval($ano);
         
@@ -72,6 +76,8 @@ class Financeiro extends Supercontroller {
         
         $data['mes'] = $mes;
         $data['ano'] = $ano;
+
+        $data['descricao_data'] = $this->translateMonth[$mes -1] . ' ' . $ano;
         
         $estudio = $this->estudio;
         $colecao_estudios = array();

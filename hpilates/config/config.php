@@ -12,23 +12,13 @@
 |	http://example.com/
 |
 */
-// $config['base_url']	= "http://www.hpilates.com/sistema";
+
 // $config['base_url']	= "http://localhost/new_hpilates";
 $config['base_url'] = "http://hplt-eduadok.rhcloud.com";
 
-/*
-|--------------------------------------------------------------------------
-| Index File
-|--------------------------------------------------------------------------
-|
-| Typically this will be your index.php file, unless you've renamed it to
-| something else. If you are using mod_rewrite to remove the page set this
-| variable so that it is blank.
-|
-*/
-$config['index_page'] = "index.php";
-// $config['index_page'] = '';
 
+
+$config['index_page'] = "index.php";
 /*
 |--------------------------------------------------------------------------
 | URI PROTOCOL

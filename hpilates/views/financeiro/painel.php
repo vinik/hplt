@@ -1,3 +1,5 @@
+
+
 <?php
 
     $mes_anterior = $this->datas->mes_anterior($mes, $ano, 'm');
@@ -11,19 +13,18 @@
 
 <div id="divControleFinanceiro">
     
-    <div>
-        
-        <span id="toolbar" class="ui-widget-header ui-corner-all" style="padding: 10px 4px;">
+    <!-- <div>
+       <span id="toolbar" class="ui-widget-header ui-corner-all" style="padding: 10px 4px;">
             <a class="glyphicon glyphicon-arrow-left" href="<?php echo site_url('financeiro/painel/' . ($mes_anterior) . '/' . ($ano_anterior)); ?>" id="btnVoltar"></a>
             <?php echo $mes; ?> - <?php echo $ano; ?>
             <a class="glyphicon glyphicon-arrow-right"href="<?php echo site_url('financeiro/painel/' . ($proximo_mes) . '/' . ($proximo_ano)); ?>" id="btnAvancar"></a>
             <?php echo anchor('financeiro', 'Hoje', 'id="btnFinanceiroHoje" class="BUTTON"'); ?>
         </span>
-        
+    <div> -->
+        <label for="startDate">Data competência </label>
+        <input name="startDate" id="startDate" class="date-picker" value="<?php echo $descricao_data?>"/>
     </div>
-    
 </div>
-<BR></BR>
 
 <?php if (count($estudios)) { ?>
     
@@ -52,7 +53,7 @@
 
                     <div>
                         <?php
-                        echo anchor('financeiro/novo', $this->lang->line('financeiro.nova_transacao'), 'class="btn btn-primary" style="float:right; color: white"');
+                        echo anchor('financeiro/novo', $this->lang->line('financeiro.nova_transacao'), 'class="btn btn-primary" style="float:left; color: white"');
                         ?>
                     </div>
                     <BR></BR>
@@ -134,7 +135,7 @@
                     <h2>Despesas</h2>
                     
                     <div id="divToolbarDespesas" >
-                        <?php echo anchor('financeiro/nova_despesa', $this->lang->line('financeiro.nova_despesa'), 'class="btn btn-primary" style="float:right; color: white"'); ?>
+                        <?php echo anchor('financeiro/nova_despesa', $this->lang->line('financeiro.nova_despesa'), 'class="btn btn-primary" style="float:left; color: white"'); ?>
                     </div>
 
                     <BR></BR>
@@ -251,9 +252,62 @@
     <input type="hidden" id="hdnPaymentAno" value="<?php echo $ano; ?>"/>
 </div>
 
+
+<style>
+.ui-datepicker-calendar {
+    display: none;
+    }
+.ui-datepicker-month {
+    color:gray;
+}
+.ui-datepicker-year {
+    color:gray;
+}
+/*button.ui-datepicker-close {
+    display: none;
+}*/
+button.ui-datepicker-current {
+    display: none;
+}​
+
+</style>
 <script>
   $(function () {
     $("#resultsTablePayment").DataTable();
     $("#resultsTableExpense").DataTable();
+
+    $('.date-picker').datepicker({
+        closeText: 'Buscar',
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+        dateFormat: 'MM yy',
+        onClose: function(dateText, inst) {
+            // Mostra na tela
+            var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+            var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+            $(this).datepicker('setDate', new Date(year, month, 1));
+
+            var currentMonth = "<?php echo $mes;?>"
+            var currentYear = "<?php echo $ano;?>"
+
+            // Para setar a data no datePicker deverá ser 
+            month = parseInt(month)+1;
+
+            if (parseInt(currentMonth) != parseInt(month) || parseInt(currentYear) != parseInt(year)) {
+                // Envia request se o mês e o ano selecionado são diferentes do atual
+                var url = "<?php echo site_url('financeiro/painel/');?>" + '/' + month + '/' + year;
+                // Cria um form fictício para enviar request
+                var form = $('<form action="' + url + '" method="post">' +
+                  '<input type="text" name="api_url" value="123" />' +
+                  '</form>');
+                $('body').append(form);
+                form.submit();
+            }
+        }
+    });
   });
 </script>
+
