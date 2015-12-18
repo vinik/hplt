@@ -132,7 +132,6 @@ class Alunos extends Supercontroller
 			$aluno->retrieve();
 		} else {//criação
 			$aluno->set_email($email);
-			$aluno->set_username($username);
 		}
 		
 		$aluno->set_nivel(NIVEL_ALUNO);
@@ -140,6 +139,10 @@ class Alunos extends Supercontroller
 
 		if ($senha !== null && $senha !== '') {
 			$aluno->set_senha($senha);
+		}
+
+		if ($username !== null && $username !== '') {
+			$aluno->set_username($username);
 		}
 
 		$aluno->set_data_nascimento($data_nascimento);
