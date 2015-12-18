@@ -156,7 +156,7 @@ class Aluno extends Usuario {
     function retrieve($by_user = FALSE){
         
         
-        $this->db->select('a.id as id,u.nome as nome,u.id as id_usuario,username,email,telefone,endereco,data_nascimento,id_estudio,objetivos,profissao,valor_aula,a.deleted as deleted,u.avatar as avatar ');
+        $this->db->select('a.id as id,u.nome as nome,u.id as id_usuario,username,email,telefone,endereco,data_nascimento,id_estudio,objetivos,profissao,valor_aula,a.deleted as deleted,u.avatar as avatar, u.senha');
         $this->db->join('usuario u', 'u.id = a.id_usuario');
         $this->db->from($this->table_name.' a');
         if (!$by_user) {
@@ -182,6 +182,7 @@ class Aluno extends Usuario {
             $this->set_valor_aula(          $row[0]->valor_aula);
             $this->set_deleted(             $row[0]->deleted);
             $this->set_data_nascimento(     $this->datas->mysql_para_normal($row[0]->data_nascimento));
+            $this->set_senha(               $row[0]->senha);
         }
         
         $query->free_result();

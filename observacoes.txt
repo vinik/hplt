@@ -1,0 +1,14 @@
+- Para commit no open shift:
+
+git remote
+git push openshift
+git push origin (github)
+
+- Para publicação:
+
+rhc deploy fixed_bugs -a hplt
+
+- Mapear porta MySQL openshift para maquina local
+
+rhc port-forward -a <app> &
+rhc app show -a <app>

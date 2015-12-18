@@ -145,8 +145,7 @@ if(NULL != $aluno){
 						<label for="txtSenha">Senha</label>
 					</th>
 					<td>
-						<input type="password" size="60" name="senha" class="input-text" value="<?php echo $senha; ?>" id="txtSenha"  maxlength="20"/>
-						<label for="obs">Atenção! A senha só será atualizada se o campo for populado.</label>
+						<input type="text" size="60" name="senha" class="input-text" value="<?php echo $senha; ?>" id="txtSenha"  maxlength="20"/>
 					</td>
 				</tr>
 			</tbody>

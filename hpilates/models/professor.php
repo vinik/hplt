@@ -110,7 +110,7 @@ class Professor extends Usuario
     
     function retrieve(){
         
-        $this->db->select('p.id as id, u.nome as nome, u.id as id_usuario, username, email, telefone, endereco, data_nascimento, p.deleted as deleted,u.avatar as avatar ');
+        $this->db->select('p.id as id, u.nome as nome, u.id as id_usuario, username, email, telefone, endereco, data_nascimento, p.deleted as deleted,u.avatar as avatar, u.senha');
         $this->db->join('usuario u', 'u.id = p.id_usuario');
         $this->db->from($this->table_name.' p');
         
@@ -133,6 +133,7 @@ class Professor extends Usuario
             $this->set_endereco(            $row[0]->endereco);
             $this->set_deleted(             $row[0]->deleted);
             $this->set_data_nascimento(     $this->datas->mysql_para_normal($row[0]->data_nascimento));
+            $this->set_senha(             $row[0]->senha);
         }
         
         $query->free_result();
