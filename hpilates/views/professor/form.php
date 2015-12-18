@@ -8,6 +8,7 @@ if(NULL != $professor){
 	$data_nascimento= $professor->get_data_nascimento();
 	$email = $professor->get_email();
 	$estudios_professor = $professor->get_estudios();
+	$username = $professor->get_username();
 } else {
 	$id = '';
 	$lbl_id = '';
@@ -16,6 +17,7 @@ if(NULL != $professor){
 	$endereco = '';
 	$data_nascimento = '';
 	$email = '';
+	$username = '';
 	
 	$estudios_professor = array();
 }
@@ -74,7 +76,7 @@ if(NULL != $professor){
 						<label>Usuário</label>
 					</th>
 					<td>
-						<input type="text" size="60" name="username" class="input-text" value="" id="q13"  maxlength="20"/>
+						<input type="text" size="60" name="username" class="input-text" value="<?php echo $username; ?>" id="q13"  maxlength="20"/>
 					</td>
 				</tr>
 				<tr>
@@ -83,6 +85,7 @@ if(NULL != $professor){
 					</th>
 					<td>
 						<input type="password" size="60" name="senha" class="input-text" value="" id="q13"  maxlength="20"/>
+						<label for="obs">Atenção! A senha só será atualizada se o campo for populado.</label>
 					</td>
 				</tr>
 				<tr>

@@ -51,7 +51,7 @@ class Professores extends Supercontroller {
 		$professor->retrieve();
 		$data['professor'] = $professor;
 		$data['titulo_form'] = $professor->get_nome();
-		
+
 		$estudio = $this->estudio;
 		$estudio->set_deleted(NAO);
 		$data['estudios'] = $estudio->search();
@@ -69,14 +69,12 @@ class Professores extends Supercontroller {
 		$email = $this->input->post('email');
 		$senha = $this->input->post('senha');
 		$data_nascimento = $this->input->post('data_nascimento');
-		
 		$arr_estudio = $this->input->post('estudio');
-
-		$data_nascimento = $this->datas->normal_para_mysql($data_nascimento);
-		
 		$endereco = $this->input->post('endereco');
 		$telefone = $this->input->post('telefone');
-		
+
+
+		$data_nascimento = $this->datas->normal_para_mysql($data_nascimento);
 		$professor = $this->professor;
 		
 		//se � atualiza��o
@@ -84,10 +82,18 @@ class Professores extends Supercontroller {
 			$professor->set_id($id);
 			$professor->retrieve();
 		} else {//cria��o
-			$professor->set_email($email);
 			$professor->set_username($username);
 		}
 
+		if ($senha !== null && $senha !== '') {
+			$professor->set_senha($senha);
+		}
+
+		if ($username !== null && $username !== '') {
+			$professor->set_username($username);
+		}
+
+		$professor->set_email($email);
 		$professor->set_nivel(NIVEL_PROFESSOR);
 		$professor->set_nome($nome);
 		$professor->set_senha($senha);
