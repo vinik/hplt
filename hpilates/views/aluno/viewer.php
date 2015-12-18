@@ -130,6 +130,15 @@ if(NULL != $aluno){
 							<?php echo $username; ?>
 						</td>
 					</tr>
+
+					<tr>
+						<th>
+							<label for="txtUsername">Senha</label>
+						</th>
+						<td>
+							<?php echo $senha; ?>
+						</td>
+					</tr>
 					
 				</tbody>
 			</table>
