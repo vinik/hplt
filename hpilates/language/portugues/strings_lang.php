@@ -8,6 +8,7 @@ $lang['sucesso.remover_objeto'] = 'O objeto foi removido com sucesso.';
 
 //Mensagens de ero
 $lang['erro.login'] = 'Você precisa realizar login.';
+$lang['erro.professor_estudio'] = 'Professor sem estúdio vinculado.';
 $lang['erro.criar_objeto'] = 'Erro ao criar objeto.';
 $lang['erro.atualizar_objeto'] = 'Erro ao atualizar objeto.';
 $lang['erro.remover_objeto'] = 'Ocorreu um erro ao tentar remover o objeto.';
