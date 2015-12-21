@@ -103,7 +103,7 @@
 
             <table>
                 <tr>
-                    <th>Usuário:</th>
+                    <th> <?php echo $this->lang->line('usuario.field') ?>:</th>
                     <td><?php echo form_input(array('name' => 'username', 'size' => '60', 'class' => "input-text")); ?></td>
                 </tr>
                 <tr>

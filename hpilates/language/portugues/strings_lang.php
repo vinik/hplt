@@ -95,6 +95,7 @@ $lang['sucesso.alunos.remover_professor'] = 'Estúdio removido com sucesso.';
 $lang['erro.alunos.remover_professor'] = 'Ocorreu um erro ao remover estúdio.';
 
 //usuários
+$lang['usuario.field'] = 'Usuários';
 $lang['usuario.lista'] = 'Lista de usuários';
 $lang['usuario.novo'] = 'Novo usuário';
 $lang['usuario.coluna.nivel'] = 'Nível';
