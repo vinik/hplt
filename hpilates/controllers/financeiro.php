@@ -5,7 +5,7 @@ require_once('supercontroller.php');
 class Financeiro extends Supercontroller {
     
     protected $nome_controller = 'financeiro';
-    private $translateMonth = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+    private $translateMonth = array('Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro');
     
     function Financeiro() {
         parent::Supercontroller();
