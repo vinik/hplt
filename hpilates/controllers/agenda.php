@@ -7,11 +7,11 @@ class Agenda extends Supercontroller {
         parent::Supercontroller();
         
         //autenticação
-        // if(!$this->session->userdata('logged_in')) {
-        //     $msg = $this->lang->line('erro.login');
-        //     $this->session->set_flashdata('erro', $msg);
-        //     redirect('login', 'refresh');
-        // }
+        if(!$this->session->userdata('logged_in')) {
+            $msg = $this->lang->line('erro.login');
+            $this->session->set_flashdata('erro', $msg);
+            redirect('login', 'refresh');
+        }
         
         $this->set_modelo('evento');
     }
