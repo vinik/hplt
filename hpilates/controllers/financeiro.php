@@ -460,7 +460,7 @@ class Financeiro extends Supercontroller {
         }
         $pagamento->delete();
 
-        redirect(base_url() . 'financeiro/');
+        redirect('/financeiro');
         echo '<p class="msg msg-ok">Pagamento removido, ' . anchor('financeiro', 'recarregue') . ' a p&aacute;gina para refazer o c&aacute;lculo</p>';
     }
     

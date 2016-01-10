@@ -15,15 +15,15 @@
     <link rel="stylesheet" media="screen,projection" type="text/css" href="<?php echo base_url(); ?>css/skin/main.css" />
     <link rel="stylesheet" media="screen,projection" type="text/css" href="<?php echo base_url(); ?>css/custom.css" />
     
-    <link rel="stylesheet" href="<?php echo base_url(); ?>css/redmond/jquery-ui-1.7.2.custom.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>css/redmond/jquery-ui.min.css" type="text/css">
 	<link type="text/css" href="<?php echo base_url(); ?>css/fullcalendar.css" rel="stylesheet" />
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/framework.css" type="text/css">
 
 	<link type="text/css" href="<?php echo base_url(); ?>css/mbContainer.css" rel="stylesheet" />
     
     
-    <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.3.2.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-ui-1.7.2.custom.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assert/jQuery/jQuery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-ui.min.js"></script>
 	
 	<!-- plugins -->
     <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.dropdown.js"></script>

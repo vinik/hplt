@@ -7,11 +7,11 @@ class Agenda extends Supercontroller {
         parent::Supercontroller();
         
         //autenticação
-        if(!$this->session->userdata('logged_in')) {
-            $msg = $this->lang->line('erro.login');
-            $this->session->set_flashdata('erro', $msg);
-            redirect('login', 'refresh');
-        }
+        // if(!$this->session->userdata('logged_in')) {
+        //     $msg = $this->lang->line('erro.login');
+        //     $this->session->set_flashdata('erro', $msg);
+        //     redirect('login', 'refresh');
+        // }
         
         $this->set_modelo('evento');
     }
@@ -368,11 +368,14 @@ class Agenda extends Supercontroller {
         $estudio = $this->estudio;
         $colecao_estudio = array();
         
+        // die(var_dump($this->session->userdata('nivel')));
         if ($this->session->userdata('nivel') == NIVEL_PROFESSOR) {
             $professor = $this->professor;
             $professor->set_id_usuario($this->session->userdata('id'));
             $professor->retrieve();
             $colecao_estudio = $professor->get_estudios_full();
+
+            die(var_dump($colecao_estudio));
 
             // Se o professor não tiver estudio vinculado, não deve permitir login
             if (count($colecao_estudio) == 0) {
@@ -389,6 +392,10 @@ class Agenda extends Supercontroller {
             $estudio->set_id($aluno->get_id_estudio());
             $estudio->retrieve();
             $colecao_estudio = array(0 => $estudio);
+        // }else{
+        //     $msg = $this->lang->line('erro.login_nivel_default');
+        //     $this->session->set_flashdata('erro', $msg);
+        //     redirect('login', 'refresh');
         }
 
         $data['estudios'] = $colecao_estudio;

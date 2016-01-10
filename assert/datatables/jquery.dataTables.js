@@ -3390,9 +3390,14 @@
 		} );
 	
 		for ( var i=0, ien=lengths.length ; i<ien ; i++ ) {
-			select[0][ i ] = new Option( language[i], lengths[i] );
+			// Valida padrão select 50
+			// if (i == 2) {
+			// 	select[0][ i ] = new Option( language[i], lengths[i] , true, false);
+			// }else{
+				select[0][ i ] = new Option( language[i], lengths[i] );
+			// }
 		}
-	
+
 		var div = $('<div><label/></div>').addClass( classes.sLength );
 		if ( ! settings.aanFeatures.l ) {
 			div[0].id = tableId+'_length';
@@ -3417,7 +3422,7 @@
 				$('select', div).val( len );
 			}
 		} );
-	
+		
 		return div[0];
 	}
 	
@@ -9851,7 +9856,8 @@
 		 *      } );
 		 *    } );
 		 */
-		"aLengthMenu": [ 10, 25, 50, 100 ],
+		// "aLengthMenu": [ 10, 25, 50, 100 ],
+		"aLengthMenu": [ 50, 100, 150 ,200 ],
 	
 	
 		/**
@@ -11173,7 +11179,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
+			"sInfoEmpty": "Mostrando 0 a 0 de 0 resultados",
 	
 	
 			/**
@@ -11451,7 +11457,8 @@
 			 *      } );
 			 *    } );
 			 */
-			"sZeroRecords": "No matching records found"
+			// "sZeroRecords": "No matching records found"
+			"sZeroRecords": "Nenhum resultado encontrado"
 		},
 	
 	

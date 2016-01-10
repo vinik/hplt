@@ -21,7 +21,7 @@
             <?php echo anchor('financeiro', 'Hoje', 'id="btnFinanceiroHoje" class="BUTTON"'); ?>
         </span>
     <div> -->
-        <label for="startDate">Data competência </label>
+        <label for="startDate"></label>
         <input name="startDate" id="startDate" class="date-picker" value="<?php echo $descricao_data?>"/>
     </div>
 </div>
@@ -67,7 +67,7 @@
                                         <h3 class="box-title">Lista de Pagamentos</h3>
                                     </div>
                                 <div class="box-body">
-                                    <table id="resultsTablePayment" class="table table-bordered table-striped">
+                                    <table id="resultsTablePayment<?php echo $item_estudio->get_id(); ?>" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>Data</th>
@@ -150,7 +150,7 @@
                                             <h3 class="box-title">Lista de Despesas</h3>
                                         </div>
                                     <div class="box-body">
-                                        <table id="resultsTableExpense" class="table table-bordered table-striped">
+                                        <table id="resultsTableExpense<?php echo $item_estudio->get_id(); ?>" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>Data</th>
@@ -273,8 +273,14 @@ button.ui-datepicker-current {
 </style>
 <script>
   $(function () {
-    $("#resultsTablePayment").DataTable();
-    $("#resultsTableExpense").DataTable();
+
+    // Para aparecer em todos os estudios
+    <?php foreach($estudios as $estudio){ ?>
+        $("#resultsTablePayment<?php echo $estudio->get_id(); ?>").DataTable();
+        $("#resultsTableExpense<?php echo $estudio->get_id(); ?>").DataTable();
+    <?php } ?>
+
+
 
     $('.date-picker').datepicker({
         closeText: 'Buscar',

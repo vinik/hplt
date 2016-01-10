@@ -1,0 +1,1 @@
+UPDATE usuario SET nivel = 3 WHERE nivel = 0;
