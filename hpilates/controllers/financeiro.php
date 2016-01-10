@@ -460,8 +460,9 @@ class Financeiro extends Supercontroller {
         }
         $pagamento->delete();
 
+        $msg = $this->lang->line('financeiro.pagamento.remover.sucesso');
+        $this->session->set_flashdata(MESSAGE_TYPE_SUCCESS, $msg);
         redirect('/financeiro');
-        echo '<p class="msg msg-ok">Pagamento removido, ' . anchor('financeiro', 'recarregue') . ' a p&aacute;gina para refazer o c&aacute;lculo</p>';
     }
     
     function lista_pagamentos($id_estudio)

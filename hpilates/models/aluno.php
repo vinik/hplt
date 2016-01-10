@@ -273,6 +273,7 @@ class Aluno extends Usuario {
         $dados_aluno['valor_aula'] = $this->get_valor_aula();
         $dados_aluno['objetivos'] = $this->get_objetivos();
         $dados_aluno['deleted'] = $this->get_deleted();
+        $dados_aluno['id_estudio'] = $this->get_id_estudio();
         
         $this->db->where('id', $this->get_id_usuario());
         $this->db->update('usuario', $dados_usuario); 

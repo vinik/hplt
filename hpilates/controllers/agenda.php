@@ -375,8 +375,6 @@ class Agenda extends Supercontroller {
             $professor->retrieve();
             $colecao_estudio = $professor->get_estudios_full();
 
-            die(var_dump($colecao_estudio));
-
             // Se o professor não tiver estudio vinculado, não deve permitir login
             if (count($colecao_estudio) == 0) {
                 $msg = $this->lang->line('erro.professor_estudio');

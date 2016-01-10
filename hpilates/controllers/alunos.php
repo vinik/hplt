@@ -153,8 +153,7 @@ class Alunos extends Supercontroller
 		$aluno->set_objetivos($objetivos);
 		$aluno->set_id_estudio($id_estudio);
 		$aluno->set_valor_aula($valor_aula);
-		
-		
+
 		//se é atualização
 		if(NULL !== $id){
 			$resultado = $aluno->update();

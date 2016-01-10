@@ -34,6 +34,7 @@ $lang['financeiro.erro.nenhuma_aula'] = 'Os pagamentos não foram processados. N
 $lang['financeiro.erro'] = 'Ocorreu um erro ao processar o pagamento. O pagamento não foi processado, no entanto algumas aulas foram dadas como pagas. Contate o administrador.';
 $lang['financeiro.sucesso'] = 'O pagamento foi processado com sucesso.';
 
+$lang['financeiro.pagamento.remover.sucesso'] = 'Pagamento removido com sucesso.';
 $lang['financeiro.despesa.sucesso'] = 'Despesa processada com sucesso.';
 $lang['financeiro.despesa.erro'] = 'Ocorreu um erro ao processar a despesa.';
 $lang['financeiro.despesa.erro.parametros_faltando'] = 'A nova despesa não foi processada. Alguns parâmetros não foram informados.';
