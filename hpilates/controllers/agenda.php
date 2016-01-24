@@ -390,10 +390,10 @@ class Agenda extends Supercontroller {
             $estudio->set_id($aluno->get_id_estudio());
             $estudio->retrieve();
             $colecao_estudio = array(0 => $estudio);
-        // }else{
-        //     $msg = $this->lang->line('erro.login_nivel_default');
-        //     $this->session->set_flashdata('erro', $msg);
-        //     redirect('login', 'refresh');
+        }else{
+            $msg = $this->lang->line('erro.login');
+            $this->session->set_flashdata('erro', $msg);
+            redirect('login', 'refresh');
         }
 
         $data['estudios'] = $colecao_estudio;
