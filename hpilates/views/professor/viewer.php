@@ -193,9 +193,9 @@ if(NULL != $professor){
 							<div>
 								
 								<span id="toolbar" class="ui-widget-header ui-corner-all" style="padding: 10px 4px;">
-									<input class="DATEFIELD" id="txtRangeStart<?php echo $item_estudio->get_id(); ?>" value="<?php echo $this->datas->mysql_para_normal($range_start); ?>"/>
-									<input class="DATEFIELD" id="txtRangeEnd<?php echo $item_estudio->get_id(); ?>" value="<?php echo $this->datas->mysql_para_normal($range_end); ?>"/>
-									<button class="BUTTON" onclick="buscarAulasDadas(<?php echo $item_estudio->get_id(); ?>, <?php echo $professor->get_id(); ?>);">Buscar</button>
+									<input class="DATEFIELD" id="txtRangeStart<?php echo $item_estudio->get_id(); ?>" value="<?php echo $this->datas->mysql_para_normal($range_start); ?>" style="color:black"/>
+									<input class="DATEFIELD" id="txtRangeEnd<?php echo $item_estudio->get_id(); ?>" value="<?php echo $this->datas->mysql_para_normal($range_end); ?>" style="color:black"/>
+									<button class="BUTTON"  style="color:black" onclick="buscarAulasDadas(<?php echo $item_estudio->get_id(); ?>, <?php echo $professor->get_id(); ?>);">Buscar</button>
 								</span>
 								
 							</div>

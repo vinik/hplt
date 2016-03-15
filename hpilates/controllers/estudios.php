@@ -149,11 +149,13 @@ class Estudios extends Supercontroller
 		}
 		
 		$data[$estudio->get_key()] = $id;
-		$data['nome'] = $this->input->post('nome');
-		$data['telefone'] = $this->input->post('telefone');
-		$data['endereco'] = $this->input->post('endereco');
-		$data['foto'] = $estudio->get_foto();
-		$data['deleted'] = NAO;
+		$data['nome']                    = $this->input->post('nome');
+		$data['telefone']                = $this->input->post('telefone');
+		$data['endereco']                = $this->input->post('endereco');
+		$data['foto']                    = $estudio->get_foto();
+		$data['deleted']                 = NAO;
+		$data['valor_padrao_aula']       = $this->input->post('valor_padrao_aula');
+		$data['valor_padrao_aula_dupla'] = $this->input->post('valor_padrao_aula_dupla');;
 
 		$msg = '';
 		

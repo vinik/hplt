@@ -227,8 +227,7 @@ class Supermodel extends Model
 	 * @return array Cole��o
 	 */
 	function search($params = FALSE){
-		
-		
+
 		$order_by = $this->get_key();
 		$order_direction = 'ASC';
 		$inicial = 0;

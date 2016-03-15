@@ -19,7 +19,6 @@ function painelFinanceiro(){
             modal: true,
             buttons: {
                 'Remover pagamento': function() {
-            
                     var paymentId = $('#hdnPaymentIdDelete').val();
                     var estudioId = $('#hdnPaymentIdEstudio').val();
                     deletePayment(paymentId, estudioId);

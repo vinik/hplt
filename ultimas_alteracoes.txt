@@ -1,0 +1,36 @@
+FINANCEIRO (OK)
+- deixar permanente visivel a altercao de competecia (mes/ano)  (hj tenho q clicar e depois abre a opcao p selecionar, deixa aberto direto...hehe)
+
+
+PROFESSORES (OK)
+- Ao selecionar um professor (professores/listar/selecionar professor), vai aparecer duas opcoes a direita, proximas aulas e aulas dadas.
+    - no item proximas aulas ordenar por data e nao por aluno.
+    - no item aulas dadas, nao aparece a data q seleciona para busca, mas esta funcionando.
+
+
+
+ACESSO E CONFIGURA'COES
+- O professor somente pode ter ACESSO as informa'coes de alunos, 
+- lancar pagamento e agendamento de aulas do ESTUDIO QUE ESTA VINCULADO.
+    - (nao pode nem ter a opcao dos alunos de outro estudio) 
+    - ok
+
+-  gostaria que as configuracoes fossem individuais para cada estudio, pois podem ter valores padroes diferentes)
+
+
+AGENDA
+
+- criar evento: quase tudo igual, no item estudio, aparecer somente o estudio e professor do qual o professor esta marcando o evente. (para estes testes melhor logar com um usuario de professor)
+
+- repeticao : usar igual a do google (vou te mandar uma tela), a regra que mais uso eh a repeticao semanal, so que o sistema marca a cada 7 dias e nao toda 2a feira por exemplo, dai as aulas mudam de dia.... (erro importante a ser corrigido)
+
+- edicao do evento: igual ao google
+* primeiro perguntar se a edicao eh "somente este evento" , "este e eventos futuros" ou " todos os    eventos da serie".
+*quando abrir o evento para edicao, manter os dados do evente (isso nao acontece hj)
+
+- deletar um evente: ao selecionar o evento ter a opcao editar ou deletar.
+* apos deletar um evento o mesmo deve "desaparecer" da lista dos proximos eventos do professor (nao esta fazendo isso) assim como das aulas dadas.
+
+
+13/03/2016 - 18:30 - 23:00
+14/03/2016 - 20:00 - 24:00

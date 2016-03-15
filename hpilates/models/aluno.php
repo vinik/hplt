@@ -198,6 +198,7 @@ class Aluno extends Usuario {
         $order_direction = 'ASC';
         $inicial = 0;
         $total = MAXIMO_RESULTADOS_BUSCA;
+        $whereEstudio = null;
         
         if($params !== false){
             if(isset($params['order_by'])){
@@ -212,6 +213,9 @@ class Aluno extends Usuario {
             if(isset($params['total'])){
                 $total = $params['total'];
             }
+            if(isset($params['estudios'])){
+                $whereEstudio = $params['estudios'];
+            }
         }
         
         $objs = array();
@@ -223,6 +227,10 @@ class Aluno extends Usuario {
         
         if (NULL != $this->get_id_estudio()) {
             $this->db->where('a.id_estudio', $this->get_id_estudio());
+        }
+
+        if(null != $whereEstudio)  {
+            $this->db->where_in('id_estudio', $whereEstudio);
         }
         
         $this->db->distinct($this->key);

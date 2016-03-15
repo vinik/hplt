@@ -83,20 +83,23 @@ $lang['sucesso.alunos.remover_professor'] = 'Professor removido com sucesso.';
 $lang['erro.alunos.remover_professor'] = 'Ocorreu um erro ao remover professor.';
 
 //estúdios
-$lang['estudios.novoestudio'] = 'Novo estúdio';
-$lang['estudios.editarestudio'] = 'Editar informações do estúdio';
-$lang['estudios.verestudio'] = 'Informações do estúdio';
-$lang['estudios.coluna.endereco'] = 'Endereço';
-$lang['estudios.coluna.acoes'] = 'Ações';
-$lang['estudios.form.nome'] = 'Nome';
-$lang['estudios.form.endereco'] = 'Endereço';
-$lang['estudios.form.telefone'] = 'Telefone';
+$lang['estudios.novoestudio']           = 'Novo estúdio';
+$lang['estudios.editarestudio']         = 'Editar informações do estúdio';
+$lang['estudios.verestudio']            = 'Informações do estúdio';
+$lang['estudios.coluna.endereco']       = 'Endereço';
+$lang['estudios.coluna.acoes']          = 'Ações';
+$lang['estudios.form.nome']             = 'Nome';
+$lang['estudios.form.endereco']         = 'Endereço';
+$lang['estudios.form.telefone']         = 'Telefone';
+$lang['estudios.form.valor_aula']       = 'Valor Aula Individual';
+$lang['estudios.form.valor_aula_dupla'] = 'Valor Aula Dupla';
 
 $lang['sucesso.alunos.remover_professor'] = 'Estúdio removido com sucesso.';
 $lang['erro.alunos.remover_professor'] = 'Ocorreu um erro ao remover estúdio.';
 
 //usuários
 $lang['usuario.field'] = 'Usuário';
+$lang['usuario.senha'] = 'Senha';
 $lang['usuario.lista'] = 'Lista de usuários';
 $lang['usuario.novo'] = 'Novo usuário';
 $lang['usuario.coluna.nivel'] = 'Nível';
@@ -107,19 +110,17 @@ $lang['usuario.delete.success'] = 'Usuário removido com sucesso.';
 $lang['configs.gerais.title'] = 'Configurações Gerais';
 $lang['configs.inicio_expediente'] = 'Expediente inicia às ';
 $lang['configs.intervalo_campo_horas'] = 'Intervalo padrão em campos de hora '; 
-$lang['configs.valor_aula_padrao'] = 'Valor padrão das aulas individuais'; 
-$lang['configs.valor_aula_padrao_dupla'] = 'Valor padrão das aulas em duplas'; 
 
 $lang['configs.save.success'] = 'Configurações salvas.';
 
 // FORM
 
 $lang['form.informacoes_pessoais'] = 'Informações Pessoais';
-$lang['form.dados_acesso'] = 'Dados de Acesso';
-$lang['form.nome'] = 'Nome';
-$lang['form.email'] = 'Email';
-$lang['form.data_nascimento'] = 'Data Nascimento';
-$lang['form.username'] = 'Username';
-$lang['form.password'] = 'Senha';
-$lang['form.nivel_acesso'] = 'Nível Acesso';
-$lang['form.avatar'] = 'Avatar';
+$lang['form.dados_acesso']         = 'Dados de Acesso';
+$lang['form.nome']                 = 'Nome';
+$lang['form.email']                = 'Email';
+$lang['form.data_nascimento']      = 'Data Nascimento';
+$lang['form.username']             = 'Username';
+$lang['form.password']             = 'Senha';
+$lang['form.nivel_acesso']         = 'Nível Acesso';
+$lang['form.avatar']               = 'Avatar';

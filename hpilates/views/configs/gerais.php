@@ -44,41 +44,6 @@
                         ?>
                     </td>
                 </tr>
-                <tr>
-                    <th>
-                        <label><?php echo $this->lang->line('configs.valor_aula_padrao'); ?></label>
-                    </th>
-                    <td>
-                        <?php 
-                        echo form_input(array(
-                            'name'  =>  $config_array[CONFIG_VALOR_PADRAO_AULA]['nome'],
-                            'id'    =>  '',
-                            'value' =>  $config_array[CONFIG_VALOR_PADRAO_AULA]['valor'],
-                            'class' =>  'input-text',
-                            'size'  =>  '10',
-                            'maxlength' =>  '10'
-                        ));
-                        ?>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <label><?php echo $this->lang->line('configs.valor_aula_padrao_dupla'); ?></label>
-                    </th>
-                    <td>
-                        <?php 
-                        echo form_input(array(
-                            'name'  =>  $config_array[CONFIG_VALOR_PADRAO_AULA_DUPLA]['nome'],
-                            'id'    =>  '',
-                            'value' =>  $config_array[CONFIG_VALOR_PADRAO_AULA_DUPLA]['valor'],
-                            'class' =>  'input-text',
-                            'size'  =>  '10',
-                            'maxlength' =>  '10'
-                        ));
-                        ?>
-                    </td>
-                </tr>
-                
             </tbody>
         </table>
         

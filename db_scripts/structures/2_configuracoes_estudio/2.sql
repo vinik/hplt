@@ -1,0 +1,2 @@
+UPDATE estudio SET valor_padrao_aula = (SELECT valor FROM configs WHERE nome = 'valor_padrao_aula');
+UPDATE estudio SET valor_padrao_aula_dupla = (SELECT valor FROM configs WHERE nome = 'valor_padrao_aula_dupla');

@@ -5,12 +5,16 @@ if(NULL != $estudio){
 	$nome = $estudio->get_nome();
 	$telefone = $estudio->get_telefone();
 	$endereco = $estudio->get_endereco();
+	$valorAula = $estudio->get_valor_padrao_aula();
+	$valorAulaDupla = $estudio->get_valor_padrao_aula_dupla();
 } else {
 	$id = '';
 	$lbl_id = '';
 	$nome = '';
 	$telefone = '';
 	$endereco = '';
+	$valorAula = '';
+	$valorAulaDupla = '';
 }
 ?>
 
@@ -65,6 +69,26 @@ if(NULL != $estudio){
 						<td>
 							<strong>
 								<?php echo $telefone; ?>
+							</strong>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label >Valor Aula Individual</label>:
+						</th>
+						<td>
+							<strong>
+								<?php echo $valorAula; ?>
+							</strong>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label >Valor Aula Dupla</label>:
+						</th>
+						<td>
+							<strong>
+								<?php echo $valorAulaDupla; ?>
 							</strong>
 						</td>
 					</tr>

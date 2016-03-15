@@ -179,12 +179,23 @@ class Alunos extends Supercontroller
 		}
 	}
 	
-	function lista()
-	{
-		$data['titulo'] = $this->lang->line('menu.alunos');
+	function lista(){
+
+		$params = array();
+
+		// Caso for login de professor, deverá buscar apenas os alunos dos estúdios que o professor dá aula
+		if ($this->session->userdata('nivel') == NIVEL_PROFESSOR) {
+			$professor = $this->professor;
+        	$idUser = $professor->get_professor_user($this->session->userdata['id']);
+        	$professor->set_id($idUser);
+			$params['estudios'] = $professor->get_estudios();
+		}
+
 		$aluno = $this->aluno;
-		$colecao = $aluno->search();
+		$colecao = $aluno->search($params);
 		$data['colecao_aluno'] = $colecao;
+		
+		$data['titulo'] = $this->lang->line('menu.alunos');
 		$this->visao('aluno/lista', $data);
 	}
 	

@@ -5,7 +5,22 @@ require_once('supercontroller.php');
 class Financeiro extends Supercontroller {
     
     protected $nome_controller = 'financeiro';
-    private $translateMonth = array('Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro');
+    private $months = array(
+        1 => 'Janeiro',
+        2 => 'Fevereiro',
+        3 => 'Março',
+        4 => 'Abril',
+        5 => 'Maio',
+        6 => 'Junho',
+        7 => 'Julho',
+        8 => 'Agosto',
+        9 => 'Setembro',
+        10 => 'Outubro',
+        11 => 'Novembro',
+        12 => 'Dezembro'
+    );
+
+    private $years = array('2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025');
     
     function Financeiro() {
         parent::Supercontroller();
@@ -38,11 +53,14 @@ class Financeiro extends Supercontroller {
         
         $month = intval(date('m'));
         $year = intval(date('Y'));
+
+        $data['atual_mes'] = $month;
+        $data['atual_ano'] = $year;
         $data['mes'] = $month;
         $data['ano'] = $year;
+        $data['months'] = $this->months;
+        $data['years'] = $this->years;
 
-        $data['descricao_data'] = $this->translateMonth[$month - 1] . ' ' . $year;
-        
         $estudio = $this->estudio;
         $colecao_estudios = array();
         if ($this->session->userdata('nivel') == NIVEL_PROFESSOR) {
@@ -55,9 +73,8 @@ class Financeiro extends Supercontroller {
         }
         $data['estudios'] = $colecao_estudios;
         
-        
         $this->add_script_src('financeiro');
-        
+
         $this->visao('financeiro/painel', $data);
     }
     
@@ -76,8 +93,13 @@ class Financeiro extends Supercontroller {
         
         $data['mes'] = $mes;
         $data['ano'] = $ano;
+        $data['months'] = $this->months;
+        $data['years'] = $this->years;
 
-        $data['descricao_data'] = $this->translateMonth[$mes -1] . ' ' . $ano;
+        $month = intval(date('m'));
+        $year = intval(date('Y'));
+        $data['atual_mes'] = $month;
+        $data['atual_ano'] = $year;
         
         $estudio = $this->estudio;
         $colecao_estudios = array();
@@ -106,11 +128,20 @@ class Financeiro extends Supercontroller {
      */
     function novo(){
         $data['titulo'] = $this->lang->line('financeiro.form.title');
-        
+        $params = array();
+
+        // Caso for login de professor, deverá buscar apenas os alunos dos estúdios que o professor dá aula
+        if ($this->session->userdata('nivel') == NIVEL_PROFESSOR) {
+            $professor = $this->professor;
+            $idUser = $professor->get_professor_user($this->session->userdata['id']);
+            $professor->set_id($idUser);
+            $params['estudios'] = $professor->get_estudios();
+        }
+
         $aluno = $this->aluno;
-        $colecao_alunos = $aluno->search();
-        $data['alunos'] = $colecao_alunos;
-        
+        $colecao = $aluno->search($params);
+        $data['alunos'] = $colecao;
+
         $pagamento = $this->pagamento;
         $data['pagamento'] = $pagamento;
         
@@ -121,8 +152,7 @@ class Financeiro extends Supercontroller {
         $this->visao('financeiro/form', $data);
     }
     
-    function editar($id_pagamento)
-    {
+    function editar($id_pagamento) {
         $data['titulo'] = 'Editar pagamento';
         
         $aluno = $this->aluno;
@@ -151,11 +181,14 @@ class Financeiro extends Supercontroller {
         
         $data['aluno'] = $aluno;
 
-        // Busca valor das aulas inviduais da configuração
-        $configs = $this->vnix_config;
-        $valoresAula = $configs->get_valores_aula();
-        $data['valor_individual'] = $valoresAula[0]->get_valor();
-        $data['valor_dupla'] = $valoresAula[1]->get_valor();
+        // Busca valor das aulas a partir do estudio vinculado
+        $idEstudio = $aluno->id_estudio;
+        $estudioModel = $this->estudio;
+        $estudioModel->set_id($idEstudio);
+        $estudio = $estudioModel->searchById();
+
+        $data['valor_individual'] = $estudio[0]->valor_padrao_aula;
+        $data['valor_dupla'] = $estudio[0]->valor_padrao_aula_dupla;
 
         if($aluno->get_nome()){
 
@@ -199,8 +232,7 @@ class Financeiro extends Supercontroller {
         $this->load->view('financeiro/aulas_em_aberto', $data);
     }
     
-    function processar($id_pagamento = NULL)
-    {
+    function processar($id_pagamento = NULL) {
         $pagamento = $this->pagamento;
         if (NULL !== $id_pagamento) {
             $pagamento->set_id($id_pagamento);
@@ -343,8 +375,7 @@ class Financeiro extends Supercontroller {
      *
      * @return void
      */
-    function nova_despesa()
-    {
+    function nova_despesa() {
         $data['titulo'] = $this->lang->line('financeiro.form_despesa.title');
         
         $despesa = $this->despesa;
@@ -366,8 +397,7 @@ class Financeiro extends Supercontroller {
     /**
      * Processa uma despesa
      */
-    function processar_despesa($id_despesa = NULL)
-    {
+    function processar_despesa($id_despesa = NULL) {
         $data_despesa = $this->input->post('data');
         $valor = $this->input->post('valor');
         $descr = $this->input->post('descr');
@@ -407,8 +437,7 @@ class Financeiro extends Supercontroller {
         }
     }
     
-    function editar_despesa($id_despesa)
-    {
+    function editar_despesa($id_despesa) {
         $data['titulo'] = $this->lang->line('financeiro.form_despesa.title');
         
         $despesa = $this->despesa;
@@ -430,8 +459,7 @@ class Financeiro extends Supercontroller {
         $this->visao('financeiro/form_despesa', $data);
     }
     
-    function remover_despesa($id_despesa)
-    {
+    function remover_despesa($id_despesa) {
         $despesa = $this->despesa;
         $despesa->set_id($id_despesa);
         $resultado = $despesa->delete();
@@ -465,8 +493,7 @@ class Financeiro extends Supercontroller {
         redirect('/financeiro');
     }
     
-    function lista_pagamentos($id_estudio)
-    {
+    function lista_pagamentos($id_estudio) {
         $estudio = $this->estudio;
         $estudio->set_id($id_estudio);
         $estudio->retrieve();
@@ -484,7 +511,10 @@ class Financeiro extends Supercontroller {
         
         $this->load->view('financeiro/lista_pagamentos', $data);
     }
-        
+
+    function getAlunos(){
+
+    }
 }
 
 /* End of file financeiro.php */

@@ -173,6 +173,7 @@ class Professor extends Usuario
         $this->db->order_by($order_by, $order_direction);
         
         $query = $this->db->get($this->table_name.' p', $total, $inicial);
+
         if($query->num_rows() > 0){
             foreach ($query->result() as $row)
             {
@@ -250,6 +251,14 @@ class Professor extends Usuario
             }
         }
     }
+
+    function get_professor_user($idUser){
+        $this->db->select('id');
+        $this->db->from('professor');
+        $this->db->where('id_usuario', $idUser);
+        $results =  $this->db->get()->result_array();
+        return $results[0]['id'];
+    }
     
     function get_estudios()
     {
@@ -263,7 +272,6 @@ class Professor extends Usuario
         {
             array_push($estudios, $row['id_estudio']);
         }
-        
         return $estudios;
     }
     

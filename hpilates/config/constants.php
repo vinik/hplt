@@ -86,20 +86,14 @@ define('FORMATO_DATA_MYSQL_NULL',   '0000-00-00');
  * Valores default
  */
 define('INTERVALO_SELECT_PADRAO',   15);
-define('VALOR_PADRAO_AULA', 1);
-
 /*
  * TIPOS DEFAULT
  */
 define('TIPO_HORAS',    1);
 define('TIPO_SELECT',   2);
-define('TIPO_VALOR',    3);
-define('TIPO_VALOR_DUPLA',    4);
 
 define('CONFIG_INICIO_EXPEDIENTE',          0);
 define('CONFIG_INTERVALO_CAMPO_HORAS',      1);
-define('CONFIG_VALOR_PADRAO_AULA',          2);
-define('CONFIG_VALOR_PADRAO_AULA_DUPLA',    3);
 
 define('ESPECIE_DINHEIRO', 1);
 define('ESPECIE_CHEQUE', 2);

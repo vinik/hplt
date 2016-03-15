@@ -27,6 +27,8 @@ $lang['financeiro.form.despesa.estudio'] = 'Estúdio';
 $lang['financeiro.form.despesa.data'] = 'Data';
 $lang['financeiro.form.despesa.valor'] = 'Valor';
 $lang['financeiro.form.despesa.descricao'] = 'Descrição';
+$lang['financeiro.form.buscar'] = 'Buscar';
+$lang['financeiro.form.buscar_mes_atual'] = 'Buscar mês atual';
 
 $lang['financeiro.erro.parametros_faltando'] = 'Os pagamentos não foram processados. O aluno não foi informado.';
 $lang['financeiro.erro.aluno_nao_existe'] = 'Os pagamentos não foram processados. O aluno informado não existe.';

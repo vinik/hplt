@@ -5,12 +5,16 @@ if(NULL != $estudio){
 	$nome = $estudio->get_nome();
 	$telefone = $estudio->get_telefone();
 	$endereco = $estudio->get_endereco();
+	$valor_aula = $estudio->get_valor_padrao_aula();
+	$valor_dupla = $estudio->get_valor_padrao_aula_dupla();
 } else {
 	$id = '';
 	$lbl_id = '';
 	$nome = '';
 	$telefone = '';
 	$endereco = '';
+	$valor_aula = '';
+	$valor_dupla = '';
 }
 ?>
 
@@ -46,6 +50,23 @@ if(NULL != $estudio){
 					</th>
 					<td>
 						<input type="text" size="60" name="telefone" class="input-text" value="<?php echo $telefone; ?>" id="q11"  maxlength="100" maxsize="100" />
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label><?php echo $this->lang->line('estudios.form.valor_aula') ?></label>
+					</th>
+					<td>
+						<input type="text" size="60" name="valor_padrao_aula" class="input-text" value="<?php echo $valor_aula; ?>" id="q12"  maxlength="100" maxsize="100" />
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label><?php echo $this->lang->line('estudios.form.valor_aula_dupla') ?></label>
+					</th>
+					<td>
+						<input type="text" size="60" name="valor_padrao_aula_dupla" class="input-text" value="<?php echo $valor_dupla; ?>" id="q13"  maxlength="100" maxsize="100" />
 					</td>
 				</tr>
 			</tbody>

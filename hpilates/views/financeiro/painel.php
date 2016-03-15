@@ -1,31 +1,49 @@
-
-
 <?php
-
-    $mes_anterior = $this->datas->mes_anterior($mes, $ano, 'm');
-    $proximo_mes = $this->datas->proximo_mes($mes, $ano, 'm');
-    $ano_anterior = $this->datas->mes_anterior($mes, $ano, 'Y');
-    $proximo_ano = $this->datas->proximo_mes($mes, $ano, 'Y');
-
     $valor_total = 0;
     $valor_total_despesas = 0;
+    $current_month = null;
+    $current_year = null;
 ?>
 
-<div id="divControleFinanceiro">
-    
-    <!-- <div>
-       <span id="toolbar" class="ui-widget-header ui-corner-all" style="padding: 10px 4px;">
-            <a class="glyphicon glyphicon-arrow-left" href="<?php echo site_url('financeiro/painel/' . ($mes_anterior) . '/' . ($ano_anterior)); ?>" id="btnVoltar"></a>
-            <?php echo $mes; ?> - <?php echo $ano; ?>
-            <a class="glyphicon glyphicon-arrow-right"href="<?php echo site_url('financeiro/painel/' . ($proximo_mes) . '/' . ($proximo_ano)); ?>" id="btnAvancar"></a>
-            <?php echo anchor('financeiro', 'Hoje', 'id="btnFinanceiroHoje" class="BUTTON"'); ?>
-        </span>
-    <div> -->
-        <label for="startDate"></label>
-        <input name="startDate" id="startDate" class="date-picker" value="<?php echo $descricao_data?>"/>
+<div class="row">
+    <div class="col-xs-2">
+        <select id="current_month" class="form-control">
+            <?php  foreach ($months as $month => $description) {
+                if ($mes == $month) { ?>
+                    <option selected value="<?php echo $month ?>"><?php echo $description?></option>
+                <?php }else { ?>
+                    <option value="<?php echo $month ?>"><?php echo $description?></option>
+                <?php }
+            }?>
+        </select>
     </div>
+
+    <div class="col-xs-1">
+        <select id="current_year" class="form-control">
+            <?php  foreach ($years as $year) {
+                if ($ano == $year) { ?>
+                    <option selected value="<?php echo $year ?>"><?php echo $year?></option>
+                <?php }else { ?>
+                    <option value="<?php echo $year ?>"><?php echo $year?></option>
+                <?php }
+            }?>
+        </select>
+    </div>
+
+    <div class="btn-toolbar">
+        <button onclick="getFinanceiro()" class="btn btn-primary">
+            <?php echo $this->lang->line('financeiro.form.buscar');?>
+        </button>
+
+        <button onclick="getFinanceiroAtual()" class="btn btn-primary">
+            <?php echo $this->lang->line('financeiro.form.buscar_mes_atual');?>
+        </button>
+    </div>
+
 </div>
 
+
+</div>
 <?php if (count($estudios)) { ?>
     
     <div id="divTabsFinanceiroEstudios">
@@ -207,8 +225,8 @@
 
                     <?php
                         $total_do_periodo = $valor_total_estudio - $valor_total_despesas_estudio;
-                        $valor_saldo_mes_anterior = $this->financeiro_hpilates->calcula_saldo($mes_anterior, $ano_anterior, $item_estudio->get_id());
-                        $valor_saldo_mes = $this->financeiro_hpilates->calcula_saldo($mes, $ano, $item_estudio->get_id());
+                        // $valor_saldo_mes_anterior = $this->financeiro_hpilates->calcula_saldo($mes_anterior, $ano_anterior, $item_estudio->get_id());
+                        // $valor_saldo_mes = $this->financeiro_hpilates->calcula_saldo($mes, $ano, $item_estudio->get_id());
                     ?>
                 </div>
 
@@ -280,40 +298,44 @@ button.ui-datepicker-current {
         $("#resultsTableExpense<?php echo $estudio->get_id(); ?>").DataTable();
     <?php } ?>
 
+    getFinanceiro = function() {
+        var selectedMonth = document.getElementById("current_month").value;
+        var selectedYear = document.getElementById("current_year").value;
 
+        var currentMonth = "<?php echo $mes;?>"
+        var currentYear = "<?php echo $ano;?>"
 
-    $('.date-picker').datepicker({
-        closeText: 'Buscar',
-        changeMonth: true,
-        changeYear: true,
-        showButtonPanel: true,
-        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-        dateFormat: 'MM yy',
-        onClose: function(dateText, inst) {
-            // Mostra na tela
-            var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-            var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-            $(this).datepicker('setDate', new Date(year, month, 1));
-
-            var currentMonth = "<?php echo $mes;?>"
-            var currentYear = "<?php echo $ano;?>"
-
-            // Para setar a data no datePicker deverá ser 
-            month = parseInt(month)+1;
-
-            if (parseInt(currentMonth) != parseInt(month) || parseInt(currentYear) != parseInt(year)) {
-                // Envia request se o mês e o ano selecionado são diferentes do atual
-                var url = "<?php echo site_url('financeiro/painel/');?>" + '/' + month + '/' + year;
-                // Cria um form fictício para enviar request
-                var form = $('<form action="' + url + '" method="post">' +
-                  '<input type="text" name="api_url" value="123" />' +
-                  '</form>');
-                $('body').append(form);
-                form.submit();
-            }
+        if (parseInt(currentMonth) != parseInt(selectedMonth) || parseInt(currentYear) != parseInt(selectedYear)) {
+            // Envia request se o mês e o ano selecionado são diferentes do atual
+            var url = "<?php echo site_url('financeiro/painel/');?>" + '/' + selectedMonth + '/' + selectedYear;
+            // Cria um form fictício para enviar request
+            var form = $('<form action="' + url + '" method="post">' +
+              '<input type="text" name="api_url" value="123" />' +
+              '</form>');
+            $('body').append(form);
+            form.submit();
         }
-    });
+    }
+
+    getFinanceiroAtual = function() {
+        var selectedMonth = document.getElementById("current_month").value;
+        var selectedYear = document.getElementById("current_year").value;
+
+        var currentMonth = "<?php echo $atual_mes;?>"
+        var currentYear = "<?php echo $atual_ano;?>"
+
+        if (parseInt(currentMonth) != parseInt(selectedMonth) || parseInt(currentYear) != parseInt(selectedYear)) {
+            // Envia request se o mês e o ano selecionado são diferentes do atual
+            var url = "<?php echo site_url('financeiro/painel/');?>" + '/' + currentMonth + '/' + currentYear;
+            // Cria um form fictício para enviar request
+            var form = $('<form action="' + url + '" method="post">' +
+              '<input type="text" name="api_url" value="123" />' +
+              '</form>');
+            $('body').append(form);
+            form.submit();
+        }
+    }
+
   });
 </script>
 

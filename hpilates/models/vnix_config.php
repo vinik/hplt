@@ -182,22 +182,7 @@ class Vnix_config extends Supermodel
                 'nome'  =>  'intervalo_campo_horas',
                 'tipo'  =>  TIPO_SELECT,
                 'valor' =>  INTERVALO_SELECT_PADRAO
-            ),
-            
-            CONFIG_VALOR_PADRAO_AULA    =>  array(
-                'ordem' =>  3,
-                'nome'  =>  'valor_padrao_aula',
-                'tipo'  =>  TIPO_VALOR,
-                'valor' =>  VALOR_PADRAO_AULA
-            ),
-            
-            CONFIG_VALOR_PADRAO_AULA_DUPLA  =>  array(
-                'ordem' =>  4,
-                'nome'  =>  'valor_padrao_aula_dupla',
-                'tipo'  =>  TIPO_VALOR_DUPLA,
-                'valor' =>  VALOR_PADRAO_AULA
             )
-        
         );
         
         return $cfg;
@@ -222,32 +207,4 @@ class Vnix_config extends Supermodel
         
         return true;
     }*/
-
-
-    function get_valores_aula(){
-        $objs = array();
-
-        $inicial = 0;
-        $total = MAXIMO_RESULTADOS_BUSCA;
-        
-        $this->db->where_in('tipo', array(3,4));
-        
-        $query = $this->db->get($this->table_name, $total, $inicial);
-
-        if($query->num_rows() > 0){
-            foreach ($query->result() as $row)
-            {
-                $config = new Vnix_config();
-                $config->set_id($row->id);
-                $config->set_tipo($row->tipo);
-                $config->set_valor($row->valor);
-                $config->set_ordem($row->ordem);
-                array_push($objs, $config);
-            }
-        }
-        
-        $query->free_result();
-        
-        return $objs;
-    }
 }
